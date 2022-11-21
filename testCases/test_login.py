@@ -1,10 +1,11 @@
 import time
-
+import logging
 import pytest
 from selenium import webdriver
 from pageObjects.loginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
+import raf_practice.logs.customolog.custom_logger as cl
 
 
 class Test_001_Login:
@@ -12,7 +13,8 @@ class Test_001_Login:
     useremail = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
 
-    logger = LogGen.loggen()
+    # logger = LogGen.loggen()
+    logger = cl.customLogger(logging.DEBUG)
 
     @pytest.mark.regression
     def test_homePageTitle(self, setup):
@@ -34,8 +36,6 @@ class Test_001_Login:
                 "C:/Users/shabr/PycharmProjects/ClusterTest/Screenshots/" + "test_loginPageTitle.png")
             self.driver.close()
             assert False
-
-    demo = logger()
 
     @pytest.mark.sanity
     @pytest.mark.regression
@@ -63,7 +63,3 @@ class Test_001_Login:
                 "C:/Users/shabr/PycharmProjects/ClusterTest/Screenshots/" + "test_loginPageTitle.png")
             self.driver.close()
             assert False
-
-
-# demo = Test_001_Login()
-# demo.loggen()

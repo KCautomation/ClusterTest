@@ -11,10 +11,8 @@ class LogGen:
         logger = logging.getLogger()
         logger.setLevel(logging.INFO)
         return logger
-        # logger.warning("*************** Test_001_Login *****************")
-        # logger.warning("*************** Test_001_Login *****************")
-        # logger.warning("*************** Test_001_Login *****************")
-        # logger.warning("*************** Test_001_Login *****************")
 
-
-
+        # logger.info("*************** Test_001_Login *****************")
+        # logger.warning("*************** Test_001_Login *****************")
+        # logger.warning("*************** Test_001_Login *****************")
+        # logger.warning("*************** Test_001_Login *****************")

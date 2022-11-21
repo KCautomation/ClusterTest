@@ -9,7 +9,7 @@ def customLogger(logLevel):
     # By default, log all messages
     logger.setLevel(logging.DEBUG)
 
-    fileHandler = logging.FileHandler("{0}.log".format(loggerName), mode='w')
+    fileHandler = logging.FileHandler("C:\\Users\\shabr\PycharmProjects\\ClusterTest\\Logs\\automation.log".format(loggerName), mode='w')
     fileHandler.setLevel(logLevel)
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s',
