@@ -18,7 +18,7 @@ class Test_001_Login:
 
     @pytest.mark.regression
     def test_homePageTitle(self, setup):
-        self.logger.warning("*************** Test_001_Login *****************")
+        self.logger.info("*************** Test_001_Login *****************")
         self.logger.info("****Started Home page title test ****")
         self.driver = setup
         self.logger.info("****Opening URL****")
