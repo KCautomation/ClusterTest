@@ -16,7 +16,7 @@ class Test_001_Login:
 
     @pytest.mark.regression
     def test_homePageTitle(self, setup):
-        self.logger.info("*************** Test_001_Login *****************")
+        self.logger.warning("*************** Test_001_Login *****************")
         self.logger.info("****Started Home page title test ****")
         self.driver = setup
         self.logger.info("****Opening URL****")
@@ -34,6 +34,8 @@ class Test_001_Login:
                 "C:/Users/shabr/PycharmProjects/ClusterTest/Screenshots/" + "test_loginPageTitle.png")
             self.driver.close()
             assert False
+
+    demo = logger()
 
     @pytest.mark.sanity
     @pytest.mark.regression
@@ -61,3 +63,7 @@ class Test_001_Login:
                 "C:/Users/shabr/PycharmProjects/ClusterTest/Screenshots/" + "test_loginPageTitle.png")
             self.driver.close()
             assert False
+
+
+# demo = Test_001_Login()
+# demo.loggen()

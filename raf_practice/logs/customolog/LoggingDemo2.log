@@ -1,0 +1,5 @@
+11/21/2022 10:32:26 AM - LoggingDemo2 - DEBUG: debug message
+11/21/2022 10:32:26 AM - LoggingDemo2 - INFO: info message
+11/21/2022 10:32:26 AM - LoggingDemo2 - WARNING: warn message
+11/21/2022 10:32:26 AM - LoggingDemo2 - ERROR: error message
+11/21/2022 10:32:26 AM - LoggingDemo2 - CRITICAL: critical message
