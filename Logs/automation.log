@@ -1,6 +1,3 @@
-11/23/2022 08:49:44 AM - Test_002_Login - INFO: **********Test_002_Login*********
-11/23/2022 08:49:44 AM - Test_002_Login - INFO: ****Verifying Login DDT Test****
-11/23/2022 08:49:58 AM - Test_002_Login - ERROR: ****Login test failed ****
-11/23/2022 08:50:08 AM - Test_002_Login - ERROR: ****Login test failed ****
-11/23/2022 08:50:17 AM - Test_002_Login - ERROR: ****Login test failed ****
-11/23/2022 08:50:27 AM - Test_002_Login - ERROR: ****Login test failed ****
+11/23/2022 10:38:32 AM - Test_002_Login - INFO: **********Test_003_Login*********
+11/23/2022 10:38:32 AM - Test_002_Login - INFO: ****Verifying Login DDT Test2****
+11/23/2022 10:39:02 AM - Test_002_Login - INFO: **** passed ****
