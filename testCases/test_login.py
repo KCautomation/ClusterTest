@@ -6,6 +6,7 @@ from pageObjects.loginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 import raf_practice.logs.customolog.custom_logger as cl
+from utilities import XLUtils
 
 
 class Test_001_Login:
