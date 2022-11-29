@@ -14,7 +14,7 @@ import time
 class Test_002_Login:
     baseURL = ReadConfig.getApplicationURL()
     logger = cl.customLogger(logging.DEBUG)
-    path = "C:/Users/shabr/PycharmProjects/ClusterTest/TestData/Login_data_two.xlsx"
+    path = "/TestData/Login_data_two.xlsx"
 
     @pytest.mark.sanity
     @pytest.mark.regression

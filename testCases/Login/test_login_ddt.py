@@ -13,7 +13,7 @@ class Test_002_Login:
     baseURL = ReadConfig.getApplicationURL()
     # logger = LogGen.loggen()
     logger = cl.customLogger(logging.DEBUG)
-    path = "C:/Users/shabr/PycharmProjects/ClusterTest/TestData/Login_data.xlsx"
+    path = "/TestData/Login_data.xlsx"
 
     @pytest.mark.sanity
     @pytest.mark.regression

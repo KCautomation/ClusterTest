@@ -1,3 +1,5 @@
-11/23/2022 10:38:32 AM - Test_002_Login - INFO: **********Test_003_Login*********
-11/23/2022 10:38:32 AM - Test_002_Login - INFO: ****Verifying Login DDT Test2****
-11/23/2022 10:39:02 AM - Test_002_Login - INFO: **** passed ****
+11/29/2022 02:06:43 PM - Test_001_Login - INFO: *************** Test_001_Login *****************
+11/29/2022 02:06:43 PM - Test_001_Login - INFO: ****Started Home page title test ****
+11/29/2022 02:06:43 PM - Test_001_Login - INFO: ****Opening URL****
+11/29/2022 02:09:31 PM - Test_001_Login - INFO: **** Home page title test passed ****
+11/29/2022 02:09:37 PM - Test_001_Login - INFO: ****Started Login Test****
