@@ -2,7 +2,7 @@ import time
 import logging
 import pytest
 from selenium import webdriver
-from pageObjects.loginPage2 import LoginPage
+from pageObjects.loginPage2 import LoginPage2
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 import raf_practice.logs.customolog.custom_logger as cl
@@ -25,7 +25,7 @@ class Test_001_Login:
         self.driver = setup
         self.driver.get(self.baseURL)
         self.driver.implicitly_wait(20)
-        self.lp = LoginPage(self.driver)
+        self.lp = LoginPage2(self.driver)
 
         self.lp.Email_box.send_keys(self.useremail)
         self.lp.Password_box.send_keys(self.password)

@@ -1,12 +1,12 @@
 import time
 import logging
 import pytest
-from selenium import webdriver
-from pageObjects.loginPage import LoginPage
+from pageObjects.loginPage import LogInPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 import raf_practice.logs.customolog.custom_logger as cl
 from utilities import XLUtils
+from selenium import webdriver
 
 
 class Test_001_Login:
@@ -46,13 +46,15 @@ class Test_001_Login:
         self.driver = setup
         self.driver.get(self.baseURL)
         self.driver.implicitly_wait(20)
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.useremail)
+        self.lp = LogInPage(self.driver)
+
+        self.lp.Email_box.send_keys(self.useremail)
         time.sleep(1)
-        self.lp.setPassword(self.password)
+        self.lp.Password_box.send_keys(self.password)
         time.sleep(1)
-        self.lp.clickLogin()
-        time.sleep(10)
+        self.lp.Sign_In_button.click()
+        time.sleep(30)
+
         act_title = self.driver.title
         if act_title == "KloverCloud | Dashboard":
             self.logger.info("****Login test passed ****")
@@ -60,7 +62,7 @@ class Test_001_Login:
             assert True
         else:
             self.logger.error("****Login test failed ****")
-            self.driver.save_screenshot(
-                "C:/Users/shabr/PycharmProjects/ClusterTest/Screenshots/" + "test_loginPageTitle.png")
+            # self.driver.save_screenshot(
+            #     "C:/Users/shabr/PycharmProjects/ClusterTest/Screenshots/" + "test_loginPageTitle.png")
             self.driver.close()
             assert False
