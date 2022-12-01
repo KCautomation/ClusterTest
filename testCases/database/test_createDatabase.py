@@ -1,32 +1,17 @@
-import time
 import logging
+import time
 import pytest
-from selenium.common import NoSuchElementException, TimeoutException, InvalidSessionIdException
-from selenium.webdriver.support import expected_conditions as EC
-from pageObjects.loginPage import LogInPage
-from utilities.readProperties import ReadConfig
-from utilities.customLogger import LogGen
 import raf_practice.logs.customolog.custom_logger as cl
-from utilities import XLUtils
-from selenium import webdriver
 from Src.login_function.login import login
 from Src.functions.database.createDatabase import DatabaseFunctions
-
 from Src.screenShot.screenShot import SS
-import time
-import pytest
-
-import simple_colors
-from colorama import Fore
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from Src.all_locators.Locators import Locator
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException, \
     WebDriverException
-from urllib.request import urlopen
-from urllib.error import *
+
 from utilities.readProperties import ReadConfig
 
 ss_path = "/Database/"
@@ -41,7 +26,7 @@ class Test_001_Login:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     DF = DatabaseFunctions()
-    ServerName = "test_mysql"
+    ServerName = "testdata"
     Password = "Qwer1234!!"
 
     @pytest.mark.regression
@@ -143,7 +128,6 @@ class Test_001_Login:
         time.sleep(2)
 
         print("-----------------------try to choose a namespace -------------------------------")
-
         try:
             namespace_first = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, Locator.namespace_first)))
@@ -159,14 +143,19 @@ class Test_001_Login:
         except TimeoutException as e:
             print("TimeoutException error", e)
         else:
-            print("Successfully put First Namespace")
+            print("Successfully chose First Namespace")
+
+        print("-----Scroll up-----")
+        # again scroll below
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = -400")
+        time.sleep(2)
 
         print("-----------------------try to put database server name -------------------------------")
-
         try:
             database_ServerName = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, Locator.database_ServerName)))
             if database_ServerName.is_displayed():
+                database_ServerName.clear()
                 database_ServerName.send_keys(self.ServerName)
                 self.driver.implicitly_wait(20)
                 time.sleep(2)
@@ -182,18 +171,18 @@ class Test_001_Login:
             print("Successfully put Database ServerName")
 
         print("-----------------------try to put database Password -------------------------------")
-
         try:
             initial_AdminPassword = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, Locator.initial_AdminPassword)))
             if initial_AdminPassword.is_displayed():
+                initial_AdminPassword.clear()
                 initial_AdminPassword.send_keys(self.Password)
-                self.driver.implicitly_wait(20)
                 time.sleep(2)
             else:
                 file_name = ss_path + "initial_AdminPassword" + time.asctime().replace(":", "_") + ".png"
                 ss.driver.save_screenshot(file_name)
                 ss.ScreenShot(file_name)
+
         except NoSuchElementException as e:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
@@ -202,13 +191,11 @@ class Test_001_Login:
             print("Successfully put initial AdminPassword")
 
         print("-----------------------try to put database Password -------------------------------")
-
         try:
             confirm_Password = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, Locator.confirm_Password)))
             if confirm_Password.is_displayed():
                 confirm_Password.send_keys(self.Password)
-                self.driver.implicitly_wait(20)
                 time.sleep(2)
             else:
                 file_name = ss_path + "confirm_Password" + time.asctime().replace(":", "_") + ".png"
@@ -221,12 +208,7 @@ class Test_001_Login:
         else:
             print("Successfully put initial confirm_Password")
 
-        print("-----Scroll down to show Namespaces-----")
-        # again scroll below
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 250")
-        time.sleep(2)
-
-        print("-----------------------try to choose Team as a default-------------------------------")
+        print("-----------------------try to click 0n selectVersion_box-------------------------------")
 
         try:
             selectVersion_box = WebDriverWait(self.driver, 20).until(
@@ -261,3 +243,88 @@ class Test_001_Login:
             print("TimeoutException error", e)
         else:
             print("Successfully chose version 8.0.19")
+
+        print("-----Scroll down -----")
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
+        time.sleep(2)
+
+        print("-----------------------try to choose Enable Web Client (phpMyAdmin)-------------------------------")
+
+        try:
+            enableWebClient = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.enableWebClient)))
+            if enableWebClient.is_displayed():
+                enableWebClient.click()
+                time.sleep(2)
+            else:
+                file_name = ss_path + "enableWebClient" + time.asctime().replace(":", "_") + ".png"
+                ss.driver.save_screenshot(file_name)
+                ss.ScreenShot(file_name)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        else:
+            print("Successfully chose Enable Web Client (phpMyAdmin)")
+
+        print("-----------------------try to click Next button-------------------------------")
+
+        try:
+            next_button = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.next_button)))
+            if next_button.is_displayed():
+                next_button.click()
+                time.sleep(2)
+            else:
+                file_name = ss_path + "next_button" + time.asctime().replace(":", "_") + ".png"
+                ss.driver.save_screenshot(file_name)
+                ss.ScreenShot(file_name)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        else:
+            print("Successfully clicked on Next button")
+
+        print("-----------------------try to click Next button again-------------------------------")
+        try:
+            next_button = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.next_button)))
+            if next_button.is_displayed():
+                next_button.click()
+                time.sleep(2)
+            else:
+                file_name = ss_path + "next_button" + time.asctime().replace(":", "_") + ".png"
+                ss.driver.save_screenshot(file_name)
+                ss.ScreenShot(file_name)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        else:
+            print("Successfully clicked on Next button")
+
+        print("-----Scroll down -----")
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
+        time.sleep(2)
+
+        print("-----------------------try to click Confirm button-------------------------------")
+
+        try:
+            confirm_button = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.confirm_button)))
+            if confirm_button.is_displayed():
+                confirm_button.click()
+                time.sleep(2)
+            else:
+                file_name = ss_path + "confirm_button" + time.asctime().replace(":", "_") + ".png"
+                ss.driver.save_screenshot(file_name)
+                ss.ScreenShot(file_name)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        else:
+            print("Successfully clicked on Confirm button")
+
+        time.sleep(120)
