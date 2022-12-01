@@ -136,3 +136,22 @@ class Locator(object):
     # CPU_box = "//input[@class='ng-tns-c41-54 ng-pristine ng-valid ng-touched']"  # XPATH
     CPU_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[""1]/mat-sidenav-content[1]/main[1]/kc-vpc-form[1]/div[1]/div[1]/div[1]/div[""1]/div[4]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[""1]"
 
+    # go to Database page
+
+    Database_button = "//div[@class='cdk-overlay-container']//button[4]"
+    wait_forfilter = "//span[contains(text(),'Select Database')]"
+    MySQL_button = "//mat-tab-body//button[1]"
+
+    teamBox_database = "(//div[@class='mat-select-arrow-wrapper'])[1]"
+    defaultTeam_database = "//span[contains(text(),'default')]"
+    firstTeam = "/html[1]/body[1]/div[3]/div[2]/div[1]/div[1]/div[1]/mat-option[3]/span[1]"
+
+    namespace_first = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-database-form/div/div/kc-horizontal-stepper/section/div/form/div[3]/button[1]"
+    database_ServerName = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-database-form/div/div/kc-horizontal-stepper/section/div/div[2]/div/div[1]/mat-form-field/div/div[1]/div[2]"
+    initial_AdminPassword = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-database-form/div/div/kc-horizontal-stepper/section/div/div[2]/div/div[2]/mat-form-field/div/div[1]/div[2]"
+    confirm_Password = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-database-form/div/div/kc-horizontal-stepper/section/div/div[2]/div/div[3]/mat-form-field/div/div[1]/div[2]"
+    selectVersion_box = "//*[@id='mat-select-0']/div/div[2]"
+    version_8_0_19 = "//span[contains(text(),'8.0.19')]"
+
+    next_button = "//span[normalize-space()='Next']"
+    enableWebClient = "//label[@for='mat-checkbox-2-input']//div[@class='mat-checkbox-inner-container']"
