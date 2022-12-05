@@ -1,6 +1,8 @@
 import logging
 import time
 import pytest
+import simple_colors
+
 import raf_practice.logs.customolog.custom_logger as cl
 from Src.login_function.login import login
 from Src.functions.database.createDatabase import DatabaseFunctions
@@ -17,7 +19,7 @@ from utilities.readProperties import ReadConfig
 ss_path = "/Database/"
 
 
-class Test_001_Login:
+class TestCreateDatabase:
     baseURL = ReadConfig.getApplicationURL()
     useremail = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
@@ -26,18 +28,16 @@ class Test_001_Login:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     DF = DatabaseFunctions()
-    ServerName = "testdata"
+    ServerName = "testSql0218"
     Password = "Qwer1234!!"
 
     @pytest.mark.regression
-    def test_createDatabase(self, setup):
+    def test_MySQLDatabase(self, setup):
 
         self.logger.info("*************** Test_001_Login *****************")
         self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
-
-        ApplicationName = "laravel-0170"
 
         print("****************** Try to Test Cluster Login *********************")
         try:
@@ -327,4 +327,33 @@ class Test_001_Login:
         else:
             print("Successfully clicked on Confirm button")
 
-        time.sleep(120)
+        print("-----------------------Message check-------------------------------")
+
+        try:
+            Database_CreatedMsg = WebDriverWait(self.driver, 30).until(
+                EC.presence_of_element_located((By.XPATH, Locator.Database_CreatedMsg)))
+            if Database_CreatedMsg.is_displayed():
+                print('Shown a message: ',
+                      simple_colors.red(Database_CreatedMsg.text, ['bold', 'underlined']))
+                time.sleep(2)
+                # WebDriverWait(self.driver, 800).until(EC.visibility_of_element_located(By.XPATH, Locator.WaitTo_Create))
+            else:
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+
+        print("-----------------------Wait to database initialization------------------------------")
+        try:
+            WaitTo_Create = WebDriverWait(self.driver, 800).until(
+                EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
+            if WaitTo_Create.is_displayed():
+                time.sleep(4)
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)

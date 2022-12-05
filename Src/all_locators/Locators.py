@@ -156,3 +156,8 @@ class Locator(object):
     next_button = "//span[normalize-space()='Next']"
     enableWebClient = "//label[@for='mat-checkbox-2-input']//div[@class='mat-checkbox-inner-container']"
     confirm_button = "//button[@type='submit']"
+
+    Database_CreatedMsg = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
+    # created validation by snapshot button
+    WaitTo_Create = "//span[contains(text(),'Snapshot')]"
+    waitTo_create = "//h3[contains(text(),'Allocated Resources Per Instance')]"
