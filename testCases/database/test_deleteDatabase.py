@@ -20,7 +20,7 @@ from utilities.readProperties import ReadConfig
 ss_path = "/Database/"
 
 
-class TestCreateDatabase:
+class TestDeleteDatabase:
     baseURL = ReadConfig.getApplicationURL()
     useremail = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
@@ -33,7 +33,7 @@ class TestCreateDatabase:
     Password = "Qwer1235!!"
 
     @pytest.mark.regression
-    def test_MySQLDatabase(self, setup):
+    def test_DeleteDatabase(self, setup):
 
         self.logger.info("*************** Test_Create Database *****************")
         # self.logger.info("****Started Home page title test ****")

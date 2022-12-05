@@ -174,3 +174,17 @@ class Locator(object):
     database_Delete = "//span[normalize-space()='Delete']"
     database_nameBox = "(//input[@placeholder='Type here...'])[1]"
     deletePermanently = "//span[@class='ng-star-inserted']"
+
+    # create cache
+    cacheButton = "(//span[@class='ng-tns-c6-2'][normalize-space()='Cache'])[1]"
+    redis_button = "(//div[@class='p-4 text-center cursor-pointer relative ng-tns-c42-31'])[1]"
+    teamBox_c = "//div[@class='mat-select-value']"
+    serverNameBox_c = "(//input[@id='mat-input-2'])[1]"
+    adminPassword_c = "(//input[@id='mat-input-3'])[1]"
+    confirmPassword_c = "(//input[@id='mat-input-4'])[1]"
+    selectVersion_c = "(//div[@class='mat-select-value'])[1]"
+    wevClientUsername = "(//input[@id='mat-input-6'])[1]"
+    wevClientPassword = "(//input[@id='mat-input-7'])[1]"
+    next_Button_c = "(//span[normalize-space()='Next'])[1]"
+    confirmButton_c = "(//span[@class='ml-auto mr-auto text-center ng-tns-c42-31'])[1]"
+    enable_WebClient = "(//div[@class='mat-checkbox-inner-container'])[2]"
