@@ -28,7 +28,7 @@ class TestCreateDatabase:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     DF = DatabaseFunctions()
-    ServerName = "testSql0224"
+    ServerName = "testSql0230"
     Password = "Qwer1235!!"
 
     @pytest.mark.regression
@@ -334,7 +334,7 @@ class TestCreateDatabase:
                 EC.presence_of_element_located((By.XPATH, Locator.Database_CreatedMsg)))
             if Database_CreatedMsg.is_displayed():
                 print('Shown a message: ',
-                      simple_colors.red(Database_CreatedMsg.text, ['bold', 'underlined']))
+                      simple_colors.blue(Database_CreatedMsg.text, ['bold', 'underlined']))
                 time.sleep(5)
                 self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
                 time.sleep(7)
@@ -345,13 +345,16 @@ class TestCreateDatabase:
         except TimeoutException as e:
             print("TimeoutException error", e)
 
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
+        time.sleep(4)
+
         print("-----------------------Wait to database initialization------------------------------")
         try:
             WaitTo_Create = WebDriverWait(self.driver, 800).until(
                 EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
             if WaitTo_Create.is_displayed():
                 print('Shown a message: ',
-                      simple_colors.red(WaitTo_Create.text, ['bold', 'underlined']))
+                      simple_colors.blue(WaitTo_Create.text, ['bold', 'underlined']))
                 time.sleep(3)
                 self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
                 time.sleep(4)
