@@ -165,3 +165,12 @@ class Locator(object):
     Event_log = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-database-details[1]/kc-page-layout[1]/kc-page-layout-content[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[4]/span[1]"
     Database_FinalStatus = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-database-details/kc-page-layout/kc-page-layout-content/div/kc-database-initialization/div/div[2]/div[2]/pre[10]"
     Cancel_msg = "//body/kc-toastr[1]/div[1]/div[1]/button[1]/i[1]"
+
+    # delete databse
+
+    database_list = "(//span[@class='item-label'][normalize-space()='Database'])[1]"
+    database_name = "//span[normalize-space()='test-sql-221']"
+    database_Settings = "(//span[@class='inline-block py-3 pl-2'][normalize-space()='Settings'])[1]"
+    database_Delete = "//span[normalize-space()='Delete']"
+    database_nameBox = "(//input[@placeholder='Type here...'])[1]"
+    deletePermanently = "//span[@class='ng-star-inserted']"

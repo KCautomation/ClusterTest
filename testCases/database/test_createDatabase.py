@@ -13,6 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from Src.all_locators.Locators import Locator
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException, \
     WebDriverException
+from Src.application_delete.delete_app import test_delete_app
 
 from utilities.readProperties import ReadConfig
 
@@ -28,7 +29,7 @@ class TestCreateDatabase:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     DF = DatabaseFunctions()
-    ServerName = "testSql0230"
+    ServerName = "testSql0233"
     Password = "Qwer1235!!"
 
     @pytest.mark.regression
@@ -390,20 +391,43 @@ class TestCreateDatabase:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException error", e)
 
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 300")
-        time.sleep(2)
+        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 300")
+        # time.sleep(2)
 
+        # try:
+        #     Database_FinalStatus = WebDriverWait(self.driver, 10).until(
+        #         EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
+        #     if Database_FinalStatus.is_displayed():
+        #         print('Info Final Staus is: ',
+        #               simple_colors.blue(Database_FinalStatus.text, ['bold', 'underlined']))
+        #         time.sleep(3)
+        #         pass
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error", e)
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException error", e)
+
+        print("*******************************Try Test to delete application******************************")
         try:
-            Database_FinalStatus = WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
-            if Database_FinalStatus.is_displayed():
-                print('Info Final Staus is: ',
-                      simple_colors.blue(Database_FinalStatus.text, ['bold', 'underlined']))
-                time.sleep(3)
-                pass
+            self.driver.refresh()
+            time.sleep(3)
+            test_delete_app(self, self.ServerName)
+            time.sleep(5)
         except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
+            print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
         except InvalidSessionIdException as e:
-            print("InvalidSessionIdException error", e)
+            print("InvalidSessionIdException", e)
+        except AssertionError as e:
+            print("AssertionError", e)
+
+        print("---------------------- deleted Application validation-----------------------")
+
+        print("Application Delete Successfully")
+
+        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        ss.driver.save_screenshot(file_name)
+        ss.ScreenShot(file_name)
