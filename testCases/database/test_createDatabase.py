@@ -28,14 +28,14 @@ class TestCreateDatabase:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     DF = DatabaseFunctions()
-    ServerName = "testSql0218"
-    Password = "Qwer1234!!"
+    ServerName = "testSql0224"
+    Password = "Qwer1235!!"
 
     @pytest.mark.regression
     def test_MySQLDatabase(self, setup):
 
-        self.logger.info("*************** Test_001_Login *****************")
-        self.logger.info("****Started Home page title test ****")
+        self.logger.info("*************** Test_Create Database *****************")
+        # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
 
@@ -335,8 +335,9 @@ class TestCreateDatabase:
             if Database_CreatedMsg.is_displayed():
                 print('Shown a message: ',
                       simple_colors.red(Database_CreatedMsg.text, ['bold', 'underlined']))
-                time.sleep(2)
-                # WebDriverWait(self.driver, 800).until(EC.visibility_of_element_located(By.XPATH, Locator.WaitTo_Create))
+                time.sleep(5)
+                self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
+                time.sleep(7)
             else:
                 pass
         except NoSuchElementException as e:
@@ -349,7 +350,53 @@ class TestCreateDatabase:
             WaitTo_Create = WebDriverWait(self.driver, 800).until(
                 EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
             if WaitTo_Create.is_displayed():
+                print('Shown a message: ',
+                      simple_colors.red(WaitTo_Create.text, ['bold', 'underlined']))
+                time.sleep(3)
+                self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
                 time.sleep(4)
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        # again scroll below
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
+        time.sleep(2)
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 600")
+        time.sleep(3)
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = -600")
+        time.sleep(3)
+
+        print("-----------------------check final status from log------------------------------")
+        try:
+            Event_log = WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, Locator.Event_log)))
+            if Event_log.is_displayed():
+                Event_log.click()
+                self.driver.implicitly_wait(10)
+                time.sleep(3)
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 300")
+        time.sleep(2)
+
+        try:
+            Database_FinalStatus = WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
+            if Database_FinalStatus.is_displayed():
+                print('Info Final Staus is: ',
+                      simple_colors.blue(Database_FinalStatus.text, ['bold', 'underlined']))
+                time.sleep(3)
                 pass
         except NoSuchElementException as e:
             print("NoSuchElementException error", e)

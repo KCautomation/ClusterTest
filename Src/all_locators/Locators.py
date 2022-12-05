@@ -159,5 +159,9 @@ class Locator(object):
 
     Database_CreatedMsg = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
     # created validation by snapshot button
-    WaitTo_Create = "//span[contains(text(),'Snapshot')]"
+    WaitTo_Create = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
     waitTo_create = "//h3[contains(text(),'Allocated Resources Per Instance')]"
+    # validation
+    Event_log = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-database-details[1]/kc-page-layout[1]/kc-page-layout-content[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[4]/span[1]"
+    Database_FinalStatus = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-database-details[1]/kc-page-layout[1]/kc-page-layout-content[1]/div[1]/kc-database-initialization[1]/div[1]/div[2]/div[2]/pre[12]/span[3]"
+    Cancel_msg = "//body/kc-toastr[1]/div[1]/div[1]/button[1]/i[1]"
