@@ -158,6 +158,7 @@ class Locator(object):
     confirm_button = "//button[@type='submit']"
 
     Database_CreatedMsg = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
+
     # created validation by snapshot button
     WaitTo_Create = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
     waitTo_create = "//h3[contains(text(),'Allocated Resources Per Instance')]"
@@ -191,3 +192,11 @@ class Locator(object):
     next_Button_c = "(//span[normalize-space()='Next'])[1]"
     confirmButton_c = "(//span[@class='ml-auto mr-auto text-center ng-tns-c42-31'])[1]"
     enable_WebClient = "(//div[@class='mat-checkbox-inner-container'])[2]"
+
+    # Create Namespace
+
+    NamespaceButton = "button[role='menuitem']"
+    Create_button_N = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-vpc-form[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/button[1]"
+    NamespaceName_bar = "input[placeholder='Namespace Name']"
+    wait_toCreateNamespace = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-vpc-list/div/div[2]/div[2]/button[1]/span/div"
+    check_crateMessage = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
