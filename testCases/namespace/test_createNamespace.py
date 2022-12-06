@@ -99,50 +99,50 @@ class TestCreateNamespace:
 
         # click create button for create
         print("Try to click on Create Button")
-        try:
-            Create_button = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
-            Create_button.click()
-            time.sleep(5)
-            WebDriverWait(self.driver, 180).until(
-                EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
-
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException error", e)
-
-        # click create button for create
-        print("------------------check popup message------------------")
-        try:
-            check_crateMessage = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
-
-            print('Shown a error message: ',
-                  simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
-            time.sleep(6)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException error", e)
-
-        print("******************Create Namespace Validation**********************")
-        try:
-            actual = self.driver.current_url
-            accepted = "https://eks.alpha.klovercloud.io/namespace"
-            print(actual)
-            # if self.assertEqual(actual, accepted):
-            #     print("Created Successfully")
-            #     assert True
-            # else:
-            #     print("Created failed")
-            #     assert False
-        except AssertionError as e:
-            print(e)
+        # try:
+        #     Create_button = WebDriverWait(self.driver, 10).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
+        #     Create_button.click()
+        #     time.sleep(5)
+        #     WebDriverWait(self.driver, 180).until(
+        #         EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
+        #
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error", e)
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException error", e)
+        #
+        # # click create button for create
+        # print("------------------check popup message------------------")
+        # try:
+        #     check_crateMessage = WebDriverWait(self.driver, 20).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
+        #
+        #     print('Shown a error message: ',
+        #           simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
+        #     time.sleep(6)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error", e)
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException error", e)
+        #
+        # print("******************Create Namespace Validation**********************")
+        # try:
+        #     actual = self.driver.current_url
+        #     accepted = "https://eks.alpha.klovercloud.io/namespace"
+        #     print(actual)
+        #     # if self.assertEqual(actual, accepted):
+        #     #     print("Created Successfully")
+        #     #     assert True
+        #     # else:
+        #     #     print("Created failed")
+        #     #     assert False
+        # except AssertionError as e:
+        #     print(e)
 
     def test_CreateOrganization(self, setup):
 
