@@ -177,12 +177,15 @@ class Locator(object):
 
     # create cache
     cacheButton = "(//span[@class='ng-tns-c6-2'][normalize-space()='Cache'])[1]"
-    redis_button = "(//div[@class='p-4 text-center cursor-pointer relative ng-tns-c42-31'])[1]"
+    redis_button = "//span[contains(text(),'5.0.7,6.0.5')]"
     teamBox_c = "//div[@class='mat-select-value']"
-    serverNameBox_c = "(//input[@id='mat-input-2'])[1]"
-    adminPassword_c = "(//input[@id='mat-input-3'])[1]"
-    confirmPassword_c = "(//input[@id='mat-input-4'])[1]"
+    Namespace_c = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-cache-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/form[1]/div[3]/button[1]"
+    serverNameBox_c = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-cache-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[2]/div[1]/mat-form-field[1]/div[1]/div[1]/div[3]/input[1]"
+    adminPassword_c = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-cache-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[2]/div[1]/mat-form-field[2]/div[1]/div[1]/div[3]/input[1]"
+    confirmPassword_c = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-cache-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[2]/div[1]/mat-form-field[3]/div[1]/div[1]/div[3]/input[1]"
     selectVersion_c = "(//div[@class='mat-select-value'])[1]"
+
+    version_6_0_5 = "//span[contains(text(),'6.0.5')]"
     wevClientUsername = "(//input[@id='mat-input-6'])[1]"
     wevClientPassword = "(//input[@id='mat-input-7'])[1]"
     next_Button_c = "(//span[normalize-space()='Next'])[1]"

@@ -35,7 +35,7 @@ class TestCreate:
     @pytest.mark.regression
     def test_CreateCache(self, setup):
 
-        self.logger.info("*************** Test_Create Database *****************")
+        self.logger.info("*************** Test_Create Cache *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
@@ -50,13 +50,14 @@ class TestCreate:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("****************** Try to go create database page *********************")
+        print("****************** Try to go create cache page *********************")
 
         try:
             self.driver.refresh()
             time.sleep(3)
             self.CF.go_createCachePage(self)
-
+            self.driver.refresh()
+            time.sleep(3)
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
@@ -64,8 +65,7 @@ class TestCreate:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("****************** Try to choose MySQL database *********************")
-
+        print("****************** Try to choose redis *********************")
         try:
             redis_button = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, Locator.redis_button)))
@@ -81,8 +81,6 @@ class TestCreate:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully chose redis_button")
 
         print("****************** Try to choose Team *********************")
 
@@ -130,10 +128,10 @@ class TestCreate:
 
         print("-----------------------try to choose a namespace -------------------------------")
         try:
-            namespace_first = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.namespace_first)))
-            if namespace_first.is_displayed():
-                namespace_first.click()
+            Namespace_c = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.Namespace_c)))
+            if Namespace_c.is_displayed():
+                Namespace_c.click()
                 time.sleep(2)
             else:
                 file_name = ss_path + "namespace_first" + time.asctime().replace(":", "_") + ".png"
@@ -151,7 +149,7 @@ class TestCreate:
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = -400")
         time.sleep(2)
 
-        print("-----------------------try to put database server name -------------------------------")
+        print("-----------------------try to put cache server name -------------------------------")
         try:
             serverNameBox_c = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, Locator.serverNameBox_c)))
@@ -169,9 +167,9 @@ class TestCreate:
         except TimeoutException as e:
             print("TimeoutException error", e)
         else:
-            print("Successfully put serverName ServerName")
+            print("Successfully put serverName")
 
-        print("-----------------------try to put database Password -------------------------------")
+        print("-----------------------try to put cache Password -------------------------------")
         try:
             adminPassword_c = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, Locator.adminPassword_c)))
@@ -225,14 +223,12 @@ class TestCreate:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully clicked on selectVersion_box")
 
         try:
-            version_8_0_19 = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.version_8_0_19)))
-            if version_8_0_19.is_displayed():
-                version_8_0_19.click()
+            version_6_0_5 = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.version_6_0_5)))
+            if version_6_0_5.is_displayed():
+                version_6_0_5.click()
                 time.sleep(2)
             else:
                 file_name = ss_path + "version_8_0_19" + time.asctime().replace(":", "_") + ".png"
@@ -249,24 +245,24 @@ class TestCreate:
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
         time.sleep(2)
 
-        print("-----------------------try to choose Enable Web Client (phpMyAdmin)-------------------------------")
-
-        try:
-            enableWebClient = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.enableWebClient)))
-            if enableWebClient.is_displayed():
-                enableWebClient.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "enableWebClient" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        else:
-            print("Successfully chose Enable Web Client (phpMyAdmin)")
+        # print("-----------------------try to choose Enable Web Client (phpMyAdmin)-------------------------------")
+        #
+        # try:
+        #     enableWebClient = WebDriverWait(self.driver, 20).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.enableWebClient)))
+        #     if enableWebClient.is_displayed():
+        #         enableWebClient.click()
+        #         time.sleep(2)
+        #     else:
+        #         file_name = ss_path + "enableWebClient" + time.asctime().replace(":", "_") + ".png"
+        #         ss.driver.save_screenshot(file_name)
+        #         ss.ScreenShot(file_name)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error", e)
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # else:
+        #     print("Successfully chose Enable Web Client (phpMyAdmin)")
 
         print("-----------------------try to click Next button-------------------------------")
 
@@ -328,78 +324,60 @@ class TestCreate:
         else:
             print("Successfully clicked on Confirm button")
 
-        print("-----------------------Message check-------------------------------")
-
-        try:
-            Database_CreatedMsg = WebDriverWait(self.driver, 30).until(
-                EC.presence_of_element_located((By.XPATH, Locator.Database_CreatedMsg)))
-            if Database_CreatedMsg.is_displayed():
-                print('Shown a message: ',
-                      simple_colors.blue(Database_CreatedMsg.text, ['bold', 'underlined']))
-                time.sleep(5)
-                self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
-                time.sleep(7)
-            else:
-                pass
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
-        time.sleep(4)
-
-        print("-----------------------Wait to database initialization------------------------------")
-        try:
-            WaitTo_Create = WebDriverWait(self.driver, 800).until(
-                EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
-            if WaitTo_Create.is_displayed():
-                print('Shown a message: ',
-                      simple_colors.blue(WaitTo_Create.text, ['bold', 'underlined']))
-                time.sleep(3)
-                self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
-                time.sleep(4)
-                pass
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException error", e)
-
-        # again scroll below
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
-        time.sleep(2)
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 600")
-        time.sleep(3)
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = -600")
-        time.sleep(3)
-
-        print("-----------------------check final status from log------------------------------")
-        try:
-            Event_log = WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, Locator.Event_log)))
-            if Event_log.is_displayed():
-                Event_log.click()
-                self.driver.implicitly_wait(10)
-                time.sleep(3)
-                pass
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException error", e)
-
-        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 300")
-        # time.sleep(2)
-
+        # print("-----------------------Message check-------------------------------")
+        #
         # try:
-        #     Database_FinalStatus = WebDriverWait(self.driver, 10).until(
+        #     Database_CreatedMsg = WebDriverWait(self.driver, 30).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.Database_CreatedMsg)))
+        #     if Database_CreatedMsg.is_displayed():
+        #         print('Shown a message: ',
+        #               simple_colors.blue(Database_CreatedMsg.text, ['bold', 'underlined']))
+        #         time.sleep(5)
+        #         self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
+        #         time.sleep(7)
+        #     else:
+        #         pass
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error", e)
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        #
+        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
+        # time.sleep(4)
+        #
+        # print("-----------------------Wait to database initialization------------------------------")
+        # try:
+        #     WaitTo_Create = WebDriverWait(self.driver, 800).until(
         #         EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
-        #     if Database_FinalStatus.is_displayed():
-        #         print('Info Final Staus is: ',
-        #               simple_colors.blue(Database_FinalStatus.text, ['bold', 'underlined']))
+        #     if WaitTo_Create.is_displayed():
+        #         print('Shown a message: ',
+        #               simple_colors.blue(WaitTo_Create.text, ['bold', 'underlined']))
+        #         time.sleep(3)
+        #         self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
+        #         time.sleep(4)
+        #         pass
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error", e)
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException error", e)
+        #
+        # # again scroll below
+        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
+        # time.sleep(2)
+        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 600")
+        # time.sleep(3)
+        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = -600")
+        # time.sleep(3)
+        #
+        # print("-----------------------check final status from log------------------------------")
+        # try:
+        #     Event_log = WebDriverWait(self.driver, 10).until(
+        #         EC.visibility_of_element_located((By.XPATH, Locator.Event_log)))
+        #     if Event_log.is_displayed():
+        #         Event_log.click()
+        #         self.driver.implicitly_wait(10)
         #         time.sleep(3)
         #         pass
         # except NoSuchElementException as e:
@@ -408,26 +386,44 @@ class TestCreate:
         #     print("TimeoutException error", e)
         # except InvalidSessionIdException as e:
         #     print("InvalidSessionIdException error", e)
-
-        print("*******************************Try Test to delete application******************************")
-        try:
-            self.driver.refresh()
-            time.sleep(3)
-            test_delete_app(self, self.ServerName)
-            time.sleep(5)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error :\n", e, "\n")
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException", e)
-        except AssertionError as e:
-            print("AssertionError", e)
-
-        print("---------------------- deleted Application validation-----------------------")
-
-        print("Application Delete Successfully")
-
-        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
-        ss.driver.save_screenshot(file_name)
-        ss.ScreenShot(file_name)
+        #
+        # # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 300")
+        # # time.sleep(2)
+        #
+        # # try:
+        # #     Database_FinalStatus = WebDriverWait(self.driver, 10).until(
+        # #         EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
+        # #     if Database_FinalStatus.is_displayed():
+        # #         print('Info Final Staus is: ',
+        # #               simple_colors.blue(Database_FinalStatus.text, ['bold', 'underlined']))
+        # #         time.sleep(3)
+        # #         pass
+        # # except NoSuchElementException as e:
+        # #     print("NoSuchElementException error", e)
+        # # except TimeoutException as e:
+        # #     print("TimeoutException error", e)
+        # # except InvalidSessionIdException as e:
+        # #     print("InvalidSessionIdException error", e)
+        #
+        # print("*******************************Try Test to delete application******************************")
+        # try:
+        #     self.driver.refresh()
+        #     time.sleep(3)
+        #     test_delete_app(self, self.ServerName)
+        #     time.sleep(5)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
+        # except AssertionError as e:
+        #     print("AssertionError", e)
+        #
+        # print("---------------------- deleted Application validation-----------------------")
+        #
+        # print("Application Delete Successfully")
+        #
+        # file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        # ss.driver.save_screenshot(file_name)
+        # ss.ScreenShot(file_name)

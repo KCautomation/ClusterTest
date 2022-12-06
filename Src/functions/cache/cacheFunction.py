@@ -59,17 +59,17 @@ class cacheFunctions:
         try:
             cacheButton = WebDriverWait(driver, 20).until(
                 EC.element_to_be_clickable((By.XPATH, Locator.cacheButton)))
-            print("NewApplication_H button is clickable")
+            print("cache button is clickable")
             cacheButton.click()
             time.sleep(5)
             driver.implicitly_wait(20)
 
-            WebDriverWait(driver, 80).until(EC.element_to_be_clickable((By.XPATH, Locator.wait_forfilter)))
-            time.sleep(4)
+            WebDriverWait(self.driver, 50).until(EC.presence_of_element_located((By.XPATH, Locator.redis_button)))
+            time.sleep(3)
         except NoSuchElementException as e:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
         else:
             page = self.driver.title
-            print("Welcome Create Database Page & Create Database Title is:", page)
+            print("Welcome Create Cache Page & Create Database Title is:", page)
