@@ -36,7 +36,7 @@ class TestCreateNamespace:
     def test_CreateNamespace(self, setup):
 
         Namespace_Name = "test221"
-        self.logger.info("*************** Test Create Namespace *****************")
+        self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
@@ -54,7 +54,7 @@ class TestCreateNamespace:
         print("****************** Try to go create namespace page *********************")
 
         # click on create button from header
-        print("Try to click on CreateNew button from Header")
+        print("-------Try to click on CreateNew button from Header----------")
         try:
             CreateNew_button = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.CreateNew_H)))
@@ -69,7 +69,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # click namespace
-        print("Try to click on Namespace button from frame")
+        print("----Try to click on Namespace button from frame-----")
         try:
             NamespaceButton = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, Locator.NamespaceButton)))
@@ -84,7 +84,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # input Namespace name
-        print("Try to input Namespace Name")
+        print("---Try to input Namespace Name---")
         try:
             NamespaceName_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, Locator.NamespaceName_bar)))
@@ -98,7 +98,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # click create button for create
-        print("Try to click on Create Button")
+        print("---Try to click on Create Button---")
         # try:
         #     Create_button = WebDriverWait(self.driver, 10).until(
         #         EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
@@ -147,7 +147,7 @@ class TestCreateNamespace:
     def test_CreateOrganization(self, setup):
 
         Namespace_Name = "test221"
-        self.logger.info("*************** Test Create Namespace with organization *****************")
+        self.logger.info("*************** Test Create Namespace with Access Group: organization *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
@@ -165,7 +165,7 @@ class TestCreateNamespace:
         print("****************** Try to go create namespace page *********************")
 
         # click on create button from header
-        print("Try to click on CreateNew button from Header")
+        print("---Try to click on CreateNew button from Header---")
         try:
             CreateNew_button = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.CreateNew_H)))
@@ -180,7 +180,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # click namespace
-        print("Try to click on Namespace button from frame")
+        print("---Try to click on Namespace button from frame---")
         try:
             NamespaceButton = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, Locator.NamespaceButton)))
@@ -195,7 +195,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # input Namespace name
-        print("Try to input Namespace Name")
+        print("---Try to input Namespace Name---")
         try:
             NamespaceName_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, Locator.NamespaceName_bar)))
@@ -214,7 +214,7 @@ class TestCreateNamespace:
         time.sleep(2)
 
         # Choose access organization from Access Group
-        print("Try to Choose Organization as access group")
+        print("---Try to Choose Organization as access group---")
         try:
             Organization = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.Organization)))
@@ -229,7 +229,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # click search box and choose organization
-        print("Try to click search box")
+        print("---Try to click search box---")
         try:
             Organization_searchBar = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.Organization_searchBar)))
@@ -243,7 +243,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # Organization selection
-        print("Try to choose Organization")
+        print("---Try to choose Organization---")
         try:
             Choose_Organization = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.Choose_Default)))
@@ -262,7 +262,7 @@ class TestCreateNamespace:
         time.sleep(2)
 
         # CPU selection
-        print("Try to update CPU by input CPU box")
+        print("---Try to update CPU by input CPU box---")
         try:
             CPU_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.CPU_bar)))
@@ -276,7 +276,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # Memory Selection
-        print("Try to update CPU by input Memory box")
+        print("---Try to update CPU by input Memory box---")
         try:
             Memory_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.Memory_box)))
@@ -291,7 +291,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # Persistent Volume selection
-        print("Try to update Volume by input box")
+        print("---Try to update Volume by input box---")
         try:
             Volume_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.Volume_box)))
@@ -306,7 +306,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # Bandwidth selection
-        print("Try to update Bandwidth by input box")
+        print("---Try to update Bandwidth by input box--")
         try:
             Bandwidth_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.Bandwidth_box)))
@@ -325,7 +325,7 @@ class TestCreateNamespace:
         time.sleep(2)
 
         # # click create button for create
-        # print("Try to click on Create Button")
+        # print("---Try to click on Create Button---")
         # try:
         #     Create_button = WebDriverWait(self.driver, 10).until(
         #         EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
@@ -374,7 +374,7 @@ class TestCreateNamespace:
     def test_CreateTeam(self, setup):
 
         Namespace_Name = "test221"
-        self.logger.info("*************** Test Create Namespace with organization *****************")
+        self.logger.info("*************** Test Create Namespace with Access Group: Team *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
@@ -407,7 +407,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # click namespace
-        print("Try to click on Namespace button from frame")
+        print("---Try to click on Namespace button from frame---")
         try:
             NamespaceButton = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, Locator.NamespaceButton)))
@@ -422,7 +422,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # input Namespace name
-        print("Try to input Namespace Name")
+        print("--Try to input Namespace Name--")
         try:
             NamespaceName_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, Locator.NamespaceName_bar)))
@@ -437,11 +437,11 @@ class TestCreateNamespace:
 
         # Scroll
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 550")
-        print("Scroll down")
+        print("---Scroll down---")
         time.sleep(2)
 
         # Choose access organization from Access Group
-        print("Try to Choose Team as a access group")
+        print("---Try to Choose Team as a access group---")
         try:
             Team = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, Locator.Team)))
 
@@ -455,7 +455,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # click search box and choose organization
-        print("Try to click search box")
+        print("---Try to click search box---")
         try:
             teamSearch_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.teamSearch_box)))
@@ -469,7 +469,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # Team selection
-        print("Try to choose Team")
+        print("---Try to choose Team---")
         try:
             teamDefault = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.Choose_TeamDefault)))
@@ -488,7 +488,7 @@ class TestCreateNamespace:
         time.sleep(2)
 
         # CPU selection
-        print("Try to update CPU by input CPU box")
+        print("---Try to update CPU by input CPU box---")
         try:
             CPU_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.CPU_bar)))
@@ -532,7 +532,7 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # Bandwidth selection
-        print("Try to update Bandwidth by input box")
+        print("---Try to update Bandwidth by input box--")
         try:
             Bandwidth_box = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, Locator.Bandwidth_box)))
@@ -551,7 +551,7 @@ class TestCreateNamespace:
         time.sleep(2)
 
         # # click create button for create
-        # print("Try to click on Create Button")
+        # print("---Try to click on Create Button---")
         # try:
         #     Create_button = WebDriverWait(self.driver, 10).until(
         #         EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
