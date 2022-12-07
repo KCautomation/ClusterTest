@@ -1,3 +1,6 @@
+import time
+from telnetlib import EC
+
 import logging
 import time
 import pytest
@@ -13,14 +16,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from Src.all_locators.Locators import Locator
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException, \
     WebDriverException
-from Src.application_delete.delete_app import test_delete_app
-
 from utilities.readProperties import ReadConfig
 
-ss_path = "/Database/"
+ss_path = "/Applications/PHP/"
 
 
-class TestCreateNamespace:
+class TestDeleteNamespace:
     baseURL = ReadConfig.getApplicationURL()
     useremail = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
@@ -33,7 +34,7 @@ class TestCreateNamespace:
     Password = "Qwer1235!!"
 
     @pytest.mark.regression
-    def test_defaultOrganization(self, setup):
+    def test_deleteNamespaces(self, setup):
 
         self.logger.info("*************** Test Create Namespace with Access Group: organization *****************")
         # self.logger.info("****Started Home page title test ****")
@@ -50,11 +51,22 @@ class TestCreateNamespace:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("****************** Try to go create namespace page *********************")
+        print("****************** Try to click on Namespace from side bar *********************")
+        try:
+            Namespace_button = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, Locator.NamespaceButton_sidebar)))
 
-        self.driver.find_element(By.XPATH, "//span[normalize-space()='Namespace']").click()
-        self.driver.implicitly_wait(5)
-        time.sleep(3)
+            if Namespace_button.is_displayed():
+                Namespace_button.click()
+                self.driver.implicitly_wait(5)
+                time.sleep(3)
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
 
         # Namespace validation
         try:
@@ -77,7 +89,6 @@ class TestCreateNamespace:
             print("InvalidSessionIdException error", e)
 
         # Namespace delete
-
         print("-------Try to click on namespace Settings--------")
 
         try:

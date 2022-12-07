@@ -220,7 +220,8 @@ class Locator(object):
     Choose_TeamDefault = "//span[contains(text(),'default')]"
     Choose_firstTeam = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/mat-option[2]/span[1]"
 
-
-
-
-
+    # Namespace delete
+    NamespaceButton_sidebar = "//span[normalize-space()='Namespace']"
+    Namespace_settings = "(//span[@class='inline-block py-3 pl-2'][normalize-space()='Settings'])[1]"
+    deleteButton_namespace = "(//button[@class='kc-delete-primary w-32 mat-button mat-button-base ng-trigger ng-trigger-fadeInRight'])[1]"
+    input_namespaceName = "/html[1]/body[1]/div[3]/div[2]/div[1]/mat-dialog-container[1]/kc-delete-dialog[1]/div[1]/div[1]/div[1]/div[1]/input[1]"

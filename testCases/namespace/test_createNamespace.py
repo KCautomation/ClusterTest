@@ -140,7 +140,7 @@ class TestCreateNamespace:
                 pass
 
             else:
-                print("Created failed")
+                print("Namespace Created failed")
                 pass
         except NoSuchElementException as e:
             print("NoSuchElementException error", e)
@@ -148,6 +148,120 @@ class TestCreateNamespace:
             print("TimeoutException error", e)
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException error", e)
+
+        # Namespace delete
+        print("-------Try to click on namespace Settings--------")
+
+        try:
+            Namespace_settings = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Namespace_settings)))
+            Namespace_settings.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # click on Delete button
+        print("-------Try to click on namespace Delete--------")
+        try:
+            deleteButton_namespace = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.deleteButton_namespace)))
+            deleteButton_namespace.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # input application name
+        print("-------Try to put Application Name in application name box--------")
+        try:
+            input_namespaceName = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Application_namebox_D)))
+            print("application_Delete is clickable")
+            input_namespaceName.send_keys(Namespace_Name)
+            print("successfully inputted Application_name ")
+            time.sleep(5)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # scroll down
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
+        print("Scroll down")
+        time.sleep(3)
+
+        # input application name
+        try:
+            Delete_permanently_button = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
+            Delete_permanently_button.click()
+            print("successfully clicked on Delete_permanently_button ")
+            time.sleep(7)
+            self.driver.refresh()
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # check msg
+        # try:
+        #     Namespace_Deleted_Success_msg = WebDriverWait(self.driver, 120).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.Application_Deleted_Success_msg)))
+        #     if Namespace_Deleted_Success_msg.is_displayed():
+        #
+        #         print('Shown a message: ',
+        #               simple_colors.green(Namespace_Deleted_Success_msg.text, ['bold', 'underlined']))
+        #         print("\n")
+        #         pass
+        #     else:
+        #         pass
+        #     time.sleep(10)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
+        # except AssertionError as e:
+        #     print("AssertionError", e)
+
+        # delete validation
+        try:
+            self.driver.refresh()
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                print("Namespace '" + Namespace_Name + "' is found")
+                assert False
+
+            else:
+                print("Namespace '" + Namespace_Name + "' is not found")
+                assert True
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+        except AssertionError as e:
+            print("AssertionError error", e)
+        ss = SS(self.driver)
+        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        ss.driver.save_screenshot(file_name)
+        ss.ScreenShot(file_name)
+
 
     def test_defaultOrganization(self, setup):
 
@@ -382,6 +496,120 @@ class TestCreateNamespace:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException error", e)
 
+
+        # Namespace delete
+        print("-------Try to click on namespace Settings--------")
+
+        try:
+            Namespace_settings = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Namespace_settings)))
+            Namespace_settings.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # click on Delete button
+        print("-------Try to click on namespace Delete--------")
+        try:
+            deleteButton_namespace = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.deleteButton_namespace)))
+            deleteButton_namespace.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # input application name
+        print("-------Try to put Application Name in application name box--------")
+        try:
+            input_namespaceName = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Application_namebox_D)))
+            print("application_Delete is clickable")
+            input_namespaceName.send_keys(Namespace_Name)
+            print("successfully inputted Application_name ")
+            time.sleep(5)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # scroll down
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
+        print("Scroll down")
+        time.sleep(3)
+
+        # input application name
+        try:
+            Delete_permanently_button = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
+            Delete_permanently_button.click()
+            print("successfully clicked on Delete_permanently_button ")
+            time.sleep(7)
+            self.driver.refresh()
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # check msg
+        # try:
+        #     Namespace_Deleted_Success_msg = WebDriverWait(self.driver, 120).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.Application_Deleted_Success_msg)))
+        #     if Namespace_Deleted_Success_msg.is_displayed():
+        #
+        #         print('Shown a message: ',
+        #               simple_colors.green(Namespace_Deleted_Success_msg.text, ['bold', 'underlined']))
+        #         print("\n")
+        #         pass
+        #     else:
+        #         pass
+        #     time.sleep(10)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
+        # except AssertionError as e:
+        #     print("AssertionError", e)
+
+        # delete validation
+        try:
+            self.driver.refresh()
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                print("Namespace '" + Namespace_Name + "' is found")
+                assert False
+
+            else:
+                print("Namespace '" + Namespace_Name + "' is not found")
+                assert True
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+        except AssertionError as e:
+            print("AssertionError error", e)
+        ss = SS(self.driver)
+        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        ss.driver.save_screenshot(file_name)
+        ss.ScreenShot(file_name)
+
     def test_useOrganization(self, setup):
 
         Namespace_Name = "test221"
@@ -615,6 +843,119 @@ class TestCreateNamespace:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException error", e)
 
+        # Namespace delete
+        print("-------Try to click on namespace Settings--------")
+
+        try:
+            Namespace_settings = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Namespace_settings)))
+            Namespace_settings.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # click on Delete button
+        print("-------Try to click on namespace Delete--------")
+        try:
+            deleteButton_namespace = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.deleteButton_namespace)))
+            deleteButton_namespace.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # input application name
+        print("-------Try to put Application Name in application name box--------")
+        try:
+            input_namespaceName = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Application_namebox_D)))
+            print("application_Delete is clickable")
+            input_namespaceName.send_keys(Namespace_Name)
+            print("successfully inputted Application_name ")
+            time.sleep(5)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # scroll down
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
+        print("Scroll down")
+        time.sleep(3)
+
+        # input application name
+        try:
+            Delete_permanently_button = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
+            Delete_permanently_button.click()
+            print("successfully clicked on Delete_permanently_button ")
+            time.sleep(7)
+            self.driver.refresh()
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # check msg
+        # try:
+        #     Namespace_Deleted_Success_msg = WebDriverWait(self.driver, 120).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.Application_Deleted_Success_msg)))
+        #     if Namespace_Deleted_Success_msg.is_displayed():
+        #
+        #         print('Shown a message: ',
+        #               simple_colors.green(Namespace_Deleted_Success_msg.text, ['bold', 'underlined']))
+        #         print("\n")
+        #         pass
+        #     else:
+        #         pass
+        #     time.sleep(10)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
+        # except AssertionError as e:
+        #     print("AssertionError", e)
+
+        # delete validation
+        try:
+            self.driver.refresh()
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                print("Namespace '" + Namespace_Name + "' is found")
+                assert False
+
+            else:
+                print("Namespace '" + Namespace_Name + "' is not found")
+                assert True
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+        except AssertionError as e:
+            print("AssertionError error", e)
+        ss = SS(self.driver)
+        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        ss.driver.save_screenshot(file_name)
+        ss.ScreenShot(file_name)
+
     def test_defaultTeam(self, setup):
 
         Namespace_Name = "test221"
@@ -847,6 +1188,119 @@ class TestCreateNamespace:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException error", e)
 
+        # Namespace delete
+        print("-------Try to click on namespace Settings--------")
+
+        try:
+            Namespace_settings = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Namespace_settings)))
+            Namespace_settings.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # click on Delete button
+        print("-------Try to click on namespace Delete--------")
+        try:
+            deleteButton_namespace = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.deleteButton_namespace)))
+            deleteButton_namespace.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # input application name
+        print("-------Try to put Application Name in application name box--------")
+        try:
+            input_namespaceName = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Application_namebox_D)))
+            print("application_Delete is clickable")
+            input_namespaceName.send_keys(Namespace_Name)
+            print("successfully inputted Application_name ")
+            time.sleep(5)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # scroll down
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
+        print("Scroll down")
+        time.sleep(3)
+
+        # input application name
+        try:
+            Delete_permanently_button = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
+            Delete_permanently_button.click()
+            print("successfully clicked on Delete_permanently_button ")
+            time.sleep(7)
+            self.driver.refresh()
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # check msg
+        # try:
+        #     Namespace_Deleted_Success_msg = WebDriverWait(self.driver, 120).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.Application_Deleted_Success_msg)))
+        #     if Namespace_Deleted_Success_msg.is_displayed():
+        #
+        #         print('Shown a message: ',
+        #               simple_colors.green(Namespace_Deleted_Success_msg.text, ['bold', 'underlined']))
+        #         print("\n")
+        #         pass
+        #     else:
+        #         pass
+        #     time.sleep(10)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
+        # except AssertionError as e:
+        #     print("AssertionError", e)
+
+        # delete validation
+        try:
+            self.driver.refresh()
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                print("Namespace '" + Namespace_Name + "' is found")
+                assert False
+
+            else:
+                print("Namespace '" + Namespace_Name + "' is not found")
+                assert True
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+        except AssertionError as e:
+            print("AssertionError error", e)
+        ss = SS(self.driver)
+        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        ss.driver.save_screenshot(file_name)
+        ss.ScreenShot(file_name)
+
     def test_useTeam(self, setup):
 
         Namespace_Name = "test221"
@@ -1078,3 +1532,116 @@ class TestCreateNamespace:
             print("TimeoutException error", e)
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException error", e)
+
+        # Namespace delete
+        print("-------Try to click on namespace Settings--------")
+
+        try:
+            Namespace_settings = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Namespace_settings)))
+            Namespace_settings.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # click on Delete button
+        print("-------Try to click on namespace Delete--------")
+        try:
+            deleteButton_namespace = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.deleteButton_namespace)))
+            deleteButton_namespace.click()
+            time.sleep(4)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # input application name
+        print("-------Try to put Application Name in application name box--------")
+        try:
+            input_namespaceName = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Application_namebox_D)))
+            print("application_Delete is clickable")
+            input_namespaceName.send_keys(Namespace_Name)
+            print("successfully inputted Application_name ")
+            time.sleep(5)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # scroll down
+        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
+        print("Scroll down")
+        time.sleep(3)
+
+        # input application name
+        try:
+            Delete_permanently_button = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
+            Delete_permanently_button.click()
+            print("successfully clicked on Delete_permanently_button ")
+            time.sleep(7)
+            self.driver.refresh()
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        # check msg
+        # try:
+        #     Namespace_Deleted_Success_msg = WebDriverWait(self.driver, 120).until(
+        #         EC.presence_of_element_located((By.XPATH, Locator.Application_Deleted_Success_msg)))
+        #     if Namespace_Deleted_Success_msg.is_displayed():
+        #
+        #         print('Shown a message: ',
+        #               simple_colors.green(Namespace_Deleted_Success_msg.text, ['bold', 'underlined']))
+        #         print("\n")
+        #         pass
+        #     else:
+        #         pass
+        #     time.sleep(10)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
+        # except AssertionError as e:
+        #     print("AssertionError", e)
+
+        # delete validation
+        try:
+            self.driver.refresh()
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                print("Namespace '" + Namespace_Name + "' is found")
+                assert False
+
+            else:
+                print("Namespace '" + Namespace_Name + "' is not found")
+                assert True
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+        except AssertionError as e:
+            print("AssertionError error", e)
+        ss = SS(self.driver)
+        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        ss.driver.save_screenshot(file_name)
+        ss.ScreenShot(file_name)
