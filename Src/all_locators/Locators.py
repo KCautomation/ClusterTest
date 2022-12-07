@@ -229,3 +229,18 @@ class Locator(object):
 
     # applications
     wait_ToCreateApplication ="/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[3]/ul[1]/li[1]/div[1]/button[1]/span[1]/mat-icon[1]/*[name()='svg'][1]"
+    deployed_validation = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[3]/ul[1]/li[1]/div[1]/button[1]/span[1]/mat-icon[1]/*[name()='svg'][1]"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
