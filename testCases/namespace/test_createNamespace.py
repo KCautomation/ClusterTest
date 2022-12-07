@@ -139,14 +139,10 @@ class TestCreateNamespace:
                 Namespace.click()
                 time.sleep(5)
                 print("Welcome to '" + Namespace_Name + "' namespace & page title is :", self.driver.title)
-                allure.attach(self.driver.get_screenshot_as_png(), name="Namespace_Validation",
-                              attachment_type=AttachmentType.PNG)
                 pass
-
             else:
                 allure.attach(self.driver.get_screenshot_as_png(), name="Namespace_Validation",
                               attachment_type=AttachmentType.PNG)
-
                 print("Namespace Created failed")
                 pass
         except NoSuchElementException as e:
@@ -255,8 +251,6 @@ class TestCreateNamespace:
                 assert False
 
             else:
-                allure.attach(self.driver.get_screenshot_as_png(), name="delete_Screenshot",
-                              attachment_type=AttachmentType.PNG)
                 print("Namespace '" + Namespace_Name + "' is not found")
                 assert True
 
@@ -497,6 +491,8 @@ class TestCreateNamespace:
                 pass
 
             else:
+                allure.attach(self.driver.get_screenshot_as_png(), name="Create_Namespace_Validation",
+                              attachment_type=AttachmentType.PNG)
                 print("Created failed")
                 pass
         except NoSuchElementException as e:
@@ -600,6 +596,8 @@ class TestCreateNamespace:
                 EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
             if Namespace.is_displayed():
                 print("Namespace '" + Namespace_Name + "' is found")
+                allure.attach(self.driver.get_screenshot_as_png(), name="Delete_Namespace_Validation",
+                              attachment_type=AttachmentType.PNG)
                 assert False
 
             else:
