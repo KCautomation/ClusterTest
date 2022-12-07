@@ -34,8 +34,8 @@ class TestCreateNamespace:
 
     @pytest.mark.regression
     def test_CreateNamespace(self, setup):
-
-        Namespace_Name = "test223"
+        # pytest.skip("Skipping test...later I will implement...")
+        Namespace_Name = "test305"
         self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
         self.driver = setup
         ss = SS(self.driver)
@@ -205,7 +205,7 @@ class TestCreateNamespace:
                 EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
             Delete_permanently_button.click()
             print("successfully clicked on Delete_permanently_button ")
-            time.sleep(7)
+            time.sleep(15)
             self.driver.refresh()
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
@@ -262,10 +262,9 @@ class TestCreateNamespace:
         ss.driver.save_screenshot(file_name)
         ss.ScreenShot(file_name)
 
-
     def test_defaultOrganization(self, setup):
-
-        Namespace_Name = "test221"
+        pytest.skip("Skipping test...later I will implement...")
+        Namespace_Name = "test300"
         self.logger.info("*************** Test Create Namespace with Access Group: organization *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
@@ -496,7 +495,6 @@ class TestCreateNamespace:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException error", e)
 
-
         # Namespace delete
         print("-------Try to click on namespace Settings--------")
 
@@ -553,7 +551,7 @@ class TestCreateNamespace:
                 EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
             Delete_permanently_button.click()
             print("successfully clicked on Delete_permanently_button ")
-            time.sleep(7)
+            time.sleep(15)
             self.driver.refresh()
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
@@ -611,8 +609,8 @@ class TestCreateNamespace:
         ss.ScreenShot(file_name)
 
     def test_useOrganization(self, setup):
-
-        Namespace_Name = "test221"
+        # pytest.skip("Skipping test...later I will implement...")
+        Namespace_Name = "test301"
         self.logger.info("*************** Test Create Namespace with Access Group: organization *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
@@ -899,7 +897,7 @@ class TestCreateNamespace:
                 EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
             Delete_permanently_button.click()
             print("successfully clicked on Delete_permanently_button ")
-            time.sleep(7)
+            time.sleep(15)
             self.driver.refresh()
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
@@ -957,8 +955,8 @@ class TestCreateNamespace:
         ss.ScreenShot(file_name)
 
     def test_defaultTeam(self, setup):
-
-        Namespace_Name = "test221"
+        pytest.skip("Skipping test...later I will implement...")
+        Namespace_Name = "test302"
         self.logger.info("*************** Test Create Namespace with Access Group: Team *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
@@ -1244,7 +1242,7 @@ class TestCreateNamespace:
                 EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
             Delete_permanently_button.click()
             print("successfully clicked on Delete_permanently_button ")
-            time.sleep(7)
+            time.sleep(15)
             self.driver.refresh()
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
@@ -1302,8 +1300,8 @@ class TestCreateNamespace:
         ss.ScreenShot(file_name)
 
     def test_useTeam(self, setup):
-
-        Namespace_Name = "test221"
+        pytest.skip("Skipping test...later I will implement...")
+        Namespace_Name = "test303"
         self.logger.info("*************** Test Create Namespace with Access Group: Team *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
@@ -1589,7 +1587,7 @@ class TestCreateNamespace:
                 EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
             Delete_permanently_button.click()
             print("successfully clicked on Delete_permanently_button ")
-            time.sleep(7)
+            time.sleep(15)
             self.driver.refresh()
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")

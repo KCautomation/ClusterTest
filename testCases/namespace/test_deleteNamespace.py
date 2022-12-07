@@ -144,7 +144,7 @@ class TestDeleteNamespace:
                 EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
             Delete_permanently_button.click()
             print("successfully clicked on Delete_permanently_button ")
-            time.sleep(7)
+            time.sleep(15)
             self.driver.refresh()
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
