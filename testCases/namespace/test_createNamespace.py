@@ -16,6 +16,7 @@ from Src.all_locators.Locators import Locator
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException
 from allure_commons.types import AttachmentType
 from utilities.readProperties import ReadConfig
+from Src.functions.namespace.namespace import NamespaceFunctions
 
 ss_path = "/Database/"
 
@@ -29,6 +30,7 @@ class TestCreateNamespace:
     # logger = LogGen.loggen()
     logger = cl.customLogger(logging.DEBUG)
     login = login()
+    namespace = NamespaceFunctions()
     DF = DatabaseFunctions()
     ServerName = "testSql0233"
     Password = "Qwer1235!!"
@@ -37,7 +39,7 @@ class TestCreateNamespace:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_CreateNamespace(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        Namespace_Name = "test311"
+        Namespace_Name = "test312"
         self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
         self.driver = setup
         ss = SS(self.driver)
@@ -168,12 +170,9 @@ class TestCreateNamespace:
             print("InvalidSessionIdException", e)
 
         # click on Delete button
-        print("-------Try to click on namespace Delete--------")
+
         try:
-            deleteButton_namespace = WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable((By.XPATH, Locator.deleteButton_namespace)))
-            deleteButton_namespace.click()
-            time.sleep(4)
+            self.namespace.namespaceDelete(self)
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
@@ -181,41 +180,54 @@ class TestCreateNamespace:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        # input application name
-        print("-------Try to put Application Name in application name box--------")
-        try:
-            input_namespaceName = WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable((By.XPATH, Locator.Application_namebox_D)))
-            print("application_Delete is clickable")
-            input_namespaceName.send_keys(Namespace_Name)
-            print("successfully inputted Application_name ")
-            time.sleep(5)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error :\n", e, "\n")
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException", e)
-
-        # scroll down
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
-        print("Scroll down")
-        time.sleep(3)
-
-        # input application name
-        try:
-            Delete_permanently_button = WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
-            Delete_permanently_button.click()
-            print("successfully clicked on Delete_permanently_button ")
-            time.sleep(15)
-            self.driver.refresh()
-        except NoSuchElementException as e:
-            print("NoSuchElementException error :\n", e, "\n")
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException", e)
+        # print("-------Try to click on namespace Delete--------")
+        # try:
+        #     deleteButton_namespace = WebDriverWait(self.driver, 20).until(
+        #         EC.element_to_be_clickable((By.XPATH, Locator.deleteButton_namespace)))
+        #     deleteButton_namespace.click()
+        #     time.sleep(4)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
+        #
+        # # input application name
+        # print("-------Try to put Application Name in application name box--------")
+        # try:
+        #     input_namespaceName = WebDriverWait(self.driver, 20).until(
+        #         EC.element_to_be_clickable((By.XPATH, Locator.Application_namebox_D)))
+        #     print("application_Delete is clickable")
+        #     input_namespaceName.send_keys(Namespace_Name)
+        #     print("successfully inputted Application_name ")
+        #     time.sleep(5)
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
+        #
+        # # scroll down
+        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
+        # print("Scroll down")
+        # time.sleep(3)
+        #
+        # # input application name
+        # try:
+        #     Delete_permanently_button = WebDriverWait(self.driver, 20).until(
+        #         EC.element_to_be_clickable((By.XPATH, Locator.Delete_permanently_button)))
+        #     Delete_permanently_button.click()
+        #     print("successfully clicked on Delete_permanently_button ")
+        #     time.sleep(15)
+        #     self.driver.refresh()
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error :\n", e, "\n")
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException", e)
 
         # check msg
         # try:
@@ -240,28 +252,28 @@ class TestCreateNamespace:
         #     print("AssertionError", e)
 
         # delete validation
-        try:
-            self.driver.refresh()
-            Namespace = WebDriverWait(self.driver, 120).until(
-                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
-            if Namespace.is_displayed():
-                allure.attach(self.driver.get_screenshot_as_png(), name="delete_Screenshot",
-                              attachment_type=AttachmentType.PNG)
-                print("Namespace '" + Namespace_Name + "' is found")
-                assert False
-
-            else:
-                print("Namespace '" + Namespace_Name + "' is not found")
-                assert True
-
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException error", e)
-        except AssertionError as e:
-            print("AssertionError error", e)
+        # try:
+        #     self.driver.refresh()
+        #     Namespace = WebDriverWait(self.driver, 120).until(
+        #         EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+        #     if Namespace.is_displayed():
+        #         allure.attach(self.driver.get_screenshot_as_png(), name="delete_Screenshot",
+        #                       attachment_type=AttachmentType.PNG)
+        #         print("Namespace '" + Namespace_Name + "' is found")
+        #         assert False
+        #
+        #     else:
+        #         print("Namespace '" + Namespace_Name + "' is not found")
+        #         assert True
+        #
+        # except NoSuchElementException as e:
+        #     print("NoSuchElementException error", e)
+        # except TimeoutException as e:
+        #     print("TimeoutException error", e)
+        # except InvalidSessionIdException as e:
+        #     print("InvalidSessionIdException error", e)
+        # except AssertionError as e:
+        #     print("AssertionError error", e)
         ss = SS(self.driver)
         file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
         ss.driver.save_screenshot(file_name)
