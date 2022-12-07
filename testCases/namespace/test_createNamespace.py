@@ -329,52 +329,58 @@ class TestCreateNamespace:
         print("Scroll up")
         time.sleep(2)
 
-        # # click create button for create
-        # print("---Try to click on Create Button---")
-        # try:
-        #     Create_button = WebDriverWait(self.driver, 10).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
-        #     Create_button.click()
-        #     time.sleep(5)
-        #     WebDriverWait(self.driver, 180).until(
-        #         EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
-        #
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # # click create button for create
-        # print("------------------check popup message------------------")
-        # try:
-        #     check_crateMessage = WebDriverWait(self.driver, 20).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
-        #
-        #     print('Shown a error message: ',
-        #           simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
-        #     time.sleep(6)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # print("******************Create Namespace Validation**********************")
-        # try:
-        #     actual = self.driver.current_url
-        #     accepted = "https://eks.alpha.klovercloud.io/namespace"
-        #     print(actual)
-        #     # if self.assertEqual(actual, accepted):
-        #     #     print("Created Successfully")
-        #     #     assert True
-        #     # else:
-        #     #     print("Created failed")
-        #     #     assert False
-        # except AssertionError as e:
-        #     print(e)
+        # click create button for create
+        print("---Try to click on Create Button---")
+        try:
+            Create_button = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
+            Create_button.click()
+            time.sleep(5)
+            WebDriverWait(self.driver, 180).until(
+                EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        # click create button for create
+        print("------------------check popup message------------------")
+        try:
+            check_crateMessage = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
+
+            print('Shown a error message: ',
+                  simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
+            time.sleep(6)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        print("******************Create Namespace Validation**********************")
+        try:
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                Namespace.click()
+                time.sleep(5)
+                print("Welcome to '" + Namespace_Name + "' namespace & page title is :", self.driver.title)
+                pass
+
+            else:
+                print("Created failed")
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
 
     def test_useOrganization(self, setup):
 
@@ -556,52 +562,59 @@ class TestCreateNamespace:
         print("Scroll up")
         time.sleep(2)
 
-        # # click create button for create
-        # print("---Try to click on Create Button---")
-        # try:
-        #     Create_button = WebDriverWait(self.driver, 10).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
-        #     Create_button.click()
-        #     time.sleep(5)
-        #     WebDriverWait(self.driver, 180).until(
-        #         EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
-        #
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # # click create button for create
-        # print("------------------check popup message------------------")
-        # try:
-        #     check_crateMessage = WebDriverWait(self.driver, 20).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
-        #
-        #     print('Shown a error message: ',
-        #           simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
-        #     time.sleep(6)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # print("******************Create Namespace Validation**********************")
-        # try:
-        #     actual = self.driver.current_url
-        #     accepted = "https://eks.alpha.klovercloud.io/namespace"
-        #     print(actual)
-        #     # if self.assertEqual(actual, accepted):
-        #     #     print("Created Successfully")
-        #     #     assert True
-        #     # else:
-        #     #     print("Created failed")
-        #     #     assert False
-        # except AssertionError as e:
-        #     print(e)
+        # click create button for create
+        print("---Try to click on Create Button---")
+        try:
+            Create_button = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
+            Create_button.click()
+            time.sleep(5)
+            WebDriverWait(self.driver, 180).until(
+                EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        # click create button for create
+        print("------------------check popup message------------------")
+        try:
+            check_crateMessage = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
+
+            print('Shown a error message: ',
+                  simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
+            time.sleep(6)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        print("******************Create Namespace Validation**********************")
+        try:
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                Namespace.click()
+                time.sleep(5)
+                print("Welcome to '" + Namespace_Name + "' namespace & page title is :", self.driver.title)
+                pass
+
+            else:
+                print("Created failed")
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
     def test_defaultTeam(self, setup):
 
         Namespace_Name = "test221"
@@ -781,52 +794,58 @@ class TestCreateNamespace:
         print("Scroll up")
         time.sleep(2)
 
-        # # click create button for create
-        # print("---Try to click on Create Button---")
-        # try:
-        #     Create_button = WebDriverWait(self.driver, 10).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
-        #     Create_button.click()
-        #     time.sleep(5)
-        #     WebDriverWait(self.driver, 180).until(
-        #         EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
-        #
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # # click create button for create
-        # print("------------------check popup message------------------")
-        # try:
-        #     check_crateMessage = WebDriverWait(self.driver, 20).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
-        #
-        #     print('Shown a error message: ',
-        #           simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
-        #     time.sleep(6)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # print("******************Create Namespace Validation**********************")
-        # try:
-        #     actual = self.driver.current_url
-        #     accepted = "https://eks.alpha.klovercloud.io/namespace"
-        #     print(actual)
-        #     # if self.assertEqual(actual, accepted):
-        #     #     print("Created Successfully")
-        #     #     assert True
-        #     # else:
-        #     #     print("Created failed")
-        #     #     assert False
-        # except AssertionError as e:
-        #     print(e)
+        # click create button for create
+        print("---Try to click on Create Button---")
+        try:
+            Create_button = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
+            Create_button.click()
+            time.sleep(5)
+            WebDriverWait(self.driver, 180).until(
+                EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        # click create button for create
+        print("------------------check popup message------------------")
+        try:
+            check_crateMessage = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
+
+            print('Shown a error message: ',
+                  simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
+            time.sleep(6)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        print("******************Create Namespace Validation**********************")
+        try:
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                Namespace.click()
+                time.sleep(5)
+                print("Welcome to '" + Namespace_Name + "' namespace & page title is :", self.driver.title)
+                pass
+
+            else:
+                print("Created failed")
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
 
     def test_useTeam(self, setup):
 
@@ -1007,49 +1026,55 @@ class TestCreateNamespace:
         print("Scroll up")
         time.sleep(2)
 
-        # # click create button for create
-        # print("---Try to click on Create Button---")
-        # try:
-        #     Create_button = WebDriverWait(self.driver, 10).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
-        #     Create_button.click()
-        #     time.sleep(5)
-        #     WebDriverWait(self.driver, 180).until(
-        #         EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
-        #
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # # click create button for create
-        # print("------------------check popup message------------------")
-        # try:
-        #     check_crateMessage = WebDriverWait(self.driver, 20).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
-        #
-        #     print('Shown a error message: ',
-        #           simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
-        #     time.sleep(6)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # print("******************Create Namespace Validation**********************")
-        # try:
-        #     actual = self.driver.current_url
-        #     accepted = "https://eks.alpha.klovercloud.io/namespace"
-        #     print(actual)
-        #     # if self.assertEqual(actual, accepted):
-        #     #     print("Created Successfully")
-        #     #     assert True
-        #     # else:
-        #     #     print("Created failed")
-        #     #     assert False
-        # except AssertionError as e:
-        #     print(e)
+        # click create button for create
+        print("---Try to click on Create Button---")
+        try:
+            Create_button = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, Locator.Create_button_N)))
+            Create_button.click()
+            time.sleep(5)
+            WebDriverWait(self.driver, 180).until(
+                EC.visibility_of_element_located((By.XPATH, Locator.wait_toCreateNamespace)))
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        # click create button for create
+        print("------------------check popup message------------------")
+        try:
+            check_crateMessage = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, Locator.check_crateMessage)))
+
+            print('Shown a error message: ',
+                  simple_colors.red(check_crateMessage.text, ['bold', 'underlined']))
+            time.sleep(6)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        print("******************Create Namespace Validation**********************")
+        try:
+            Namespace = WebDriverWait(self.driver, 120).until(
+                EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
+            if Namespace.is_displayed():
+                Namespace.click()
+                time.sleep(5)
+                print("Welcome to '" + Namespace_Name + "' namespace & page title is :", self.driver.title)
+                pass
+
+            else:
+                print("Created failed")
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
