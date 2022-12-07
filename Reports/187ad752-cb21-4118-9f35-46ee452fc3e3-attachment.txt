@@ -1,0 +1,1 @@
+[32mINFO    [0m TestCreateNamespace:test_createNamespace.py:41 *************** Test Create Namespace With Access Group: Company*****************

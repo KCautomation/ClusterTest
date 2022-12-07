@@ -1,5 +1,7 @@
 import logging
 import time
+
+import allure
 import pytest
 import simple_colors
 
@@ -11,15 +13,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Src.all_locators.Locators import Locator
-from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException, \
-    WebDriverException
-from Src.application_delete.delete_app import test_delete_app
-
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException
+from allure_commons.types import AttachmentType
 from utilities.readProperties import ReadConfig
 
 ss_path = "/Database/"
 
 
+@allure.severity(allure.severity_level.CRITICAL)
 class TestCreateNamespace:
     baseURL = ReadConfig.getApplicationURL()
     useremail = ReadConfig.getUseremail()
@@ -33,9 +34,10 @@ class TestCreateNamespace:
     Password = "Qwer1235!!"
 
     @pytest.mark.regression
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_CreateNamespace(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        Namespace_Name = "test305"
+        Namespace_Name = "test311"
         self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
         self.driver = setup
         ss = SS(self.driver)
@@ -137,9 +139,14 @@ class TestCreateNamespace:
                 Namespace.click()
                 time.sleep(5)
                 print("Welcome to '" + Namespace_Name + "' namespace & page title is :", self.driver.title)
+                allure.attach(self.driver.get_screenshot_as_png(), name="Namespace_Validation",
+                              attachment_type=AttachmentType.PNG)
                 pass
 
             else:
+                allure.attach(self.driver.get_screenshot_as_png(), name="Namespace_Validation",
+                              attachment_type=AttachmentType.PNG)
+
                 print("Namespace Created failed")
                 pass
         except NoSuchElementException as e:
@@ -242,10 +249,14 @@ class TestCreateNamespace:
             Namespace = WebDriverWait(self.driver, 120).until(
                 EC.presence_of_element_located((By.XPATH, "//span[normalize-space()= '" + Namespace_Name + "']")))
             if Namespace.is_displayed():
+                allure.attach(self.driver.get_screenshot_as_png(), name="delete_Screenshot",
+                              attachment_type=AttachmentType.PNG)
                 print("Namespace '" + Namespace_Name + "' is found")
                 assert False
 
             else:
+                allure.attach(self.driver.get_screenshot_as_png(), name="delete_Screenshot",
+                              attachment_type=AttachmentType.PNG)
                 print("Namespace '" + Namespace_Name + "' is not found")
                 assert True
 
@@ -609,7 +620,7 @@ class TestCreateNamespace:
         ss.ScreenShot(file_name)
 
     def test_useOrganization(self, setup):
-        # pytest.skip("Skipping test...later I will implement...")
+        pytest.skip("Skipping test...later I will implement...")
         Namespace_Name = "test301"
         self.logger.info("*************** Test Create Namespace with Access Group: organization *****************")
         # self.logger.info("****Started Home page title test ****")
@@ -954,7 +965,7 @@ class TestCreateNamespace:
         ss.driver.save_screenshot(file_name)
         ss.ScreenShot(file_name)
 
-    def test_defaultTeam(self, setup):
+    def test_useDefaultTeam(self, setup):
         pytest.skip("Skipping test...later I will implement...")
         Namespace_Name = "test302"
         self.logger.info("*************** Test Create Namespace with Access Group: Team *****************")

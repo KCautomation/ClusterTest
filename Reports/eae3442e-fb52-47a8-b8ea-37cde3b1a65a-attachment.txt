@@ -1,0 +1,54 @@
+****************** Try to Test Cluster Login *********************
+[33mYeah ! URL found 
+Email_box is inputable
+Successfully put email in Email_box
+Password_box is inputable
+Successfully put password in Password_box
+Toggle_Visibility_Button is clickable
+Successfully showed & hided Password
+Password_box is inputable
+Successfully click on Sign In button
+TimeoutException error Message: 
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x011AC013+2474003]
+	Ordinal0 [0x011429C1+2042305]
+	Ordinal0 [0x01052F68+1060712]
+	Ordinal0 [0x0107D8A4+1235108]
+	Ordinal0 [0x010A7232+1405490]
+	Ordinal0 [0x0109684A+1337418]
+	Ordinal0 [0x010A55CB+1398219]
+	Ordinal0 [0x010966DB+1337051]
+	Ordinal0 [0x01073427+1192999]
+	Ordinal0 [0x010742EE+1196782]
+	Ordinal0 [0x01074279+1196665]
+	GetHandleVerifier [0x013396FC+1590332]
+	GetHandleVerifier [0x013E8614+2306900]
+	GetHandleVerifier [0x01239E93+543699]
+	GetHandleVerifier [0x012392CE+540686]
+	Ordinal0 [0x011486BA+2066106]
+	Ordinal0 [0x0114D1C8+2085320]
+	Ordinal0 [0x0114D308+2085640]
+	Ordinal0 [0x011567F3+2123763]
+	BaseThreadInitThunk [0x76576939+25]
+	RtlGetFullPathName_UEx [0x77768FD2+1218]
+	RtlGetFullPathName_UEx [0x77768F9D+1165]
+
+****************** Try to go create namespace page *********************
+-------Try to click on CreateNew button from Header----------
+----Try to click on Namespace button from frame-----
+---Try to input Namespace Name---
+---Try to click on Create Button---
+------------------check popup message------------------
+Shown a error message:  [1;4;31mNamespace 'test311' will now be initialized !![0m
+******************Create Namespace Validation**********************
+Welcome to 'test311' namespace & page title is : KloverCloud | VPC | Details
+-------Try to click on namespace Settings--------
+-------Try to click on namespace Delete--------
+-------Try to put Application Name in application name box--------
+application_Delete is clickable
+successfully inputted Application_name 
+Scroll down
+successfully clicked on Delete_permanently_button 
+Namespace 'test311' is found
+AssertionError error assert False
