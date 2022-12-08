@@ -40,10 +40,10 @@ class TestPHPApplication:
 
     @pytest.mark.regression
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_Laravel_default_01(self, setup):
+    def test_SB_default_01(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
         ApplicationName = "test317"
-        self.logger.info("*************** Test Create Application With PHP Laravel*****************")
+        self.logger.info("*************** Test Create Namespace With Java Spring boot *****************")
         self.driver = setup
         ss = SS(self.driver)
         action = ActionChains(self.driver)
@@ -68,12 +68,12 @@ class TestPHPApplication:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("***************Create PHP application with PHP Version: 7.3 &  Laravel version : 7.0***************")
+        print("************Create Java application with Java Version: 13 &  Spring boot version : 2.2.2 ***********")
 
-        print("----try to choose Laravel from below--------")
+        print("----try to choose Spring boot from below--------")
         try:
             Laravel = WebDriverWait(self.driver, 30).until(
-                EC.visibility_of_element_located((By.XPATH, Locator.Laravel)))
+                EC.visibility_of_element_located((By.XPATH, Locator.SpringBoot)))
             # driver.refresh()
             Laravel.click()
             self.driver.implicitly_wait(10)
@@ -81,8 +81,6 @@ class TestPHPApplication:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully to chose Laravel")
 
         print("----Try to put application name--------")
         try:
@@ -98,9 +96,6 @@ class TestPHPApplication:
                 file_name = ss_path + "ApplicationName_box_" + time.asctime().replace(":", "_") + ".png"
                 ApplicationName_box.screenshot(file_name)
 
-                # # file_name = ss_path + "ApplicationName_box_" + time.asctime().replace(":", "_") + ".png"
-                # ss.driver.save_screenshot(file_name)
-                # ss.ScreenShot(file_name)
         except NoSuchElementException as e:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
@@ -108,8 +103,11 @@ class TestPHPApplication:
         else:
             print("Successfully to put application name")
 
-        # choose laravel version
-        print("-----------Laravel version chose by default 7.0----------------")
+        # choose Java version
+        print("-----------Java version chose by default 13----------------")
+
+        # choose Spring Boot version
+        print("-----------Spring Boot version chose by default 2.2.2----------------")
 
         # scroll down
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 150")
