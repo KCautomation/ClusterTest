@@ -68,7 +68,7 @@ class TestPHPApplication:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("***************Create PHP application with PHP Version: 7.3 &  Laravel version : 7.0***************")
+        print("***************Create PHP application with Java Version: 13 &  Laravel version : 2.2.2**************")
 
         print("----try to choose Laravel from below--------")
         try:
@@ -109,7 +109,9 @@ class TestPHPApplication:
             print("Successfully to put application name")
 
         # choose laravel version
-        print("-----------Laravel version chose by default 7.0----------------")
+        print("-----------Java version chose by default 13----------------")
+
+        print("-----------Spring Boot version chose by default 2.2.2----------------")
 
         # scroll down
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 150")
@@ -372,7 +374,7 @@ class TestPHPApplication:
     def test_Laravel_default_02(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
         ApplicationName = "test317"
-        self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
+        self.logger.info("*************** Test Create Applications With Access Group: Company*****************")
         self.driver = setup
         ss = SS(self.driver)
         action = ActionChains(self.driver)
@@ -438,7 +440,7 @@ class TestPHPApplication:
             print("Successfully to put application name")
 
         # click on laravel version box
-        print("-----------Try to click Laravel version box----------------")
+        print("-----------Try to click Spring boot version box----------------")
         try:
             Laravel_version_box = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable((By.XPATH, Locator.Laravel_version_box)))
@@ -729,7 +731,7 @@ class TestPHPApplication:
     def test_Laravel_default_03(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
         ApplicationName = "test317"
-        self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
+        self.logger.info("*************** Test Create Applications With Access Group: Company*****************")
         self.driver = setup
         ss = SS(self.driver)
         action = ActionChains(self.driver)
@@ -1086,7 +1088,7 @@ class TestPHPApplication:
     def test_Laravel_default_04(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
         ApplicationName = "test317"
-        self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
+        self.logger.info("*************** Test Create Applications Java Spring boot*****************")
         self.driver = setup
         ss = SS(self.driver)
         action = ActionChains(self.driver)
@@ -1443,7 +1445,7 @@ class TestPHPApplication:
     def test_Laravel_default_05(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
         ApplicationName = "test317"
-        self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
+        self.logger.info("*************** Test Create Applications With Java Spring Boot *****************")
         self.driver = setup
         ss = SS(self.driver)
         action = ActionChains(self.driver)
@@ -1800,7 +1802,7 @@ class TestPHPApplication:
     def test_Laravel_default_06(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
         ApplicationName = "test317"
-        self.logger.info("*************** Test Create Namespace With Access Group: Company*****************")
+        self.logger.info("*************** Test Create Applications With Java Spring boot*****************")
         self.driver = setup
         ss = SS(self.driver)
         action = ActionChains(self.driver)

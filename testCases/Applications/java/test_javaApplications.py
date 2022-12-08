@@ -43,7 +43,7 @@ class TestPHPApplication:
     def test_SB_default_01(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
         ApplicationName = "test317"
-        self.logger.info("*************** Test Create Namespace With Java Spring boot *****************")
+        self.logger.info("*************** Test Create Applications With Java Spring boot *****************")
         self.driver = setup
         ss = SS(self.driver)
         action = ActionChains(self.driver)
