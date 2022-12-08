@@ -10,7 +10,6 @@ class Login3(object):
         self.password = driver.find_element(By.XPATH, Locator.textbox_Password_xpath)
         self.signin_button = driver.find_element(By.XPATH, Locator.Sign_In_button)
 
-
     def User_Name(self):
         return self.useremail
 
@@ -22,4 +21,3 @@ class Login3(object):
 
     def ToggleVisibility(self):
         return self.ToggleVisibility
-

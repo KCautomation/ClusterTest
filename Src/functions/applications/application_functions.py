@@ -25,7 +25,7 @@ ss_path = "/LogIn/"
 class ApplicationFunctions:
 
     @staticmethod
-    def deployApplication(self, Namespace_Name):
+    def deployApplication(self):
 
         print("******************************* Test Try to deploy application******************************")
         # click on deploy
@@ -135,8 +135,6 @@ class ApplicationFunctions:
                       simple_colors.green(Application_Deployed.text, ['bold', 'underlined']))
                 pass
             else:
-                # WebDriverWait(driver, 600).until(EC.visibility_of_element_located((By.XPATH, Locator.deployed_validation)))
-                # WebDriverWait(driver, 600).until(EC.presence_of_element_located((By.XPATH, Locator.deployed_validation)))
                 time.sleep(2)
                 pass
 
@@ -193,12 +191,16 @@ class ApplicationFunctions:
 
             Accepted_status = "Success"
             Actual_status = Deployed_status.text
-            self.assertEqual(Actual_status, Accepted_status)
+            if Accepted_status == Actual_status:
+                print('Deployed status is: ',
+                      simple_colors.green(Actual_status, ['bold', 'underlined']))
+                assert True
+            else:
+                print('Deployed status is: ',
+                      simple_colors.green(Actual_status, ['bold', 'underlined']))
+                time.sleep(4)
+                assert False
 
-            print('Deployed status is: ',
-                  simple_colors.green(Actual_status, ['bold', 'underlined']))
-            time.sleep(4)
-            pass
         except NoSuchElementException as e:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
@@ -311,7 +313,8 @@ class ApplicationFunctions:
         print(Fore.CYAN + "-----------------------From Header frame----------------------------------------")
         # click on create button from header
         try:
-            CreateNew_H = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, Locator.CreateNew_H)))
+            CreateNew_H = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, Locator.CreateNew_H)))
             print("CreateNew_H button is clickable")
             CreateNew_H.click()
             time.sleep(2)
