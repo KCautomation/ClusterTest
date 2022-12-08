@@ -19,7 +19,7 @@ from urllib.error import *
 from utilities.readProperties import ReadConfig
 from Src.screenShot.screenShot import SS
 
-ss_path = "/LogIn/"
+ss_path = "/Login/"
 
 
 class ApplicationFunctions:
