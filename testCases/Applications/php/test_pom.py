@@ -19,7 +19,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
 from allure_commons.types import AttachmentType
 from utilities.readProperties import ReadConfig
 from Src.functions.applications.application_functions import ApplicationFunctions
-from pageObjects.Apllications.pomApplication import ApplicationPom
+from pageObjects.Apllications.pomCreateApplication import CreateApplication
 
 ss_path = "/Database/"
 
@@ -43,12 +43,12 @@ class TestPHPApplication:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_Laravel_default_01(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        ApplicationName = "test319"
+        ApplicationName = "test320"
         self.logger.info("*************** Test Create Application With PHP Laravel*****************")
         self.driver = setup
         ss = SS(self.driver)
         action = ActionChains(self.driver)
-        app = ApplicationPom(self.driver)
+        app = CreateApplication(self.driver)
 
         print("****************** Try to Test Cluster Login *********************")
         try:
