@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from Src.all_locators.Locators import Locator
 
 
-class Login3(object):
+class LoginPage(object):
     def __init__(self, driver):
         self.driver = driver
 

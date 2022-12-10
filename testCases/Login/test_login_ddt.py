@@ -2,7 +2,7 @@ import time
 import logging
 import pytest
 from selenium import webdriver
-from pageObjects.loginPage import LoginPage
+from pageObjects.loginPage2 import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 import raf_practice.logs.customolog.custom_logger as cl
@@ -35,11 +35,10 @@ class Test_002_Login:
             self.exp = XLUtils.readData(self.path, "Sheet1", r, 3)
 
             self.lp.setUserName(self.username)
-            time.sleep(1)
             self.lp.setPassword(self.password)
-            time.sleep(1)
             self.lp.clickLogin()
-            time.sleep(6)
+            time.sleep(5)
+            time.sleep(20)
             act_title = self.driver.title
             exp_title = "KloverCloud | Dashboard"
 
