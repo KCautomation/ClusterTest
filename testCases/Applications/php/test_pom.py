@@ -43,7 +43,7 @@ class TestPHPApplication:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_Laravel_default_01(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        ApplicationName = "test320"
+        ApplicationName = "test321"
         self.logger.info("*************** Test Create Application With PHP Laravel*****************")
         self.driver = setup
         ss = SS(self.driver)
@@ -70,7 +70,7 @@ class TestPHPApplication:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("***************Create PHP application with Java Version: 13 &  Laravel version : 2.2.2**************")
+        print("***************Create PHP application with PHP Version: 7.3 &  SpringBoot version : 7.0**************")
 
         print("----try to choose Laravel from below--------")
         try:
@@ -83,8 +83,6 @@ class TestPHPApplication:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully to chose Laravel")
 
         print("----Try to put application name--------")
         try:
@@ -107,13 +105,9 @@ class TestPHPApplication:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully to put application name")
 
-        # choose laravel version
-        print("-----------Java version chose by default 13----------------")
-
-        print("-----------Spring Boot version chose by default 2.2.2----------------")
+        # choose version
+        print("---------PHP: 7.3 & Laravel: 7.0 chose by default 7.3------------")
 
         # scroll down
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 150")
@@ -370,3 +364,6 @@ class TestPHPApplication:
         # file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
         # ss.driver.save_screenshot(file_name)
         # ss.ScreenShot(file_name)
+
+
+
