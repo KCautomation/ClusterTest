@@ -54,7 +54,8 @@ class TestPHPApplication:
         try:
             self.login.test_cluster_login(self)
         except NoSuchElementException as e:
-            print("NoSuchElementException error :\n", e, "\n")
+            print("NoSuchElementException error :\n", e,
+                  "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
         except InvalidSessionIdException as e:
