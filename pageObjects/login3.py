@@ -10,14 +10,11 @@ class Login3(object):
         self.password = driver.find_element(By.XPATH, Locator.textbox_Password_xpath)
         self.signin_button = driver.find_element(By.XPATH, Locator.Sign_In_button)
 
-    def User_Name(self):
+    def getSearchText(self):
         return self.useremail
 
-    def getVisit_Us(self):
-        return self.useremail
+    def getSubmit(self):
+        return self.password
 
-    def get_SignIn(self):
+    def getWebPageLogo(self):
         return self.signin_button
-
-    def ToggleVisibility(self):
-        return self.ToggleVisibility
