@@ -987,6 +987,7 @@ class TestCreateNamespace:
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
+        nam = CreateNamespace(self.driver)
 
         print("****************** Try to Test Cluster Login *********************")
         try:
@@ -1052,7 +1053,7 @@ class TestCreateNamespace:
         # Choose access organization from Access Group
         print("---Try to Choose Team as a access group---")
         try:
-            Team = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, Locator.Team)))
+            Team = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(nam.Team))
 
             Team.click()
             time.sleep(2)
@@ -1067,7 +1068,7 @@ class TestCreateNamespace:
         print("---Try to click search box---")
         try:
             teamSearch_box = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, Locator.teamSearch_box)))
+                EC.presence_of_element_located(nam.teamSearch_box))
             teamSearch_box.click()
             time.sleep(2)
         except NoSuchElementException as e:
@@ -1081,7 +1082,7 @@ class TestCreateNamespace:
         print("---Try to choose Team---")
         try:
             teamDefault = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, Locator.Choose_TeamDefault)))
+                EC.presence_of_element_located(nam.teamDefault))
             teamDefault.click()
             time.sleep(2)
         except NoSuchElementException as e:
@@ -1332,6 +1333,7 @@ class TestCreateNamespace:
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
+        nam = CreateNamespace(self.driver)
 
         print("****************** Try to Test Cluster Login *********************")
         try:
@@ -1397,7 +1399,7 @@ class TestCreateNamespace:
         # Choose access organization from Access Group
         print("---Try to Choose Team as a access group---")
         try:
-            Team = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, Locator.Team)))
+            Team = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(nam.Team))
 
             Team.click()
             time.sleep(2)
@@ -1412,7 +1414,7 @@ class TestCreateNamespace:
         print("---Try to click search box---")
         try:
             teamSearch_box = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, Locator.teamSearch_box)))
+                EC.presence_of_element_located(nam.teamSearch_box))
             teamSearch_box.click()
             time.sleep(2)
         except NoSuchElementException as e:
@@ -1426,7 +1428,7 @@ class TestCreateNamespace:
         print("---Try to choose Team---")
         try:
             first_Team = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, Locator.Choose_firstTeam)))
+                EC.presence_of_element_located(nam.first_Team))
             first_Team.click()
             time.sleep(2)
         except NoSuchElementException as e:

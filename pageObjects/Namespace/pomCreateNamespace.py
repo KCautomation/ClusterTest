@@ -23,6 +23,11 @@ class CreateNamespace(object):
         self.Choose_Default = (By.XPATH, Locator.Choose_Default)
         self.Choose_firstOrganization = (By.XPATH, Locator.Choose_firstOrganization)
 
+        self.Team = (By.XPATH, Locator.Team)
+        self.teamSearch_box = (By.XPATH, Locator.teamSearch_box)
+        self.teamDefault = (By.XPATH, Locator.Choose_TeamDefault)
+        self.Choose_firstTeam = (By.XPATH, Locator.Choose_firstTeam)
+
         self.CPU_bar = (By.XPATH, Locator.CPU_bar)
         self.Memory_box = (By.XPATH, Locator.Memory_box)
         self.Volume_box = (By.XPATH, Locator.Volume_box)
@@ -69,6 +74,18 @@ class CreateNamespace(object):
 
     def getChoose_firstOrganization(self):
         return self.Choose_firstOrganization
+
+    def getTeam(self):
+        return self.Team
+
+    def getteamSearch_box(self):
+        return self.teamSearch_box
+
+    def getteamDefault(self):
+        return self.teamDefault
+
+    def getChoose_firstTeam(self):
+        return self.Choose_firstTeam
 
     def getCPU_bar(self):
         return self.CPU_bar
