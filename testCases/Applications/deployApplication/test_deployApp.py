@@ -240,7 +240,7 @@ class TestDeploy:
         print("---------------Check Deployed Validation--------------------")
         try:
             to_check_deploy = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.to_check_deploy)))
+                EC.presence_of_element_located(dep.to_check_deploy))
             print("Deploy_button is located")
             to_check_deploy.click()
             time.sleep(2)
@@ -258,7 +258,7 @@ class TestDeploy:
         # validation
         try:
             Deployed_status = WebDriverWait(self.driver, 4).until(
-                EC.presence_of_element_located((By.XPATH, Locator.Deployed_status)))
+                EC.presence_of_element_located(dep.Deployed_status))
 
             Accepted_status = "Success"
             Actual_status = Deployed_status.text
