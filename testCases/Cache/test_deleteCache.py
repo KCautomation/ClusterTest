@@ -90,7 +90,7 @@ class TestCreateCache:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
         # click on settings
-        print("******************************* Test Try to delete application******************************")
+        print("******************************* Test Try to delete cache******************************")
 
         print("----------------------try to click on Settings button--------------------")
         try:
