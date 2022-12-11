@@ -163,7 +163,7 @@ class Locator(object):
 
     # created validation by snapshot button
     WaitTo_Create = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
-    waitTo_create = "//h3[contains(text(),'Allocated Resources Per Instance')]"
+    # waitTo_create = "//h3[contains(text(),'Allocated Resources Per Instance')]"
     # validation
     Event_log = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-database-details[1]/kc-page-layout[1]/kc-page-layout-content[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[4]/span[1]"
     Database_FinalStatus = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-database-details/kc-page-layout/kc-page-layout-content/div/kc-database-initialization/div/div[2]/div[2]/pre[10]"

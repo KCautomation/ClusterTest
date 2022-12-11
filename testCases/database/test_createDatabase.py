@@ -4,6 +4,7 @@ import pytest
 import simple_colors
 
 import raf_practice.logs.customolog.custom_logger as cl
+from Src.functions.cache.cacheFunction import cacheFunctions
 from Src.login_function.login import login
 from Src.functions.database.createDatabase import DatabaseFunctions
 from Src.screenShot.screenShot import SS
@@ -13,11 +14,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from Src.all_locators.Locators import Locator
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException, \
     WebDriverException
-from Src.application_delete.delete_app import test_delete_app
-
+from pageObjects.Database.pomDatabase import CreateDatabase
 from utilities.readProperties import ReadConfig
+from pageObjects.Cache.pomCache import CreateCache
 
-ss_path = "/Database/"
+ss_path = "/Database/CreateDatabase/"
 
 
 class TestCreateDatabase:
@@ -29,7 +30,9 @@ class TestCreateDatabase:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     DF = DatabaseFunctions()
-    ServerName = "testSql0235"
+    CF = cacheFunctions()
+
+    ServerName = "testSql0241"
     Password = "Qwer1235!!"
 
     @pytest.mark.regression
@@ -39,6 +42,7 @@ class TestCreateDatabase:
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
+        data = CreateDatabase(self.driver)
 
         print("****************** Try to Test Cluster Login *********************")
         try:
@@ -68,7 +72,7 @@ class TestCreateDatabase:
 
         try:
             MySQL_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.MySQL_button)))
+                EC.presence_of_element_located(data.MySQL_button))
             if MySQL_button.is_displayed():
                 MySQL_button.click()
                 self.driver.implicitly_wait(20)
@@ -89,7 +93,7 @@ class TestCreateDatabase:
         print("---try to click team box---")
         try:
             teamBox_database = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.teamBox_database)))
+                EC.presence_of_element_located(data.teamBox_database))
             if teamBox_database.is_displayed():
                 teamBox_database.click()
                 time.sleep(2)
@@ -108,7 +112,7 @@ class TestCreateDatabase:
 
         try:
             defaultTeam_database = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.defaultTeam_database)))
+                EC.presence_of_element_located(data.defaultTeam_database))
             if defaultTeam_database.is_displayed():
                 defaultTeam_database.click()
                 time.sleep(2)
@@ -131,7 +135,7 @@ class TestCreateDatabase:
         print("-----------------------try to choose a namespace -------------------------------")
         try:
             namespace_first = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.namespace_first)))
+                EC.presence_of_element_located(data.namespace_first))
             if namespace_first.is_displayed():
                 namespace_first.click()
                 time.sleep(2)
@@ -154,7 +158,7 @@ class TestCreateDatabase:
         print("-----------------------try to put database server name -------------------------------")
         try:
             database_ServerName = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.database_ServerName)))
+                EC.presence_of_element_located(data.database_ServerName))
             if database_ServerName.is_displayed():
                 database_ServerName.clear()
                 database_ServerName.send_keys(self.ServerName)
@@ -174,7 +178,7 @@ class TestCreateDatabase:
         print("-----------------------try to put database Password -------------------------------")
         try:
             initial_AdminPassword = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.initial_AdminPassword)))
+                EC.presence_of_element_located(data.initial_AdminPassword))
             if initial_AdminPassword.is_displayed():
                 initial_AdminPassword.clear()
                 initial_AdminPassword.send_keys(self.Password)
@@ -194,7 +198,7 @@ class TestCreateDatabase:
         print("-----------------------try to put database Password -------------------------------")
         try:
             confirm_Password = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.confirm_Password)))
+                EC.presence_of_element_located(data.confirm_Password))
             if confirm_Password.is_displayed():
                 confirm_Password.send_keys(self.Password)
                 time.sleep(2)
@@ -213,7 +217,7 @@ class TestCreateDatabase:
 
         try:
             selectVersion_box = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.selectVersion_box)))
+                EC.presence_of_element_located(data.selectVersion_box))
             if selectVersion_box.is_displayed():
                 selectVersion_box.click()
                 time.sleep(2)
@@ -230,7 +234,7 @@ class TestCreateDatabase:
 
         try:
             version_8_0_19 = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.version_8_0_19)))
+                EC.presence_of_element_located(data.version_8_0_19))
             if version_8_0_19.is_displayed():
                 version_8_0_19.click()
                 time.sleep(2)
@@ -272,7 +276,7 @@ class TestCreateDatabase:
 
         try:
             next_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.next_button)))
+                EC.presence_of_element_located(data.next_button))
             if next_button.is_displayed():
                 next_button.click()
                 time.sleep(2)
@@ -290,7 +294,7 @@ class TestCreateDatabase:
         print("-----------------------try to click Next button again-------------------------------")
         try:
             next_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.next_button)))
+                EC.presence_of_element_located(data.next_button))
             if next_button.is_displayed():
                 next_button.click()
                 time.sleep(2)
@@ -313,7 +317,7 @@ class TestCreateDatabase:
 
         try:
             confirm_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.confirm_button)))
+                EC.presence_of_element_located(data.confirm_button))
             if confirm_button.is_displayed():
                 confirm_button.click()
                 time.sleep(2)
@@ -332,7 +336,7 @@ class TestCreateDatabase:
 
         try:
             Database_CreatedMsg = WebDriverWait(self.driver, 30).until(
-                EC.presence_of_element_located((By.XPATH, Locator.Database_CreatedMsg)))
+                EC.presence_of_element_located(data.Database_CreatedMsg))
             if Database_CreatedMsg.is_displayed():
                 print('Shown a message: ',
                       simple_colors.blue(Database_CreatedMsg.text, ['bold', 'underlined']))
@@ -351,14 +355,12 @@ class TestCreateDatabase:
 
         print("-----------------------Wait to database initialization------------------------------")
         try:
-            WaitTo_Create = WebDriverWait(self.driver, 800).until(
-                EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
+            WaitTo_Create = WebDriverWait(self.driver, 400).until(
+                EC.visibility_of_element_located(data.WaitTo_Create))
             if WaitTo_Create.is_displayed():
                 print('Shown a message: ',
                       simple_colors.blue(WaitTo_Create.text, ['bold', 'underlined']))
                 time.sleep(3)
-                self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
-                time.sleep(4)
                 pass
         except NoSuchElementException as e:
             print("NoSuchElementException error", e)
@@ -375,59 +377,17 @@ class TestCreateDatabase:
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = -600")
         time.sleep(3)
 
-        print("-----------------------check final status from log------------------------------")
-        try:
-            Event_log = WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, Locator.Event_log)))
-            if Event_log.is_displayed():
-                Event_log.click()
-                self.driver.implicitly_wait(10)
-                time.sleep(3)
-                pass
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException error", e)
+        print("-------------------- Try to Delete '" + self.ServerName + "' cache  ---------------")
 
-        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 300")
-        # time.sleep(2)
-
-        # try:
-        #     Database_FinalStatus = WebDriverWait(self.driver, 10).until(
-        #         EC.visibility_of_element_located((By.XPATH, Locator.WaitTo_Create)))
-        #     if Database_FinalStatus.is_displayed():
-        #         print('Info Final Staus is: ',
-        #               simple_colors.blue(Database_FinalStatus.text, ['bold', 'underlined']))
-        #         time.sleep(3)
-        #         pass
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-
-        print("*******************************Try Test to delete application******************************")
         try:
             self.driver.refresh()
             time.sleep(3)
-            test_delete_app(self, self.ServerName)
-            time.sleep(5)
+            self.CF.deleteCache(self, self.ServerName)
+            self.driver.refresh()
+            time.sleep(1)
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
-        except AssertionError as e:
-            print("AssertionError", e)
-
-        print("---------------------- deleted database validation-----------------------")
-
-        print("Application Delete Successfully")
-
-        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
-        ss.driver.save_screenshot(file_name)
-        ss.ScreenShot(file_name)

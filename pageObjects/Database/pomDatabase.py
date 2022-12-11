@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from Src.all_locators.Locators import Locator
 
 
-class CreateCache(object):
+class CreateDatabase(object):
     def __init__(self, driver):
         self.driver = driver
 
