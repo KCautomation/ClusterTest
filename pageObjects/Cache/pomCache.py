@@ -29,6 +29,8 @@ class CreateCache(object):
         self.Cache_namebox_D = (By.XPATH, Locator.Cache_namebox_D)
         self.Cache_Deleted_Success_msg = (By.XPATH, Locator.Cache_Deleted_Success_msg)
 
+        self.Delete_permanently_button = (By.XPATH, Locator.Delete_permanently_button)
+
     def getredis_button(self):
         return self.redis_button
 

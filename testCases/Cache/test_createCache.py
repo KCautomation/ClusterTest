@@ -19,7 +19,7 @@ from utilities.readProperties import ReadConfig
 from Src.functions.cache.cacheFunction import cacheFunctions
 from pageObjects.Cache.pomCache import CreateCache
 
-ss_path = "/Database/"
+ss_path = "/Caches/create/"
 
 
 class TestCreateCache:
@@ -35,13 +35,13 @@ class TestCreateCache:
     @pytest.mark.regression
     def test_teamNone(self, setup):
 
-        self.logger.info("*************** Test_Create Cache *****************")
+        self.logger.info("***************Try to Test_Create Cache *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
         cache = CreateCache(self.driver)
 
-        ServerName = "cache-6"
+        ServerName = "cache-16"
         Password = "Qwer1235!!"
 
         print("****************** Try to Test Cluster Login *********************")
@@ -54,7 +54,7 @@ class TestCreateCache:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("****************** Try to go create cache page *********************")
+        print("-------------------- Try to go create cache page ---------------")
 
         try:
             self.driver.refresh()
@@ -69,7 +69,7 @@ class TestCreateCache:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("****************** Try to choose redis *********************")
+        print("--------------- Try to choose redis -----------------")
         try:
             redis_button = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located(cache.redis_button))
@@ -86,7 +86,7 @@ class TestCreateCache:
         except TimeoutException as e:
             print("TimeoutException error", e)
 
-        print("****************** Try to choose Team *********************")
+        print("----------------- Try to choose Team ----------------------")
 
         print("---try to click team box---")
         try:
@@ -103,8 +103,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully clicked on team box")
 
         print("-----------------------try to choose default as a team-------------------------------")
 
@@ -145,8 +143,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully chose First Namespace")
 
         print("-----Scroll up-----")
         # again scroll below
@@ -170,8 +166,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully put serverName")
 
         print("-----------------------try to put cache Password -------------------------------")
         try:
@@ -190,8 +184,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully put initial AdminPassword")
 
         print("-----------------------try to put database Password -------------------------------")
         try:
@@ -208,8 +200,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully put initial confirm_Password")
 
         print("-----------------------try to click 0n selectVersion_box-------------------------------")
 
@@ -242,8 +232,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully chose version 8.0.19")
 
         print("-----Scroll down -----")
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
@@ -284,8 +272,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully clicked on Next button")
 
         print("-----------------------try to click Next button again-------------------------------")
         try:
@@ -302,8 +288,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully clicked on Next button")
 
         print("-----Scroll down -----")
         self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
@@ -325,8 +309,6 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully clicked on Confirm button")
 
         print("-----------------------Message check-------------------------------")
 
@@ -340,7 +322,8 @@ class TestCreateCache:
                 self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
                 time.sleep(1)
 
-                WebDriverWait(self.driver, 500).until(EC.visibility_of_element_located((By.XPATH, Locator.Access_Terminal)))
+                WebDriverWait(self.driver, 500).until(
+                    EC.visibility_of_element_located((By.XPATH, Locator.Access_Terminal)))
                 time.sleep(5)
                 pass
             else:
