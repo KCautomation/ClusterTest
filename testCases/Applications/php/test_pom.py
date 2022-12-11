@@ -43,7 +43,7 @@ class TestPHPApplication:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_Laravel_default_01(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        ApplicationName = "test321"
+        ApplicationName = "test328"
         self.logger.info("*************** Test Create Application With PHP Laravel*****************")
         self.driver = setup
         ss = SS(self.driver)
@@ -312,59 +312,59 @@ class TestPHPApplication:
         except AssertionError as e:
             print("AssertionError", e)
 
-        # # deploy application
-        # print("*******************************Try to Test deploy application******************************")
-        # try:
-        #     self.driver.refresh()
-        #     time.sleep(3)
-        #     self.appFunction.deployApplication(self)
-        #     time.sleep(3)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error :\n", e, "\n")
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException", e)
-        # except AssertionError as e:
-        #     print("AssertionError", e)
-        #
-        # # check deployed status
-        # try:
-        #     self.driver.refresh()
-        #     time.sleep(3)
-        #     self.appFunction.test_deploy_validation(self)
-        #     time.sleep(1)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error :\n", e, "\n")
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException", e)
-        # except AssertionError as e:
-        #     print("AssertionError", e)
-        #
-        # print("*******************************Try Test to delete application******************************")
-        # try:
-        #     self.driver.refresh()
-        #     time.sleep(3)
-        #     self.appFunction.test_delete_app(self, ApplicationName)
-        #     time.sleep(5)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error :\n", e, "\n")
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException", e)
-        # except AssertionError as e:
-        #     print("AssertionError", e)
-        #
-        # print("---------------------- deleted Application validation-----------------------")
-        #
-        # print("Application Delete Successfully")
-        #
-        # file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
-        # ss.driver.save_screenshot(file_name)
-        # ss.ScreenShot(file_name)
+        # deploy application
+        print("*******************************Try to Test deploy application******************************")
+        try:
+            self.driver.refresh()
+            time.sleep(3)
+            self.appFunction.deployApplication(self)
+            time.sleep(3)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+        except AssertionError as e:
+            print("AssertionError", e)
+
+        # check deployed status
+        try:
+            self.driver.refresh()
+            time.sleep(3)
+            self.appFunction.test_deploy_validation(self)
+            time.sleep(1)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+        except AssertionError as e:
+            print("AssertionError", e)
+
+        print("*******************************Try Test to delete application******************************")
+        try:
+            self.driver.refresh()
+            time.sleep(3)
+            self.appFunction.test_delete_app(self, ApplicationName)
+            time.sleep(5)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+        except AssertionError as e:
+            print("AssertionError", e)
+
+        print("---------------------- deleted Application validation-----------------------")
+
+        print("Application Delete Successfully")
+
+        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        ss.driver.save_screenshot(file_name)
+        ss.ScreenShot(file_name)
 
 
 

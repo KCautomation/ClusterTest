@@ -1,8 +1,7 @@
 import time
 
 import pytest
-from selenium.common import NoSuchElementException, TimeoutException, InvalidSessionIdException
-from pageObjects.login3 import Login3
+from pageObjects.Login.login3 import Login3
 
 
 class Test001:

@@ -45,7 +45,7 @@ class TestDeleteApplication:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_Laravel_default_01(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        ApplicationName = "test-324"
+        ApplicationName = "test321"
         self.logger.info("*************** Test Create Application With PHP Laravel*****************")
         self.driver = setup
         ss = SS(self.driver)
@@ -78,9 +78,9 @@ class TestDeleteApplication:
             print("InvalidSessionIdException", e)
 
         # scroll down
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
-        print("Scroll down")
-        time.sleep(3)
+        # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
+        # print("Scroll down")
+        # time.sleep(3)
 
         # click on an application
         try:

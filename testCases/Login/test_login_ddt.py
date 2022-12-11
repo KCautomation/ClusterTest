@@ -1,10 +1,8 @@
 import time
 import logging
 import pytest
-from selenium import webdriver
-from pageObjects.loginPage2 import LoginPage
+from pageObjects.Login.loginPage2 import LoginPage
 from utilities.readProperties import ReadConfig
-from utilities.customLogger import LogGen
 import raf_practice.logs.customolog.custom_logger as cl
 from utilities import XLUtils
 
