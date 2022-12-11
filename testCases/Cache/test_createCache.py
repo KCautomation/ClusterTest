@@ -17,10 +17,12 @@ from Src.application_delete.delete_app import test_delete_app
 
 from utilities.readProperties import ReadConfig
 from Src.functions.cache.cacheFunction import cacheFunctions
+from pageObjects.Cache.pomCache import CreateCache
+
 ss_path = "/Database/"
 
 
-class TestCreate:
+class TestCreateCache:
     baseURL = ReadConfig.getApplicationURL()
     useremail = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
@@ -29,16 +31,18 @@ class TestCreate:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     CF = cacheFunctions()
-    ServerName = "testSql0233"
-    Password = "Qwer1235!!"
 
     @pytest.mark.regression
-    def test_CreateCache(self, setup):
+    def test_teamNone(self, setup):
 
         self.logger.info("*************** Test_Create Cache *****************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
+        cache = CreateCache(self.driver)
+
+        ServerName = "cache-6"
+        Password = "Qwer1235!!"
 
         print("****************** Try to Test Cluster Login *********************")
         try:
@@ -68,7 +72,7 @@ class TestCreate:
         print("****************** Try to choose redis *********************")
         try:
             redis_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.redis_button)))
+                EC.presence_of_element_located(cache.redis_button))
             if redis_button.is_displayed():
                 redis_button.click()
                 self.driver.implicitly_wait(20)
@@ -87,7 +91,7 @@ class TestCreate:
         print("---try to click team box---")
         try:
             teamBox_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.teamBox_c)))
+                EC.presence_of_element_located(cache.teamBox_c))
             if teamBox_c.is_displayed():
                 teamBox_c.click()
                 time.sleep(2)
@@ -105,10 +109,10 @@ class TestCreate:
         print("-----------------------try to choose default as a team-------------------------------")
 
         try:
-            defaultTeam_database = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.defaultTeam_database)))
-            if defaultTeam_database.is_displayed():
-                defaultTeam_database.click()
+            defaultTeam_chache = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located(cache.DefaultTeam_cache))
+            if defaultTeam_chache.is_displayed():
+                defaultTeam_chache.click()
                 time.sleep(2)
             else:
                 file_name = ss_path + "defaultTeam_database" + time.asctime().replace(":", "_") + ".png"
@@ -129,7 +133,7 @@ class TestCreate:
         print("-----------------------try to choose a namespace -------------------------------")
         try:
             Namespace_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.Namespace_c)))
+                EC.presence_of_element_located(cache.Namespace_c))
             if Namespace_c.is_displayed():
                 Namespace_c.click()
                 time.sleep(2)
@@ -152,10 +156,10 @@ class TestCreate:
         print("-----------------------try to put cache server name -------------------------------")
         try:
             serverNameBox_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.serverNameBox_c)))
+                EC.presence_of_element_located(cache.serverNameBox_c))
             if serverNameBox_c.is_displayed():
                 serverNameBox_c.clear()
-                serverNameBox_c.send_keys(self.ServerName)
+                serverNameBox_c.send_keys(ServerName)
                 self.driver.implicitly_wait(20)
                 time.sleep(2)
             else:
@@ -172,10 +176,10 @@ class TestCreate:
         print("-----------------------try to put cache Password -------------------------------")
         try:
             adminPassword_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.adminPassword_c)))
+                EC.presence_of_element_located(cache.adminPassword_c))
             if adminPassword_c.is_displayed():
                 adminPassword_c.clear()
-                adminPassword_c.send_keys(self.Password)
+                adminPassword_c.send_keys(Password)
                 time.sleep(2)
             else:
                 file_name = ss_path + "initial_AdminPassword" + time.asctime().replace(":", "_") + ".png"
@@ -192,9 +196,9 @@ class TestCreate:
         print("-----------------------try to put database Password -------------------------------")
         try:
             confirmPassword_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.confirmPassword_c)))
+                EC.presence_of_element_located(cache.confirmPassword_c))
             if confirmPassword_c.is_displayed():
-                confirmPassword_c.send_keys(self.Password)
+                confirmPassword_c.send_keys(Password)
                 time.sleep(2)
             else:
                 file_name = ss_path + "confirm_Password" + time.asctime().replace(":", "_") + ".png"
@@ -211,7 +215,7 @@ class TestCreate:
 
         try:
             selectVersion_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.selectVersion_c)))
+                EC.presence_of_element_located(cache.selectVersion_c))
             if selectVersion_c.is_displayed():
                 selectVersion_c.click()
                 time.sleep(2)
@@ -226,7 +230,7 @@ class TestCreate:
 
         try:
             version_6_0_5 = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.version_6_0_5)))
+                EC.presence_of_element_located(cache.version_6_0_5))
             if version_6_0_5.is_displayed():
                 version_6_0_5.click()
                 time.sleep(2)
@@ -268,7 +272,7 @@ class TestCreate:
 
         try:
             next_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.next_button)))
+                EC.presence_of_element_located(cache.next_button))
             if next_button.is_displayed():
                 next_button.click()
                 time.sleep(2)
@@ -286,7 +290,7 @@ class TestCreate:
         print("-----------------------try to click Next button again-------------------------------")
         try:
             next_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.next_button)))
+                EC.presence_of_element_located(cache.next_button))
             if next_button.is_displayed():
                 next_button.click()
                 time.sleep(2)
@@ -309,7 +313,7 @@ class TestCreate:
 
         try:
             confirm_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.confirm_button)))
+                EC.presence_of_element_located(cache.confirm_button))
             if confirm_button.is_displayed():
                 confirm_button.click()
                 time.sleep(2)
@@ -324,24 +328,28 @@ class TestCreate:
         else:
             print("Successfully clicked on Confirm button")
 
-        # print("-----------------------Message check-------------------------------")
-        #
-        # try:
-        #     Database_CreatedMsg = WebDriverWait(self.driver, 30).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.Database_CreatedMsg)))
-        #     if Database_CreatedMsg.is_displayed():
-        #         print('Shown a message: ',
-        #               simple_colors.blue(Database_CreatedMsg.text, ['bold', 'underlined']))
-        #         time.sleep(5)
-        #         self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
-        #         time.sleep(7)
-        #     else:
-        #         pass
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        #
+        print("-----------------------Message check-------------------------------")
+
+        try:
+            Cache_createdMsg = WebDriverWait(self.driver, 30).until(
+                EC.presence_of_element_located(cache.Cache_createdMsg))
+            if Cache_createdMsg.is_displayed():
+                print('Shown a message: ',
+                      simple_colors.blue(Cache_createdMsg.text, ['bold', 'underlined']))
+                time.sleep(5)
+                self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
+                time.sleep(1)
+
+                WebDriverWait(self.driver, 500).until(EC.visibility_of_element_located((By.XPATH, Locator.Access_Terminal)))
+                time.sleep(5)
+                pass
+            else:
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+
         # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
         # time.sleep(4)
         #

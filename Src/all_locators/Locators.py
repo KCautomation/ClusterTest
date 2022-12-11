@@ -195,6 +195,21 @@ class Locator(object):
     confirmButton_c = "(//span[@class='ml-auto mr-auto text-center ng-tns-c42-31'])[1]"
     enable_WebClient = "(//div[@class='mat-checkbox-inner-container'])[2]"
 
+    DefaultTeam_cache = "//span[contains(text(),'default')]"
+    Cache_createdMsg = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
+
+    Access_Terminal = "// a[contains(text(), 'Access Terminal')]"
+
+
+    # Delete Cahce
+
+    Cache_S = "(//span[@class='item-label'][normalize-space()='Cache'])[1]"
+    Cache_Settings = "(//span[@class='inline-block py-3 pl-2'][normalize-space()='Settings'])[1]"
+    Cache_Delete = "//span[contains(text(),'Delete')]"
+    Cache_namebox_D = "//input[@placeholder='Type here...']"
+    # Delete_permanently_button = "//span[contains(text(),'I understand this, Delete permanently')]"
+    Cache_Deleted_Success_msg = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
+
     # Create Namespace
 
     NamespaceButton = "button[role='menuitem']"
