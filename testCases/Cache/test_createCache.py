@@ -41,7 +41,7 @@ class TestCreateCache:
         ss = SS(self.driver)
         cache = CreateCache(self.driver)
 
-        ServerName = "cache-16"
+        ServerName = "cache-18"
         Password = "Qwer1235!!"
 
         print("****************** Try to Test Cluster Login *********************")
@@ -332,3 +332,18 @@ class TestCreateCache:
             print("NoSuchElementException error", e)
         except TimeoutException as e:
             print("TimeoutException error", e)
+
+        print("-------------------- Try to Delete '" + ServerName + "' cache  ---------------")
+
+        try:
+            self.driver.refresh()
+            time.sleep(3)
+            self.CF.deleteCache(self, ServerName)
+            self.driver.refresh()
+            time.sleep(1)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)

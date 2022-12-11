@@ -39,7 +39,7 @@ class TestCreateCache:
         ss = SS(self.driver)
         cache = CreateCache(self.driver)
 
-        ServerName = "cache-13"
+        ServerName = "cache-14"
 
         print("****************** Try to Test Cluster Login *********************")
         try:
