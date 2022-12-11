@@ -16,7 +16,7 @@ class DeployApplications(object):
         self.Deployment_Pending_time_msg = (By.XPATH, Locator.Deployment_Pending_time_msg)
         self.Application_Deployed = (By.XPATH, Locator.Application_Deployed)
 
-        self.deployed_validation = (By.XPATH, Locator.deployed_validation)
+        self.wait_ToDeploy = (By.XPATH, Locator.deployed_validation)
         self.to_check_deploy = (By.XPATH, Locator.to_check_deploy)
         self.Deployed_status = (By.XPATH, Locator.Deployed_status)
 
@@ -41,11 +41,11 @@ class DeployApplications(object):
     def getDeployment_Pending_time_msg(self):
         return self.Deployment_Pending_time_msg
 
+    def getwait_ToDeploy(self):
+        return self.wait_ToDeploy
+
     def getApplication_Deployed(self):
         return self.Application_Deployed
-
-    def getdeployed_validation(self):
-        return self.deployed_validation
 
     def getto_check_deploy(self):
         return self.to_check_deploy

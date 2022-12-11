@@ -23,7 +23,7 @@ from Src.functions.applications.application_functions import ApplicationFunction
 from pageObjects.Apllications.pomCreateApplication import CreateApplication
 from pageObjects.Apllications.pomDeployApp import DeployApplications
 
-ss_path = "/Database/"
+ss_path = "/DeployApplication/"
 
 
 @allure.severity(allure.severity_level.CRITICAL)
@@ -43,9 +43,9 @@ class TestDeploy:
 
     @pytest.mark.regression
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_Laravel_default_01(self, setup):
+    def test_deployApplication(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        ApplicationName = "test-322"
+        ApplicationName = "test-327"
         self.logger.info("*************** Test deploy Application*****************")
         self.driver = setup
         ss = SS(self.driver)
@@ -223,9 +223,11 @@ class TestDeploy:
             print("InvalidSessionIdException error", e)
 
         try:
-            deployed_validation = WebDriverWait(self.driver, 800).until(
-                EC.presence_of_element_located(dep.deployed_validation))
-            if deployed_validation.is_displayed():
+            wait_ToDeploy = WebDriverWait(self.driver, 800).until(
+                EC.presence_of_element_located(dep.wait_ToDeploy))
+            if wait_ToDeploy.is_displayed():
+                time.sleep(2)
+                self.driver.refresh()
                 time.sleep(2)
                 pass
         except NoSuchElementException as e:
@@ -235,11 +237,10 @@ class TestDeploy:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException error", e)
 
-        print("---------------Deployed Validation--------------------")
+        print("---------------Check Deployed Validation--------------------")
         try:
-            time.sleep(2)
             to_check_deploy = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(dep.to_check_deploy))
+                EC.presence_of_element_located((By.XPATH, Locator.to_check_deploy)))
             print("Deploy_button is located")
             to_check_deploy.click()
             time.sleep(2)
@@ -257,7 +258,7 @@ class TestDeploy:
         # validation
         try:
             Deployed_status = WebDriverWait(self.driver, 4).until(
-                EC.presence_of_element_located(dep.Deployed_status))
+                EC.presence_of_element_located((By.XPATH, Locator.Deployed_status)))
 
             Accepted_status = "Success"
             Actual_status = Deployed_status.text
@@ -280,4 +281,7 @@ class TestDeploy:
         except AssertionError as e:
             print("InvalidSessionIdException error", e)
 
+        file_name = ss_path + "deployed_screenshot_" + time.asctime().replace(":", "_") + ".png"
+        ss.driver.save_screenshot(file_name)
+        ss.ScreenShot(file_name)
 

@@ -45,7 +45,7 @@ class TestDeleteApplication:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_Laravel_default_01(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        ApplicationName = "test-322"
+        ApplicationName = "test-324"
         self.logger.info("*************** Test Create Application With PHP Laravel*****************")
         self.driver = setup
         ss = SS(self.driver)
