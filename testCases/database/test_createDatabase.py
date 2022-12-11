@@ -29,7 +29,7 @@ class TestCreateDatabase:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     DF = DatabaseFunctions()
-    ServerName = "testSql0233"
+    ServerName = "testSql0235"
     Password = "Qwer1235!!"
 
     @pytest.mark.regression
@@ -424,7 +424,7 @@ class TestCreateDatabase:
         except AssertionError as e:
             print("AssertionError", e)
 
-        print("---------------------- deleted Application validation-----------------------")
+        print("---------------------- deleted database validation-----------------------")
 
         print("Application Delete Successfully")
 
