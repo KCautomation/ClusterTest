@@ -46,7 +46,7 @@ class TestJavascriptApplications:
         action = ActionChains(self.driver)
         app = CreateApplication(self.driver)
 
-        ApplicationName = "test341"
+        ApplicationName = "test343"
         ExpressJs_Version = app.ExpressJs_Version_4_17_1
         Team = app.Team_Default
 
@@ -70,10 +70,9 @@ class TestJavascriptApplications:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("****************** Try to  Create C# Application TC-002 *********************")
+        print("----Create Javascript Application With Express Js version: 4.17.1---")
 
         try:
-            print("*****Create C# Application With DotNet version: 2.2.14*****")
             self.create.expressJsApplication(self, ApplicationName, Team, ExpressJs_Version)
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
