@@ -32,7 +32,7 @@ class TestCreateDatabase:
     DF = DatabaseFunctions()
     CF = cacheFunctions()
 
-    ServerName = "testSql0241"
+    ServerName = "testSql0242"
     Password = "Qwer1235!!"
 
     @pytest.mark.regression

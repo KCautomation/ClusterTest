@@ -1,5 +1,5 @@
 class Locator(object):
-    # Login Page
+    # **************************************Login Page**************************************
     textbox_Email_xpath = "//input[@id='mat-input-0']"  # xpath
     textbox_Password_xpath = "//input[@id='mat-input-1']"  # xpath
     button_ToggleVisibility = "/html/body/kc-root/kc-login/div/div[2]/div/form/div/mat-form-field[2]/div/div[1]/div[" \
@@ -18,18 +18,18 @@ class Locator(object):
 
     LogIn_Authentication_Error = "//body[1]/kc-toastr[1]/div[1]/div[1]"
 
-    # Dashboard page
+    # ************************************************** Dashboard page************************************
     Dashboard_button = "//span[contains(text(),'Dashboard')]"
     Namespace_button_from_SideBar = "//span[contains(text(),'Namespace')]"  # XPATH
     Dashboard_title = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/kc-toolbar/div/h1"
 
-    # header frame
+    # ************************************************ header frame **************************************************
     CreateNew_H = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/kc-toolbar/div/button[2]"  # XPATH
     CreateNew_H_test = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/kc-toolbar/div/buttn[2]"
     Namespace_H = "button[role='menuitem']"  # xpath
     NewApplication_H = "//span[contains(text(),'New Application')]"
 
-    # Create Application page
+    # ******************************Create Application page********************************
 
     SpringBoot = "//span[contains(text(),'Spring Boot')]"
     SpringBoot_Version_box = "//mat-select[@id='mat-select-1']"
@@ -78,7 +78,6 @@ class Locator(object):
     Create_Application = "//*[@id='msgContainer']/div/kc-horizontal-stepper/section/div/form/div[3]/button[2]"
     check_create_app = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[1]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[1]"
     check_app_status = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[5]/div[2]/div[1]/div[1]/p[2]"
-    
 
     Overview_button = "//span[contains(text(),'Overview')]"
     PipelineConfig_button = "//span[contains(text(),'Pipeline Config')]"
@@ -89,10 +88,9 @@ class Locator(object):
     Monitoring_button = "//span[contains(text(),'Monitoring')]"
     Logs_button = "//span[contains(text(),'Logs')]"
 
-    # For create validation
-    # Http failure response for https://api.eks.rakibefs'
-    # message: Http failure response for https://api.eks.rakibefstestmaincluster782.klovercloud.io/api/application/create: 0 Unknown Error
-    # Http_failure_response = "//span[contains(text(),'Http failure response for https://api.eks.rakibefs')]"
+    wait_ToCreateApplication = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[3]/ul[1]/li[1]/div[1]/button[1]/span[1]/mat-icon[1]/*[name()='svg'][1]"
+
+    # ******************** For application create validation ***************************
 
     New_Git_Commit_Pushed_msg = "//body/div[2]/div[1]/div[1]/snack-bar-container[1]/simple-snack-bar[1]"
     Application_build_finished_successfully_msg = "//span[contains(text(),'Application build finished successfully!')]"
@@ -100,15 +98,14 @@ class Locator(object):
     # Repository already exists with 'test-laravel = "//span[contains(text(),"Repository already exists with 'test-laravel' name")]"
     Live_Pipeline_Logs = "//h5[contains(text(),'Live Pipeline Logs')]"
 
-    # To deploy application
-    # Deployment is now in pending. It will take a moment to start = "//span[contains(text(),'Deployment is now in pending. It will take a momen')]"
-    # Now we are deploying your application. Please wait for a while. It may take upto 3 minutes = "//span[contains(text(),'Now we are deploying your application. Please wait')]"
-    # Application Deployed! = "//body/div[3]/div[1]/div[1]/snack-bar-container[1]/simple-snack-bar[1]"
-
-    # From sidebar
+    # ****************************************From sidebar***********************************
     Applications = "//span[contains(text(),'Applications')]"
     find_Application_tolist = "//span[contains(text(),'101')]"
 
+    # *******************************To deploy application*************************************
+    # Deployment is now in pending. It will take a moment to start = "//span[contains(text(),'Deployment is now in pending. It will take a momen')]"
+    # Now we are deploying your application. Please wait for a while. It may take upto 3 minutes = "//span[contains(text(),'Now we are deploying your application. Please wait')]"
+    # Application Deployed! = "//body/div[3]/div[1]/div[1]/snack-bar-container[1]/simple-snack-bar[1]"
     # To_deploy = "//li[@id='6367295d806b560001d2dd50']//*[name()='svg']//*[name()='rect']"  # XPATH
     To_deploy = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[1]/div[1]/div[2]/div[1]/div[2]/ul[1]/li[1]/*[name()='svg'][1]"
     Deploy_button = "//span[normalize-space()='Deploy']"
@@ -123,21 +120,16 @@ class Locator(object):
     Deployed_success_status = "//p[contains(text(),'Success')]"
     Deployed_status = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-application-details/div/div/kc-ci-cd-pipeline/div[5]/div[2]/div[1]/div/p[2]"
 
-    # To delete Application
+    deployed_validation = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[3]/ul[1]/li[1]/div[1]/button[1]/span[1]/mat-icon[1]/*[name()='svg'][1]"
+
+    # ********************************************** delete Application ********************************
     application_Settings = "(//span[contains(@class,'inline-block py-4 px-4')][normalize-space()='Settings'])[1]"
-    # scroll
     application_Delete = "//span[contains(text(),'Delete')]"
     Application_namebox_D = "//input[@placeholder='Type here...']"
     Delete_permanently_button = "//span[contains(text(),'I understand this, Delete permanently')]"
     Application_Deleted_Success_msg = "//p[normalize-space()='Application Deleted Successfully']"
 
-    # to namespace creation
-    Namespace_button = "//body/div[3]/div[2]/div[1]/div[1]/div[1]/button[1]/span[1]"  # XPATH
-
-    NamespaceName_box = "input[placeholder='Namespace Name']"  # css selector
-    # CPU_box = "//input[@class='ng-tns-c41-54 ng-pristine ng-valid ng-touched']"  # XPATH
-    CPU_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[""1]/mat-sidenav-content[1]/main[1]/kc-vpc-form[1]/div[1]/div[1]/div[1]/div[""1]/div[4]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[""1]"
-
+    # *************************************** database ********************************
     # go to Database page
 
     Database_button = "//div[@class='cdk-overlay-container']//button[4]"
@@ -169,7 +161,7 @@ class Locator(object):
     Database_FinalStatus = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-database-details/kc-page-layout/kc-page-layout-content/div/kc-database-initialization/div/div[2]/div[2]/pre[10]"
     Cancel_msg = "//body/kc-toastr[1]/div[1]/div[1]/button[1]/i[1]"
 
-    # delete databse
+    # *********************************** delete database **********************************
 
     database_list = "(//span[@class='item-label'][normalize-space()='Database'])[1]"
     database_name = "//span[normalize-space()='test-sql-221']"
@@ -178,7 +170,7 @@ class Locator(object):
     database_nameBox = "(//input[@placeholder='Type here...'])[1]"
     deletePermanently = "//span[@class='ng-star-inserted']"
 
-    # create cache
+    # ************************************ create cache *********************************************
     cacheButton = "(//span[@class='ng-tns-c6-2'][normalize-space()='Cache'])[1]"
     redis_button = "//span[contains(text(),'5.0.7,6.0.5')]"
     teamBox_c = "//div[@class='mat-select-value']"
@@ -200,8 +192,7 @@ class Locator(object):
 
     Access_Terminal = "// a[contains(text(), 'Access Terminal')]"
 
-
-    # Delete Cahce
+    # ******************************** Delete Cache *****************************************
 
     Cache_S = "(//span[@class='item-label'][normalize-space()='Cache'])[1]"
     Cache_Settings = "(//span[@class='inline-block py-3 pl-2'][normalize-space()='Settings'])[1]"
@@ -210,7 +201,12 @@ class Locator(object):
     # Delete_permanently_button = "//span[contains(text(),'I understand this, Delete permanently')]"
     Cache_Deleted_Success_msg = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
 
-    # Create Namespace
+    # ******************************** namespace creation *************************
+    Namespace_button = "//body/div[3]/div[2]/div[1]/div[1]/div[1]/button[1]/span[1]"  # XPATH
+
+    NamespaceName_box = "input[placeholder='Namespace Name']"  # css selector
+    # CPU_box = "//input[@class='ng-tns-c41-54 ng-pristine ng-valid ng-touched']"  # XPATH
+    CPU_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[""1]/mat-sidenav-content[1]/main[1]/kc-vpc-form[1]/div[1]/div[1]/div[1]/div[""1]/div[4]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[""1]"
 
     NamespaceButton = "button[role='menuitem']"
     Create_button_N = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-vpc-form[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/button[1]"
@@ -230,8 +226,6 @@ class Locator(object):
     Volume_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-vpc-form[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/input[1]"
     Bandwidth_box = "//div[contains(text(),'Moderate')]"
 
-
-
     Team = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-vpc-form[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/button[3]/span[1]/div[1]"
     teamSearch_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-vpc-form[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[1]/mat-form-field[1]/div[1]/div[1]/div[4]"
     Choose_TeamDefault = "//span[contains(text(),'default')]"
@@ -242,22 +236,3 @@ class Locator(object):
     Namespace_settings = "(//span[@class='inline-block py-3 pl-2'][normalize-space()='Settings'])[1]"
     deleteButton_namespace = "(//button[@class='kc-delete-primary w-32 mat-button mat-button-base ng-trigger ng-trigger-fadeInRight'])[1]"
     input_namespaceName = "/html[1]/body[1]/div[3]/div[2]/div[1]/mat-dialog-container[1]/kc-delete-dialog[1]/div[1]/div[1]/div[1]/div[1]/input[1]"
-
-
-    # applications
-    wait_ToCreateApplication ="/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[3]/ul[1]/li[1]/div[1]/button[1]/span[1]/mat-icon[1]/*[name()='svg'][1]"
-    deployed_validation = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/div[1]/kc-ci-cd-pipeline[1]/div[3]/ul[1]/li[1]/div[1]/button[1]/span[1]/mat-icon[1]/*[name()='svg'][1]"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
