@@ -35,7 +35,6 @@ class PHPApplication:
     @staticmethod
     def Laravel_application(self, ApplicationName, Team, Laravel_Version):
 
-        self.logger.info("*************** Test Create Application With PHP Laravel*****************")
         ss = SS(self.driver)
         action = ActionChains(self.driver)
         app = CreateApplication(self.driver)
@@ -208,96 +207,96 @@ class PHPApplication:
         else:
             print('Successfully clicked save button')
 
-        # # click on Create application button
-        # print("----try to click 'Create application' button--------")
-        # try:
-        #     Create_Application = WebDriverWait(self.driver, 20).until(
-        #         EC.element_to_be_clickable(app.Create_Application))
-        #     print("Create_Application button is clickable")
-        #     Create_Application.click()
-        #     time.sleep(4)
-        #     # check success message
-        #     New_Git_Commit_Pushed_msg = WebDriverWait(self.driver, 30).until(
-        #         EC.presence_of_element_located(app.New_Git_Commit_Pushed_msg))
-        #     if New_Git_Commit_Pushed_msg.is_displayed():
-        #
-        #         print('Shown a message: ',
-        #               simple_colors.green(New_Git_Commit_Pushed_msg.text, ['bold', 'underlined']))
-        #         print("\n")
-        #         time.sleep(6)
-        #         Application_build_finished_successfully_msg = WebDriverWait(self.driver, 80).until(
-        #             EC.presence_of_element_located(app.Application_build_finished_successfully_msg))
-        #         if Application_build_finished_successfully_msg.is_displayed():
-        #             print('Shown a message: ',
-        #                   simple_colors.green(Application_build_finished_successfully_msg.text, ['bold', 'underlined']))
-        #             print("\n")
-        #             print("Application_build_finished_successfully")
-        #             time.sleep(10)
-        #     else:
-        #         pass
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # # time.sleep(80)
-        # # wait for confirmation
-        # try:
-        #     wait_ToCreateApplication = WebDriverWait(self.driver, 800).until(
-        #         EC.visibility_of_element_located(app.wait_ToCreateApplication))
-        #     if wait_ToCreateApplication.is_displayed():
-        #         time.sleep(4)
-        #         pass
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # # application created validation
-        # print("---------------Try to Crated Application Validation--------------------")
-        # try:
-        #     self.driver.refresh()
-        #     time.sleep(3)
-        #     check_create_app = WebDriverWait(self.driver, 40).until(
-        #         EC.presence_of_element_located(app.check_create_app))
-        #     check_create_app.click()
-        #     time.sleep(2)
-        #     action.send_keys(Keys.ENTER)
-        #     action.perform()
-        #     time.sleep(2)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        #
-        # # checked validation message
-        # try:
-        #     Created_status = WebDriverWait(self.driver, 20).until(
-        #         EC.presence_of_element_located(app.check_app_status))
-        #
-        #     Actual_status = Created_status.text
-        #     Accepted_status = "Success"
-        #
-        #     if Actual_status == Accepted_status:
-        #         print('Application created status is: ',
-        #               simple_colors.green(Actual_status, ['bold', 'underlined']))
-        #         time.sleep(2)
-        #         assert True
-        #     else:
-        #         print('Application created status is: ',
-        #               simple_colors.green(Actual_status, ['bold', 'underlined']))
-        #
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # except InvalidSessionIdException as e:
-        #     print("InvalidSessionIdException error", e)
-        # except AssertionError as e:
-        #     print("AssertionError", e)
+        # click on Create application button
+        print("----try to click 'Create application' button--------")
+        try:
+            Create_Application = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(app.Create_Application))
+            print("Create_Application button is clickable")
+            Create_Application.click()
+            time.sleep(4)
+            # check success message
+            New_Git_Commit_Pushed_msg = WebDriverWait(self.driver, 30).until(
+                EC.presence_of_element_located(app.New_Git_Commit_Pushed_msg))
+            if New_Git_Commit_Pushed_msg.is_displayed():
+
+                print('Shown a message: ',
+                      simple_colors.green(New_Git_Commit_Pushed_msg.text, ['bold', 'underlined']))
+                print("\n")
+                time.sleep(6)
+                Application_build_finished_successfully_msg = WebDriverWait(self.driver, 80).until(
+                    EC.presence_of_element_located(app.Application_build_finished_successfully_msg))
+                if Application_build_finished_successfully_msg.is_displayed():
+                    print('Shown a message: ',
+                          simple_colors.green(Application_build_finished_successfully_msg.text, ['bold', 'underlined']))
+                    print("\n")
+                    print("Application_build_finished_successfully")
+                    time.sleep(10)
+            else:
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        # time.sleep(80)
+        # wait for confirmation
+        try:
+            wait_ToCreateApplication = WebDriverWait(self.driver, 800).until(
+                EC.visibility_of_element_located(app.wait_ToCreateApplication))
+            if wait_ToCreateApplication.is_displayed():
+                time.sleep(4)
+                pass
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        # application created validation
+        print("---------------Try to Crated Application Validation--------------------")
+        try:
+            self.driver.refresh()
+            time.sleep(3)
+            check_create_app = WebDriverWait(self.driver, 40).until(
+                EC.presence_of_element_located(app.check_create_app))
+            check_create_app.click()
+            time.sleep(2)
+            action.send_keys(Keys.ENTER)
+            action.perform()
+            time.sleep(2)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+
+        # checked validation message
+        try:
+            Created_status = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located(app.check_app_status))
+
+            Actual_status = Created_status.text
+            Accepted_status = "Success"
+
+            if Actual_status == Accepted_status:
+                print('Application created status is: ',
+                      simple_colors.green(Actual_status, ['bold', 'underlined']))
+                time.sleep(2)
+                assert True
+            else:
+                print('Application created status is: ',
+                      simple_colors.green(Actual_status, ['bold', 'underlined']))
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error", e)
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException error", e)
+        except AssertionError as e:
+            print("AssertionError", e)
