@@ -20,7 +20,7 @@ class CreateApplication(object):
         self.Create_Application = (By.XPATH, Locator.Create_Application)
         self.New_Git_Commit_Pushed_msg = (By.XPATH, Locator.New_Git_Commit_Pushed_msg)
         self.Application_build_finished_successfully_msg = (
-        By.XPATH, Locator.Application_build_finished_successfully_msg)
+            By.XPATH, Locator.Application_build_finished_successfully_msg)
 
         self.wait_ToCreateApplication = (By.XPATH, Locator.wait_ToCreateApplication)
         self.check_create_app = (By.XPATH, Locator.check_create_app)
@@ -33,7 +33,53 @@ class CreateApplication(object):
         self.Laravel_version_5_7 = (By.XPATH, Locator.Laravel_version_5_7)
         self.Laravel_version_5_6 = (By.XPATH, Locator.Laravel_version_5_6)
 
+        # Dot Net
+        self.DotNet = (By.XPATH, Locator.DotNet)
+        self.DoNet_v_box = (By.XPATH, Locator.DoNet_v_box)
+        self.DontNet_V_3_0 = (By.XPATH, Locator.DontNet_V_3_0)
+        self.DotNet_V_2_2 = (By.XPATH, Locator.DotNet_V_2_2)
+        self.DotNet_V_2_1 = (By.XPATH, Locator.DotNet_V_2_1)
 
+        # java
+        self.SpringBoot = (By.XPATH, Locator.SpringBoot)
+        self.SpringBoot_Version_box = (By.XPATH, Locator.SpringBoot_Version_box)
+        self.SpringBoot_Version_2_1_11 = (By.XPATH, Locator.SpringBoot_Version_2_1_11)
+        self.Java_Version_box = (By.XPATH, Locator.Java_Version_box)
+        self.Java_Version_11 = (By.XPATH, Locator.Java_Version_11)
+        self.Java_Version_8 = (By.XPATH, Locator.Java_Version_8)
+
+    def getSpringBoot(self):
+        return self.SpringBoot
+
+    def getSpringBoot_Version_box(self):
+        return self.SpringBoot_Version_box
+
+    def getSpringBoot_Version_2_1_11(self):
+        return self.SpringBoot_Version_2_1_11
+
+    def getJava_Version_box(self):
+        return self.Java_Version_box
+
+    def getJava_Version_11(self):
+        return self.Java_Version_11
+
+    def getJava_Version_8(self):
+        return self.Java_Version_8
+
+    def getDotNet(self):
+        return self.DotNet
+
+    def getDoNet_v_box(self):
+        return self.DoNet_v_box
+
+    def getDontNet_V_3_0(self):
+        return self.DontNet_V_3_0
+
+    def getDotNet_V_2_2(self):
+        return self.DotNet_V_2_2
+
+    def getDotNet_V_2_1(self):
+        return self.DotNet_V_2_1
 
     def getLaravel_version_6_0(self):
         return self.Laravel_version_6_0
