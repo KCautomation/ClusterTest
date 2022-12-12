@@ -41,7 +41,7 @@ class Locator(object):
     JavaScript = "//span[contains(text(),'JavaScript')]"
     ExpressJS = "//mat-tab-body/div[1]/div[1]/div[2]"
     Express_Js_Version_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[2]/div[1]/mat-form-field[2]/div[1]/div[1]/div[3]"  # Xpath
-    JS_V_4_17_1 = "//span[contains(text(),'4.17.1')]"
+    ExpressJs_Version_4_17_1 = "//span[contains(text(),'4.17.1')]"
 
     Django = "//span[contains(text(),'Django')]"
     Python_version_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[2]/div[1]/mat-form-field[2]/div[1]/div[1]/div[3]"  # XPATH
@@ -51,7 +51,7 @@ class Locator(object):
     Django_Version_2_2_14 = "//span[contains(text(),'2.2.14')]"  # XPATH
 
     DotNet = "//mat-tab-body/div[1]/div[1]/div[4]"
-    DoNet_v_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[2]/div[1]/mat-form-field[2]/div[1]/div[1]/div[3]/mat-select[1]/div[1]/div[1]"
+    DoNet_Version_box = "//body/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[2]/div[1]/mat-form-field[2]/div[1]/div[1]/div[3]/mat-select[1]/div[1]/div[1]"
     DontNet_V_3_0 = "//span[contains(text(),'3.0')]"
     DotNet_V_2_2 = "//span[contains(text(),'2.2')]"
     DotNet_V_2_1 = "//span[contains(text(),'2.1')]"

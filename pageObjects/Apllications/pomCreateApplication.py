@@ -35,7 +35,7 @@ class CreateApplication(object):
 
         # Dot Net
         self.DotNet = (By.XPATH, Locator.DotNet)
-        self.DoNet_v_box = (By.XPATH, Locator.DoNet_v_box)
+        self.DoNet_Version_box = (By.XPATH, Locator.DoNet_Version_box)
         self.DontNet_V_3_0 = (By.XPATH, Locator.DontNet_V_3_0)
         self.DotNet_V_2_2 = (By.XPATH, Locator.DotNet_V_2_2)
         self.DotNet_V_2_1 = (By.XPATH, Locator.DotNet_V_2_1)
@@ -61,6 +61,23 @@ class CreateApplication(object):
         self.Golang = (By.XPATH, Locator.Golang)
         self.Goecho_Version_box = (By.XPATH, Locator.Goecho_Version_box)
         self.Goecho_V_4_1_14 = (By.XPATH, Locator.Goecho_V_4_1_14)
+
+        self.JavaScript = (By.XPATH, Locator.JavaScript)
+        self.ExpressJS = (By.XPATH, Locator.ExpressJS)
+        self.Express_Js_Version_box = (By.XPATH, Locator.Express_Js_Version_box)
+        self.ExpressJs_Version_4_17_1 = (By.XPATH, Locator.ExpressJs_Version_4_17_1)
+
+    def getJavaScript(self):
+        return self.JavaScript
+
+    def getExpressJS(self):
+        return self.ExpressJS
+
+    def getExpress_Js_Version_box(self):
+        return self.Express_Js_Version_box
+
+    def getExpressJs_Version_4_17_1(self):
+        return self.ExpressJs_Version_4_17_1
 
     def getGoLang(self):
         return self.Golang
@@ -111,7 +128,7 @@ class CreateApplication(object):
         return self.DotNet
 
     def getDoNet_v_box(self):
-        return self.DoNet_v_box
+        return self.DoNet_Version_box
 
     def getDontNet_V_3_0(self):
         return self.DontNet_V_3_0
