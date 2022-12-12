@@ -365,6 +365,3 @@ class TestPHPApplication:
         file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
         ss.driver.save_screenshot(file_name)
         ss.ScreenShot(file_name)
-
-
-

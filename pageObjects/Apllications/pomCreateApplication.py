@@ -11,17 +11,41 @@ class CreateApplication(object):
         self.TeamBox_A = (By.XPATH, Locator.TeamBox_A)
 
         self.Team_Default = (By.XPATH, Locator.Team_Default)
+        self.Team_None = (By.XPATH, Locator.Team_None)
+
         self.Next_button = (By.XPATH, Locator.Next_button)
         self.Choose_Namespace_one = (By.XPATH, Locator.Choose_Namespace_one)
 
         self.Save_button_A = (By.XPATH, Locator.Save_button_A)
         self.Create_Application = (By.XPATH, Locator.Create_Application)
         self.New_Git_Commit_Pushed_msg = (By.XPATH, Locator.New_Git_Commit_Pushed_msg)
-        self.Application_build_finished_successfully_msg = (By.XPATH, Locator.Application_build_finished_successfully_msg)
+        self.Application_build_finished_successfully_msg = (
+        By.XPATH, Locator.Application_build_finished_successfully_msg)
 
         self.wait_ToCreateApplication = (By.XPATH, Locator.wait_ToCreateApplication)
         self.check_create_app = (By.XPATH, Locator.check_create_app)
         self.check_app_status = (By.XPATH, Locator.check_app_status)
+
+        # Laravel
+
+        self.Laravel_version_6_0 = (By.XPATH, Locator.Laravel_version_6_0)
+        self.Laravel_version_5_8 = (By.XPATH, Locator.Laravel_version_5_8)
+        self.Laravel_version_5_7 = (By.XPATH, Locator.Laravel_version_5_7)
+        self.Laravel_version_5_6 = (By.XPATH, Locator.Laravel_version_5_6)
+
+
+
+    def getLaravel_version_6_0(self):
+        return self.Laravel_version_6_0
+
+    def getLaravel_version_5_8(self):
+        return self.Laravel_version_5_8
+
+    def getLaravel_version_5_7(self):
+        return self.Laravel_version_5_7
+
+    def getLaravel_version_5_6(self):
+        return self.Laravel_version_5_6
 
     def getLaravel(self):
         return self.Laravel
@@ -40,6 +64,9 @@ class CreateApplication(object):
 
     def getTeam_Default(self):
         return self.Team_Default
+
+    def getTeam_None(self):
+        return self.Team_None
 
     def getSave_button_A(self):
         return self.Save_button_A
@@ -61,4 +88,3 @@ class CreateApplication(object):
 
     def getwait_check_app_status(self):
         return self.check_app_status
-
