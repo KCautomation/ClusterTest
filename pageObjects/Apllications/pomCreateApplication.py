@@ -48,6 +48,47 @@ class CreateApplication(object):
         self.Java_Version_11 = (By.XPATH, Locator.Java_Version_11)
         self.Java_Version_8 = (By.XPATH, Locator.Java_Version_8)
 
+        # Python
+        self.Django = (By.XPATH, Locator.Django)
+        self.Python_version_box = (By.XPATH, Locator.Python_version_box)
+        self.Python_version_3_7_8 = (By.XPATH, Locator.Python_version_3_7_8)
+        self.Python_version_3_6_11 = (By.XPATH, Locator.Python_version_3_6_11)
+
+        self.Django_version_box = (By.XPATH, Locator.Django_version_box)
+        self.Django_Version_2_2_14 = (By.XPATH, Locator.Django_Version_2_2_14)
+
+        # Golang
+        self.Golang = (By.XPATH, Locator.Golang)
+        self.Goecho_Version_box = (By.XPATH, Locator.Goecho_Version_box)
+        self.Goecho_V_4_1_14 = (By.XPATH, Locator.Goecho_V_4_1_14)
+
+    def getGoLang(self):
+        return self.Golang
+
+    def getGoecho_Version_box(self):
+        return self.Goecho_Version_box
+
+    def getGoecho_V_4_1_14(self):
+        return self.Goecho_V_4_1_14
+
+    def getDjango(self):
+        return self.Django
+
+    def getPython_version_box(self):
+        return self.Python_version_box
+
+    def getPython_version_3_7_8(self):
+        return self.Python_version_3_7_8
+
+    def getPython_version_3_6_11(self):
+        return self.Python_version_3_6_11
+
+    def getDjango_version_box(self):
+        return self.Django_version_box
+
+    def getDjango_Version_2_2_14(self):
+        return self.Django_Version_2_2_14
+
     def getSpringBoot(self):
         return self.SpringBoot
 

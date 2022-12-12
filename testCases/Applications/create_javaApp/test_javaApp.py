@@ -3,18 +3,14 @@ import time
 
 import allure
 import pytest
-import simple_colors
-from colorama import Fore
+
 from selenium.webdriver import Keys, ActionChains
 
 import raf_practice.logs.customolog.custom_logger as cl
 from Src.login_function.login import login
-from Src.functions.database.createDatabase import DatabaseFunctions
+
 from Src.screenShot.screenShot import SS
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from Src.all_locators.Locators import Locator
+
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException
 from allure_commons.types import AttachmentType
 from utilities.readProperties import ReadConfig
