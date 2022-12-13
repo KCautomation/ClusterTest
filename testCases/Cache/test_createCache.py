@@ -17,31 +17,26 @@ from Src.application_delete.delete_app import test_delete_app
 from utilities.readProperties import ReadConfig
 from Src.functions.cache.cacheFunction import cacheFunctions
 from pageObjects.Cache.pomCache import CreateCache
+from Src.functions.cache.create_Cache import CreateCaches
 
 ss_path = "/Caches/create/"
 
 
 class TestCreateCache:
-    baseURL = ReadConfig.getApplicationURL()
-    useremail = ReadConfig.getUseremail()
-    password = ReadConfig.getPassword()
-
     # logger = LogGen.loggen()
     logger = cl.customLogger(logging.DEBUG)
     login = login()
     CF = cacheFunctions()
+    CC = CreateCaches()
 
     @pytest.mark.regression
-    def test_teamNone(self, setup):
+    def test_TC001(self, setup):
 
-        self.logger.info("***************Try to Test_Create Cache *****************")
+        print("****************** Try to go create Cache based on Team: None & Version: 5.0.7   *********************")
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
         cache = CreateCache(self.driver)
-
-        ServerName = "cache-20"
-        Password = "Qwer1235!!"
 
         print("****************** Try to Test Cluster Login *********************")
         try:
@@ -59,7 +54,6 @@ class TestCreateCache:
             self.driver.refresh()
             time.sleep(3)
             self.CF.go_createCachePage(self)
-            self.driver.refresh()
             time.sleep(3)
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
@@ -68,266 +62,181 @@ class TestCreateCache:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("--------------- Try to choose redis -----------------")
-        try:
-            redis_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.redis_button))
-            if redis_button.is_displayed():
-                redis_button.click()
-                self.driver.implicitly_wait(20)
-                time.sleep(2)
-            else:
-                file_name = ss_path + "redis_button" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-
-        print("----------------- Try to choose Team ----------------------")
-
-        print("---try to click team box---")
-        try:
-            teamBox_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.teamBox_c))
-            if teamBox_c.is_displayed():
-                teamBox_c.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "teamBox_c" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-
-        print("-----------------------try to choose default as a team-------------------------------")
+        print("---------- Start create Cache based on Team: None & Version: 5.0.7  -------------")
+        Team = cache.Team_None
+        ServerName = "testCache0141"
+        Password = "Qwer1234!!"
+        Cache_Version = cache.Version_5_0_7
+        WebClientEmail = "test@gmail.com"
+        WebClientPassword = "Qwer1234!!"
 
         try:
-            defaultTeam_chache = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.DefaultTeam_cache))
-            if defaultTeam_chache.is_displayed():
-                defaultTeam_chache.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "defaultTeam_database" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
+            self.driver.refresh()
+            time.sleep(3)
+            self.CC.cache(self, Team, ServerName, Password, Cache_Version, WebClientEmail, WebClientPassword)
+
         except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
+            print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
-        else:
-            print("Successfully chose default Team")
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
 
-        print("-----Scroll down to show Namespaces-----")
-        # again scroll below
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
-        time.sleep(2)
+    @pytest.mark.regression
+    def test_TC002(self, setup):
 
-        print("-----------------------try to choose a namespace -------------------------------")
+        print("****************** Try to go create Cache based on Team: None & Version: 6.0.5  *********************")
+        # self.logger.info("****Started Home page title test ****")
+        self.driver = setup
+        ss = SS(self.driver)
+        cache = CreateCache(self.driver)
+
+        print("****************** Try to Test Cluster Login *********************")
         try:
-            Namespace_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.Namespace_c))
-            if Namespace_c.is_displayed():
-                Namespace_c.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "namespace_first" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
+            self.login.test_cluster_login(self)
         except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
+            print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
 
-        print("-----Scroll up-----")
-        # again scroll below
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = -400")
-        time.sleep(2)
-
-        print("-----------------------try to put cache server name -------------------------------")
-        try:
-            serverNameBox_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.serverNameBox_c))
-            if serverNameBox_c.is_displayed():
-                serverNameBox_c.clear()
-                serverNameBox_c.send_keys(ServerName)
-                self.driver.implicitly_wait(20)
-                time.sleep(2)
-            else:
-                file_name = ss_path + "serverNameBox_c" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-
-        print("-----------------------try to put cache Password -------------------------------")
-        try:
-            adminPassword_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.adminPassword_c))
-            if adminPassword_c.is_displayed():
-                adminPassword_c.clear()
-                adminPassword_c.send_keys(Password)
-                time.sleep(2)
-            else:
-                file_name = ss_path + "initial_AdminPassword" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
-
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-
-        print("-----------------------try to put database Password -------------------------------")
-        try:
-            confirmPassword_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.confirmPassword_c))
-            if confirmPassword_c.is_displayed():
-                confirmPassword_c.send_keys(Password)
-                time.sleep(2)
-            else:
-                file_name = ss_path + "confirm_Password" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-
-        print("-----------------------try to click 0n selectVersion_box-------------------------------")
+        print("-------------------- Try to go create cache page ---------------")
 
         try:
-            selectVersion_c = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.selectVersion_c))
-            if selectVersion_c.is_displayed():
-                selectVersion_c.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "selectVersion_box" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
+            self.driver.refresh()
+            time.sleep(3)
+            self.CF.go_createCachePage(self)
+            time.sleep(3)
         except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
+            print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        print("---------- Start create Cache based on Team: None & Version: 6.0.5  -------------")
+        Team = cache.Team_None
+        ServerName = "testCache0141"
+        Password = "Qwer1234!!"
+        Cache_Version = cache.version_6_0_5
+        WebClientEmail = "test@gmail.com"
+        WebClientPassword = "Qwer1234!!"
 
         try:
-            version_6_0_5 = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.version_6_0_5))
-            if version_6_0_5.is_displayed():
-                version_6_0_5.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "version_8_0_19" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
+            self.driver.refresh()
+            time.sleep(3)
+            self.CC.cache(self, Team, ServerName, Password, Cache_Version, WebClientEmail, WebClientPassword)
+
         except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
+            print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
 
-        print("-----Scroll down -----")
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
-        time.sleep(2)
+    @pytest.mark.regression
+    def test_TC003(self, setup):
 
-        # print("-----------------------try to choose Enable Web Client (phpMyAdmin)-------------------------------")
-        #
-        # try:
-        #     enableWebClient = WebDriverWait(self.driver, 20).until(
-        #         EC.presence_of_element_located((By.XPATH, Locator.enableWebClient)))
-        #     if enableWebClient.is_displayed():
-        #         enableWebClient.click()
-        #         time.sleep(2)
-        #     else:
-        #         file_name = ss_path + "enableWebClient" + time.asctime().replace(":", "_") + ".png"
-        #         ss.driver.save_screenshot(file_name)
-        #         ss.ScreenShot(file_name)
-        # except NoSuchElementException as e:
-        #     print("NoSuchElementException error", e)
-        # except TimeoutException as e:
-        #     print("TimeoutException error", e)
-        # else:
-        #     print("Successfully chose Enable Web Client (phpMyAdmin)")
+        print("****************** Try to go create Cache based on Team: Default & Version: 5.0.7  *********************")
+        # self.logger.info("****Started Home page title test ****")
+        self.driver = setup
+        ss = SS(self.driver)
+        cache = CreateCache(self.driver)
 
-        print("-----------------------try to click Next button-------------------------------")
+        print("****************** Try to Test Cluster Login *********************")
+        try:
+            self.login.test_cluster_login(self)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        print("-------------------- Try to go create cache page ---------------")
 
         try:
-            next_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.next_button))
-            if next_button.is_displayed():
-                next_button.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "next_button" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
+            self.driver.refresh()
+            time.sleep(3)
+            self.CF.go_createCachePage(self)
+            time.sleep(3)
         except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
+            print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
 
-        print("-----------------------try to click Next button again-------------------------------")
-        try:
-            next_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.next_button))
-            if next_button.is_displayed():
-                next_button.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "next_button" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-
-        print("-----Scroll down -----")
-        self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 400")
-        time.sleep(2)
-
-        print("-----------------------try to click Confirm button-------------------------------")
+        print("---------- Start create Cache based on Team: Default & Version: 5.0.7  -------------")
+        Team = cache.DefaultTeam_cache
+        ServerName = "testCache0141"
+        Password = "Qwer1234!!"
+        Cache_Version = cache.Version_5_0_7
+        WebClientEmail = "test@gmail.com"
+        WebClientPassword = "Qwer1234!!"
 
         try:
-            confirm_button = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located(cache.confirm_button))
-            if confirm_button.is_displayed():
-                confirm_button.click()
-                time.sleep(2)
-            else:
-                file_name = ss_path + "confirm_button" + time.asctime().replace(":", "_") + ".png"
-                ss.driver.save_screenshot(file_name)
-                ss.ScreenShot(file_name)
+            self.driver.refresh()
+            time.sleep(3)
+            self.CC.cache(self, Team, ServerName, Password, Cache_Version, WebClientEmail, WebClientPassword)
+
         except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
+            print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
 
-        print("-----------------------Message check-------------------------------")
+    @pytest.mark.regression
+    def test_TC004(self, setup):
+
+        print("****************** Try to go create Cache based on Team: Default & Version: 6.0.5  *********************")
+        # self.logger.info("****Started Home page title test ****")
+        self.driver = setup
+        ss = SS(self.driver)
+        cache = CreateCache(self.driver)
+
+        print("****************** Try to Test Cluster Login *********************")
+        try:
+            self.login.test_cluster_login(self)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        print("-------------------- Try to go create cache page ---------------")
 
         try:
-            Cache_createdMsg = WebDriverWait(self.driver, 30).until(
-                EC.presence_of_element_located(cache.Cache_createdMsg))
-            if Cache_createdMsg.is_displayed():
-                print('Shown a message: ',
-                      simple_colors.blue(Cache_createdMsg.text, ['bold', 'underlined']))
-                time.sleep(5)
-                self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
-                time.sleep(1)
-
-                WebDriverWait(self.driver, 500).until(
-                    EC.visibility_of_element_located((By.XPATH, Locator.Access_Terminal)))
-                time.sleep(5)
-                pass
-            else:
-                pass
+            self.driver.refresh()
+            time.sleep(3)
+            self.CF.go_createCachePage(self)
+            time.sleep(3)
         except NoSuchElementException as e:
-            print("NoSuchElementException error", e)
+            print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:
             print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        print("---------- Start create Cache based on Team: Default & Version: 6.0.5  -------------")
+        Team = cache.DefaultTeam_cache
+        ServerName = "testCache0141"
+        Password = "Qwer1234!!"
+        Cache_Version = cache.version_6_0_5
+        WebClientEmail = "test@gmail.com"
+        WebClientPassword = "Qwer1234!!"
+
+        try:
+            self.driver.refresh()
+            time.sleep(3)
+            self.CC.cache(self, Team, ServerName, Password, Cache_Version, WebClientEmail, WebClientPassword)
+
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
