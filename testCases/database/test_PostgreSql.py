@@ -22,7 +22,7 @@ from Src.functions.database.createDatabase import CreateDatabases
 ss_path = "/Database/CreateDatabase/"
 
 
-class TestCreateDatabase:
+class TestCreatePostgresql:
     # logger = LogGen.loggen()
     logger = cl.customLogger(logging.DEBUG)
     login = login()
@@ -31,7 +31,7 @@ class TestCreateDatabase:
     My = CreateDatabases()
 
     @pytest.mark.regression
-    def test_MySQLDatabase(self, setup):
+    def test_PostgresqlDatabase(self, setup):
 
         self.logger.info("*************** Test_Create Database *****************")
         # self.logger.info("****Started Home page title test ****")
@@ -63,16 +63,18 @@ class TestCreateDatabase:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("****************** Try to go create MySql database *********************")
+        print("****************** Try to go create Postgresql database *********************")
         Team = data.defaultTeam_database
-        ServerName = "testMyql0133"
+        ServerName = "testPostgresql0135"
         Password = "Qwer1234!!"
-        MySql_Version = data.version_8_0_19
+        Postgresql_Version = data.Postgresql_Version_12_3_0
+        WebClientEmail = "test@gmail.com"
+        WebClientPassword = "Qwer1234!!"
 
         try:
             self.driver.refresh()
             time.sleep(3)
-            self.My.mySql(self, Team, ServerName, Password, MySql_Version)
+            self.My.Postgresql(self, Team, ServerName, Password, Postgresql_Version, WebClientEmail, WebClientPassword)
 
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")

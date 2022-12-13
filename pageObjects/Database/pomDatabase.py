@@ -7,6 +7,13 @@ class Database(object):
         self.driver = driver
 
         self.MySQL_button = (By.XPATH, Locator.MySQL_button)
+        self.Postgresql = (By.XPATH, Locator.Postgresql)
+
+        #  for POSTGRESQL
+        self.Postgresql_Version_12_3_0 = (By.XPATH, Locator.Postgresql_Version_12_3_0)
+        self.Web_Client_Email = (By.XPATH, Locator.Web_Client_Email)
+        self.Web_Client_Password = (By.XPATH, Locator.Web_Client_Password)
+
         self.teamBox_database = (By.XPATH, Locator.teamBox_database)
         self.defaultTeam_database = (By.XPATH, Locator.defaultTeam_database)
 
@@ -30,6 +37,18 @@ class Database(object):
 
     def getMySQL_button(self):
         return self.MySQL_button
+
+    def getPostgresql(self):
+        return self.Postgresql
+
+    def getPostgresql_Version_12_3_0(self):
+        return self.Postgresql_Version_12_3_0
+
+    def getWeb_Client_Email(self):
+        return self.Web_Client_Email
+
+    def getWeb_Client_Password(self):
+        return self.Web_Client_Password
 
     def getteamBox_database(self):
         return self.teamBox_database

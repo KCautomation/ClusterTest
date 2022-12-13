@@ -137,6 +137,12 @@ class Locator(object):
     wait_forfilter = "//span[contains(text(),'Select Database')]"
     MySQL_button = "//mat-tab-body//button[1]"
 
+    Postgresql = "//h3[contains(text(),'Postgresql')]"
+    Postgresql_Version_12_3_0 = "//span[contains(text(),'12.3.0')]"
+    Web_Client_Email = "(//input[@id='mat-input-5'])[1]"
+    Web_Client_Password = "(//input[@id='mat-input-6'])[1]"
+
+
     teamBox_database = "(//div[@class='mat-select-arrow-wrapper'])[1]"
     defaultTeam_database = "//span[contains(text(),'default')]"
     firstTeam = "/html[1]/body[1]/div[3]/div[2]/div[1]/div[1]/div[1]/mat-option[3]/span[1]"
