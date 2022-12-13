@@ -6,7 +6,7 @@ import simple_colors
 import raf_practice.logs.customolog.custom_logger as cl
 from Src.functions.cache.cacheFunction import cacheFunctions
 from Src.login_function.login import login
-from Src.functions.database.createDatabase import DatabaseFunctions
+from Src.functions.database.databaseFunctions import DatabaseFunctions
 from Src.screenShot.screenShot import SS
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -14,7 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from Src.all_locators.Locators import Locator
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidSessionIdException, \
     WebDriverException
-from pageObjects.Database.pomDatabase import CreateDatabase
+from pageObjects.Database.pomDatabase import Database
 from utilities.readProperties import ReadConfig
 from pageObjects.Cache.pomCache import CreateCache
 
@@ -42,7 +42,7 @@ class TestCreateDatabase:
         # self.logger.info("****Started Home page title test ****")
         self.driver = setup
         ss = SS(self.driver)
-        data = CreateDatabase(self.driver)
+        data = Database(self.driver)
 
         print("****************** Try to Test Cluster Login *********************")
         try:
@@ -59,7 +59,7 @@ class TestCreateDatabase:
         try:
             self.driver.refresh()
             time.sleep(3)
-            self.DF.go_createPage(self)
+            self.DF.go_createDatabasePage(self)
 
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")

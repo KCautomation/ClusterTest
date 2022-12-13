@@ -46,7 +46,7 @@ class TestJavascriptApplications:
         action = ActionChains(self.driver)
         app = CreateApplication(self.driver)
 
-        ApplicationName = "test343"
+        ApplicationName = "test349"
         ExpressJs_Version = app.ExpressJs_Version_4_17_1
         Team = app.Team_Default
 

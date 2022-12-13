@@ -8,6 +8,11 @@ from selenium.webdriver.ie.service import Service as IEService
 from webdriver_manager.microsoft import IEDriverManager
 
 
+def pytest_collectreport(report):
+    if report.failed:
+        raise pytest.UsageError("Errors during collection, aborting")
+
+
 @pytest.fixture()
 def setup(browser):
     if browser == 'chrome':
