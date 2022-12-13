@@ -326,6 +326,7 @@ class CreateCaches:
                 self.driver.find_element(By.XPATH, Locator.Cancel_msg).click()
                 time.sleep(1)
 
+                # Wait to finish create
                 WebDriverWait(self.driver, 500).until(
                     EC.visibility_of_element_located((By.XPATH, Locator.Access_Terminal)))
                 time.sleep(5)

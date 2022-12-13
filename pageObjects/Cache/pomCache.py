@@ -15,14 +15,13 @@ class CreateCache(object):
         self.adminPassword_c = (By.XPATH, Locator.adminPassword_c)
         self.confirmPassword_c = (By.XPATH, Locator.confirmPassword_c)
 
-        self.Cache_Version_6_0_5 = (By.XPATH, Locator.Cache_Version_6_0_5)
-
         self.Enable_Web_Client_P3_X_Redis = (By.XPATH, Locator.Enable_Web_Client_P3_X_Redis)
         self.Web_Client_Email = (By.XPATH, Locator.Web_Client_Email_cache)
         self.Web_Client_Password = (By.XPATH, Locator.Web_Client_Password_cache)
 
         self.selectVersion_c = (By.XPATH, Locator.selectVersion_c)
-        self.version_6_0_5 = (By.XPATH, Locator.version_6_0_5)
+        self.Version_5_0_7 = (By.XPATH, Locator.Cache_Version_5_0_7)
+        self.version_6_0_5 = (By.XPATH, Locator.Cache_Version_6_0_5)
         self.next_button = (By.XPATH, Locator.next_button)
 
         self.confirm_button = (By.XPATH, Locator.confirm_button)
@@ -37,8 +36,16 @@ class CreateCache(object):
 
         self.Delete_permanently_button = (By.XPATH, Locator.Delete_permanently_button)
 
-    def getCache_Version_6_0_5(self):
-        return self.Cache_Version_6_0_5
+        self.Team_None = (By.XPATH, Locator.Team_None)
+
+    def getTeam_None(self):
+        return self.Team_None
+
+    def getVersion_5_0_7(self):
+        return self.Version_5_0_7
+
+    def getversion_6_0_5(self):
+        return self.version_6_0_5
 
     def getEnable_Web_Client_P3_X_Redis(self):
         return self.Enable_Web_Client_P3_X_Redis
@@ -72,9 +79,6 @@ class CreateCache(object):
 
     def getselectVersion_c(self):
         return self.selectVersion_c
-
-    def getversion_6_0_5(self):
-        return self.version_6_0_5
 
     def getnext_button(self):
         return self.next_button

@@ -67,10 +67,10 @@ class TestCreateCache:
             print("InvalidSessionIdException", e)
 
         print("****************** Try to go create Postgresql database *********************")
-        Team = cache.DefaultTeam_cache
-        ServerName = "testCache0135"
+        Team = cache.Team_None
+        ServerName = "testCache0141"
         Password = "Qwer1234!!"
-        Cache_Version = cache.Cache_Version_6_0_5
+        Cache_Version = cache.Version_5_0_7
         WebClientEmail = "test@gmail.com"
         WebClientPassword = "Qwer1234!!"
 
