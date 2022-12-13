@@ -14,6 +14,8 @@ class Database(object):
         self.Web_Client_Email = (By.XPATH, Locator.Web_Client_Email)
         self.Web_Client_Password = (By.XPATH, Locator.Web_Client_Password)
 
+        self.Mongodb = (By.XPATH, Locator.Mongodb)
+
         self.teamBox_database = (By.XPATH, Locator.teamBox_database)
         self.defaultTeam_database = (By.XPATH, Locator.defaultTeam_database)
 
@@ -40,6 +42,9 @@ class Database(object):
 
     def getPostgresql(self):
         return self.Postgresql
+
+    def getMongodb(self):
+        return self.Mongodb
 
     def getPostgresql_Version_12_3_0(self):
         return self.Postgresql_Version_12_3_0

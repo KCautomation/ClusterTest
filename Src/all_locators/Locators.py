@@ -139,10 +139,10 @@ class Locator(object):
 
     Postgresql = "//h3[contains(text(),'Postgresql')]"
     Postgresql_Version_12_3_0 = "//span[contains(text(),'12.3.0')]"
-    Web_Client_Email = "(//input[@id='mat-input-5'])[1]"
-    Web_Client_Password = "(//input[@id='mat-input-6'])[1]"
+    Web_Client_Email = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-database-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[5]/div[2]/div[1]/mat-form-field[1]/div[1]/div[1]/div[3]/input[1]"
+    Web_Client_Password = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-database-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[5]/div[2]/div[1]/mat-form-field[2]/div[1]/div[1]/div[3]/input[1]"
 
-
+    Mongodb = "//h3[contains(text(),'Mongodb')]"
     teamBox_database = "(//div[@class='mat-select-arrow-wrapper'])[1]"
     defaultTeam_database = "//span[contains(text(),'default')]"
     firstTeam = "/html[1]/body[1]/div[3]/div[2]/div[1]/div[1]/div[1]/mat-option[3]/span[1]"
