@@ -41,6 +41,31 @@ class TestCreateCache:
         ss = SS(self.driver)
         cache = CreateCache(self.driver)
 
+        print("****************** Try to Test Cluster Login *********************")
+        try:
+            self.login.test_cluster_login(self)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
+        print("----------------Try to Go Cache list ---------------------")
+        try:
+            Cache_list = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(cache.Cache_S))
+            print("Applications button is clickable")
+            Cache_list.click()
+            print("Welcome to applications list")
+            time.sleep(5)
+        except NoSuchElementException as e:
+            print("NoSuchElementException error :\n", e, "\n")
+        except TimeoutException as e:
+            print("TimeoutException error", e)
+        except InvalidSessionIdException as e:
+            print("InvalidSessionIdException", e)
+
         self.rows = XLUtils.getRowCount(self.path, "Sheet1")
         print("Number of Rows i a Excel: ", self.rows)
         lst_status = []
@@ -48,38 +73,6 @@ class TestCreateCache:
             self.ServerName = XLUtils.readData(self.path, 'Sheet1', r, 1)
             self.Exp = XLUtils.readData(self.path, 'Sheet1', r, 2)
             # self.Exp = XLUtils.readData(self.path, 'Sheet1', r, 3)
-
-            # ServerName = "cache-14"
-
-            print("****************** Try to Test Cluster Login *********************")
-            try:
-                self.login.test_cluster_login(self)
-            except NoSuchElementException as e:
-                print("NoSuchElementException error :\n", e, "\n")
-            except TimeoutException as e:
-                print("TimeoutException error", e)
-            except InvalidSessionIdException as e:
-                print("InvalidSessionIdException", e)
-
-            print("----------------Try to Go Cache list ---------------------")
-            try:
-                Cache_list = WebDriverWait(self.driver, 20).until(
-                    EC.element_to_be_clickable(cache.Cache_S))
-                print("Applications button is clickable")
-                Cache_list.click()
-                print("Welcome to applications list")
-                time.sleep(5)
-            except NoSuchElementException as e:
-                print("NoSuchElementException error :\n", e, "\n")
-            except TimeoutException as e:
-                print("TimeoutException error", e)
-            except InvalidSessionIdException as e:
-                print("InvalidSessionIdException", e)
-
-            # scroll down
-            # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
-            # print("Scroll down")
-            # time.sleep(3)
 
             # click on an application
             try:
