@@ -188,8 +188,8 @@ class Locator(object):
     selectVersion_c = "(//div[@class='mat-select-value'])[1]"
 
     version_6_0_5 = "//span[contains(text(),'6.0.5')]"
-    wevClientUsername = "(//input[@id='mat-input-6'])[1]"
-    wevClientPassword = "(//input[@id='mat-input-7'])[1]"
+    Web_Client_Email_cache = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-cache-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[7]/div[2]/div[1]/mat-form-field[1]/div[1]/div[1]/div[3]/input[1]"
+    Web_Client_Password_cache = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-cache-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[7]/div[2]/div[1]/mat-form-field[2]/div[1]/div[1]/div[3]/input[1]"
     next_Button_c = "(//span[normalize-space()='Next'])[1]"
     confirmButton_c = "(//span[@class='ml-auto mr-auto text-center ng-tns-c42-31'])[1]"
     enable_WebClient = "(//div[@class='mat-checkbox-inner-container'])[2]"
@@ -205,8 +205,12 @@ class Locator(object):
     Cache_Settings = "(//span[@class='inline-block py-3 pl-2'][normalize-space()='Settings'])[1]"
     Cache_Delete = "//span[contains(text(),'Delete')]"
     Cache_namebox_D = "//input[@placeholder='Type here...']"
+    Cache_Version_6_0_5 = "//span[contains(text(),'6.0.5')]"
     # Delete_permanently_button = "//span[contains(text(),'I understand this, Delete permanently')]"
     Cache_Deleted_Success_msg = "/html[1]/body[1]/kc-toastr[1]/div[1]/div[1]/div[2]/p[2]"
+
+    Enable_Web_Client_P3_X_Redis = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-cache-form[1]/div[1]/div[1]/kc-horizontal-stepper[1]/section[1]/div[1]/div[6]/div[1]/div[1]/mat-checkbox[1]/label[1]/div[1]"
+
 
     # ******************************** namespace creation *************************
     Namespace_button = "//body/div[3]/div[2]/div[1]/div[1]/div[1]/button[1]/span[1]"  # XPATH

@@ -15,6 +15,12 @@ class CreateCache(object):
         self.adminPassword_c = (By.XPATH, Locator.adminPassword_c)
         self.confirmPassword_c = (By.XPATH, Locator.confirmPassword_c)
 
+        self.Cache_Version_6_0_5 = (By.XPATH, Locator.Cache_Version_6_0_5)
+
+        self.Enable_Web_Client_P3_X_Redis = (By.XPATH, Locator.Enable_Web_Client_P3_X_Redis)
+        self.Web_Client_Email = (By.XPATH, Locator.Web_Client_Email_cache)
+        self.Web_Client_Password = (By.XPATH, Locator.Web_Client_Password_cache)
+
         self.selectVersion_c = (By.XPATH, Locator.selectVersion_c)
         self.version_6_0_5 = (By.XPATH, Locator.version_6_0_5)
         self.next_button = (By.XPATH, Locator.next_button)
@@ -30,6 +36,18 @@ class CreateCache(object):
         self.Cache_Deleted_Success_msg = (By.XPATH, Locator.Cache_Deleted_Success_msg)
 
         self.Delete_permanently_button = (By.XPATH, Locator.Delete_permanently_button)
+
+    def getCache_Version_6_0_5(self):
+        return self.Cache_Version_6_0_5
+
+    def getEnable_Web_Client_P3_X_Redis(self):
+        return self.Enable_Web_Client_P3_X_Redis
+
+    def getWeb_Client_Email(self):
+        return self.Web_Client_Email
+
+    def getWeb_Client_Password(self):
+        return self.Web_Client_Password
 
     def getredis_button(self):
         return self.redis_button
