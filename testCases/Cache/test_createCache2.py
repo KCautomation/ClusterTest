@@ -23,10 +23,6 @@ ss_path = "/Caches/create/"
 
 
 class TestCreateCache:
-    baseURL = ReadConfig.getApplicationURL()
-    useremail = ReadConfig.getUseremail()
-    password = ReadConfig.getPassword()
-
     # logger = LogGen.loggen()
     logger = cl.customLogger(logging.DEBUG)
     login = login()
@@ -225,7 +221,7 @@ class TestCreateCache:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        print("---------- Start create Cache based on Team: Default & Version: 5.0.7  -------------")
+        print("---------- Start create Cache based on Team: Default & Version: 6.0.5  -------------")
         Team = cache.DefaultTeam_cache
         ServerName = "testCache0141"
         Password = "Qwer1234!!"
