@@ -111,7 +111,7 @@ class TestCreateCache:
         self.driver.implicitly_wait(5)
         time.sleep(3)
 
-        for x in range(50):
+        for x in range(6):
             threeDot_button = self.driver.find_element(By.XPATH,
                                                        "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-user-list[1]/kc-page-layout[1]/kc-page-layout-content[1]/div[1]/table[1]/tbody[1]/tr[1]/td[7]/button[1]/span[1]/mat-icon[1]/*[name()='svg'][1]")
             threeDot_button.click()
