@@ -51,7 +51,6 @@ class Test_002_Login:
                     "C:/Users/shabr/PycharmProjects/ClusterTest/Screenshots/" + "test_loginPageTitle.png")
                 self.driver.refresh()
 
-
         #     if act_title == exp_title:
         #         if self.exp == 'Pass':
         #             self.logger.info("**** passed ****")
@@ -87,4 +86,3 @@ class Test_002_Login:
         #
         # self.logger.info("******* End of Login DDT Test **********")
         # self.logger.info("**************** Completed  TC_LoginDDT_002 ************* ")
-        #

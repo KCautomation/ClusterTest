@@ -19,7 +19,7 @@ from utilities.readProperties import ReadConfig
 from Src.functions.applications.application_functions import ApplicationFunctions
 from pageObjects.Apllications.pomCreateApplication import CreateApplication
 
-ss_path = "/Login/"
+ss_path = "/Applications/DotNet/"
 
 
 class DotNetApplication:
