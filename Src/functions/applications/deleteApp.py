@@ -21,14 +21,15 @@ from pageObjects.Apllications.pomCreateApplication import CreateApplication
 from utilities.readProperties import ReadConfig
 from Src.screenShot.screenShot import SS
 
-ss_path = "/Login/"
+ss_path = "/Applications/DeleteApplication/"
 
 
-class ApplicationFunctions:
+class DeleteApp:
 
     @staticmethod
-    def test_delete_app(self, ApplicationName):
+    def delete_app(self, ApplicationName):
         # pytest.skip("Skipping test...later I will implement...")
+
         ss = SS(self.driver)
         print("********************Try to delete '" + ApplicationName + "' application*********************8")
 
@@ -127,7 +128,7 @@ class ApplicationFunctions:
             self.driver.refresh()
             time.sleep(4)
 
-            appName = self.driver.find_element(By.XPATH, "//span[normalize-space()='" + ApplicationName + "']")
+            appName = self.driver.find_element(By.XPATH, "//span[contains(text(),'"+ApplicationName+"')]")
             if appName.is_Displayed():
                 print(ApplicationName, "is still present in the list")
                 file_name = ss_path + "app_delete_failed_or_disable" + time.asctime().replace(":", "_") + ".png"
