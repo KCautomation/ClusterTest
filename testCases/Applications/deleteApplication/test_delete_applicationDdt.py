@@ -8,6 +8,7 @@ from colorama import Fore
 from selenium.webdriver import Keys, ActionChains
 
 import raf_practice.logs.customolog.custom_logger as cl
+from Src.functions.applications.deleteApp import DeleteApp
 from Src.login_function.login import login
 from Src.screenShot.screenShot import SS
 from selenium.webdriver.common.by import By
@@ -23,6 +24,7 @@ from pageObjects.Apllications.pomDeleteAppication import DeleteApplication
 from utilities import XLUtils
 
 ss_path = "/DeleteApplication/"
+path = "C:\\Users\\shabr\\PycharmProjects\\ClusterTest\\testCases\\Applications\\\deleteApplication\\delete_applications.xlsx"
 
 
 @allure.severity(allure.severity_level.CRITICAL)
@@ -31,11 +33,12 @@ class TestDeleteApplication:
     logger = cl.customLogger(logging.DEBUG)
     login = login()
 
-    path = "C:\\Users\\shabr\\PycharmProjects\\ClusterTest\\testCases\\Applications\\\deleteApplication\\delete_applications.xlsx"
-
     appFunction = ApplicationFunctions()
     ServerName = "testSql0233"
     Password = "Qwer1235!!"
+
+    delete = DeleteApp()
+
 
     @pytest.mark.regression
     @allure.severity(allure.severity_level.CRITICAL)
@@ -89,15 +92,18 @@ class TestDeleteApplication:
             # click on an application
             try:
                 Application_name = WebDriverWait(self.driver, 20).until(
-                    EC.presence_of_element_located(
-                        (By.XPATH, "//span[contains(text(),'" + self.ApplicationName + "')]")))
+                    EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'" + self.ApplicationName + "')]")))
                 if Application_name.is_displayed:
                     print(self.ApplicationName, "Application is present in the list")
                     Application_name.click()
                     print("successfully clicked on :", self.ApplicationName)
                     time.sleep(10)
                 else:
-                    return exit()
+                    print("" + self.ApplicationName + " is not avalavle in the list")
+                    file_name = ss_path + "app_is_" + time.asctime().replace(":", "_") + ".png"
+                    ss.driver.save_screenshot(file_name)
+                    ss.ScreenShot(file_name)
+                    self.driver.close()
 
             except NoSuchElementException as e:
                 print("NoSuchElementException error :\n", e, "\n")
@@ -105,90 +111,13 @@ class TestDeleteApplication:
                 print("TimeoutException error", e)
             except InvalidSessionIdException as e:
                 print("InvalidSessionIdException", e)
-            # click on settings
-            print("******************************* Test Try to delete application******************************")
+
+            print("*******************************Try Test to delete application******************************")
             try:
-                application_Settings = WebDriverWait(self.driver, 20).until(
-                    EC.element_to_be_clickable(del_pom.application_Settings))
-                print("application_Settings is clickable")
-                application_Settings.click()
-                print("Welcome application_Settings ")
-                time.sleep(5)
-            except NoSuchElementException as e:
-                print("NoSuchElementException error :\n", e, "\n")
-            except TimeoutException as e:
-                print("TimeoutException error", e)
-            except InvalidSessionIdException as e:
-                print("InvalidSessionIdException", e)
+                self.driver.refresh()
+                time.sleep(3)
+                self.delete.delete_app(self, self.ApplicationName)
 
-            # click on Delete button
-            try:
-                application_Delete = WebDriverWait(self.driver, 20).until(
-                    EC.element_to_be_clickable(del_pom.application_Delete))
-                print("application_Delete is clickable")
-                application_Delete.click()
-                print("successfully clicked application_Delete ")
-                time.sleep(5)
-            except NoSuchElementException as e:
-                print("NoSuchElementException error :\n", e, "\n")
-            except TimeoutException as e:
-                print("TimeoutException error", e)
-            except InvalidSessionIdException as e:
-                print("InvalidSessionIdException", e)
-
-            # input application name
-            try:
-                Application_namebox_D = WebDriverWait(self.driver, 20).until(
-                    EC.element_to_be_clickable(del_pom.Application_namebox_D))
-                print("application_Delete is clickable")
-                Application_namebox_D.send_keys(self.ApplicationName)
-                print("successfully inputted Application_name ")
-                time.sleep(5)
-            except NoSuchElementException as e:
-                print("NoSuchElementException error :\n", e, "\n")
-            except TimeoutException as e:
-                print("TimeoutException error", e)
-            except InvalidSessionIdException as e:
-                print("InvalidSessionIdException", e)
-
-            # scroll down
-            # self.driver.execute_script("document.querySelector('.sidenav-content').scrollTop = 20")
-            # print("Scroll down")
-            # time.sleep(3)
-
-            # input application name
-            try:
-                Delete_permanently_button = WebDriverWait(self.driver, 20).until(
-                    EC.element_to_be_clickable(del_pom.Delete_permanently_button))
-                print("application_Delete is clickable")
-                Delete_permanently_button.click()
-                print("successfully clicked on Delete_permanently_button ")
-                time.sleep(2)
-            except NoSuchElementException as e:
-                print("NoSuchElementException error :\n", e, "\n")
-            except TimeoutException as e:
-                print("TimeoutException error", e)
-            except InvalidSessionIdException as e:
-                print("InvalidSessionIdException", e)
-
-            # check msg
-            try:
-                Application_Deleted_Success_msg = WebDriverWait(self.driver, 120).until(
-                    EC.presence_of_element_located(del_pom.Application_Deleted_Success_msg))
-                if Application_Deleted_Success_msg.is_displayed():
-
-                    print('Shown a message: ',
-                          simple_colors.green(Application_Deleted_Success_msg.text, ['bold', 'underlined']))
-                    print("\n")
-
-                    assert True
-                    XLUtils.writeData(self.path, "Sheet1", r, 2, "Test Passed")
-
-                else:
-                    XLUtils.writeData(self.path, "Sheet1", r, 2, "Test Failed")
-                    assert False
-
-                time.sleep(10)
             except NoSuchElementException as e:
                 print("NoSuchElementException error :\n", e, "\n")
             except TimeoutException as e:
@@ -197,7 +126,3 @@ class TestDeleteApplication:
                 print("InvalidSessionIdException", e)
             except AssertionError as e:
                 print("AssertionError", e)
-
-            file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
-            ss.driver.save_screenshot(file_name)
-            ss.ScreenShot(file_name)

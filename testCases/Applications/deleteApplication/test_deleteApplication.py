@@ -46,6 +46,7 @@ class TestDeleteApplication:
         ApplicationName = "test-352"
         self.logger.info("*************** Test Create Application With PHP Laravel*****************")
         self.driver = setup
+        driver = self.driver
         ss = SS(self.driver)
         action = ActionChains(self.driver)
         del_pom = DeleteApplication(self.driver)
@@ -94,8 +95,7 @@ class TestDeleteApplication:
                 file_name = ss_path + "app_is_" + time.asctime().replace(":", "_") + ".png"
                 ss.driver.save_screenshot(file_name)
                 ss.ScreenShot(file_name)
-                # self.driver.close()
-                self.driver.quit()
+                driver.close()
 
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
