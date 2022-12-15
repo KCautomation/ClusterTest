@@ -8,7 +8,6 @@ from colorama import Fore
 from selenium.webdriver import Keys, ActionChains
 import raf_practice.logs.customolog.custom_logger as cl
 from Src.login_function.login import login
-from Src.functions.database.createDatabase import DatabaseFunctions
 from Src.screenShot.screenShot import SS
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -31,7 +30,6 @@ class TestPHPApplication:
     # logger = LogGen.loggen()
     logger = cl.customLogger(logging.DEBUG)
     login = login()
-    DF = DatabaseFunctions()
 
     appFunction = ApplicationFunctions()
     ServerName = "testSql0233"
@@ -2140,10 +2138,3 @@ class TestPHPApplication:
         except AssertionError as e:
             print("AssertionError", e)
 
-        print("---------------------- deleted Application validation-----------------------")
-
-        print("Application Delete Successfully")
-
-        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
-        ss.driver.save_screenshot(file_name)
-        ss.ScreenShot(file_name)

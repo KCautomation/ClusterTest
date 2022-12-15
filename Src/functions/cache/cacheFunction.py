@@ -14,7 +14,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
 from Src.screenShot.screenShot import SS
 from pageObjects.Cache.pomCache import CreateCache
 
-ss_path = "/LogIn/"
+ss_path = "/Screenshots/Cache/deleteCache/"
 
 
 class cacheFunctions:
@@ -161,7 +161,11 @@ class cacheFunctions:
 
             cache_name = self.driver.find_element(By.XPATH, "//span[normalize-space()='" + ServerName + "']")
             if cache_name.is_Displayed():
-                print(ServerName, "is still present in the list")
+                print(ServerName, "is still present or disable in the list")
+                file_name = ss_path + "delete_or_disable_cache" + time.asctime().replace(":", "_") + ".png"
+                ss.driver.save_screenshot(file_name)
+                ss.ScreenShot(file_name)
+
                 assert False
             else:
                 print("successfully clicked on :", ServerName)
@@ -176,7 +180,3 @@ class cacheFunctions:
             print("InvalidSessionIdException", e)
         except AssertionError as e:
             print("AssertionError", e)
-
-        file_name = ss_path + "delete_success_screenshot_" + time.asctime().replace(":", "_") + ".png"
-        ss.driver.save_screenshot(file_name)
-        ss.ScreenShot(file_name)

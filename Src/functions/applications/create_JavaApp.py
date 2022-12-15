@@ -9,7 +9,6 @@ from selenium.webdriver import Keys, ActionChains
 
 import raf_practice.logs.customolog.custom_logger as cl
 from Src.login_function.login import login
-from Src.functions.database.createDatabase import DatabaseFunctions
 from Src.screenShot.screenShot import SS
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,7 +20,7 @@ from utilities.readProperties import ReadConfig
 from Src.functions.applications.application_functions import ApplicationFunctions
 from pageObjects.Apllications.pomCreateApplication import CreateApplication
 
-ss_path = "/Login/"
+ss_path = "/Applications/createApp/java"
 
 
 class JavaApplication:
@@ -314,8 +313,12 @@ class JavaApplication:
                 time.sleep(2)
                 assert True
             else:
+                file_name = ss_path + "create_Status_check" + time.asctime().replace(":", "_") + ".png"
+                ss.driver.save_screenshot(file_name)
+                ss.ScreenShot(file_name)
                 print('Application created status is: ',
                       simple_colors.green(Actual_status, ['bold', 'underlined']))
+                assert False
 
         except NoSuchElementException as e:
             print("NoSuchElementException error", e)
