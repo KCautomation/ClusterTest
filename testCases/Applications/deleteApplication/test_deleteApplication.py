@@ -3,8 +3,6 @@ import time
 
 import allure
 import pytest
-import simple_colors
-from colorama import Fore
 from selenium.webdriver import Keys, ActionChains
 
 import raf_practice.logs.customolog.custom_logger as cl
