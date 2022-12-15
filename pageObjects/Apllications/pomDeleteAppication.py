@@ -12,6 +12,15 @@ class DeleteApplication(object):
         self.Application_namebox_D = (By.XPATH, Locator.Application_namebox_D)
         self.Delete_permanently_button = (By.XPATH, Locator.Delete_permanently_button)
         self.Application_Deleted_Success_msg = (By.XPATH, Locator.Application_Deleted_Success_msg)
+        self.Application_Initialization_failed = (By.XPATH, Locator.Application_Initialization_failed)
+        self.delete_icon = (By.XPATH, Locator.DeleteApp_byIcon)
+        self.okay_button = (By.XPATH, Locator.Okay_button)
+
+
+    def getdelete_icon(self):
+        return self.delete_icon
+    def getApplication_Initialization_failed(self):
+        return self.Application_Initialization_failed
 
     def getApplications(self):
         return self.Applications
@@ -27,4 +36,3 @@ class DeleteApplication(object):
 
     def getApplication_Deleted_Success_msg(self):
         return self.Application_Deleted_Success_msg
-

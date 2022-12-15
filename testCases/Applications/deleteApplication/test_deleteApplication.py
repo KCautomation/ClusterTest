@@ -43,7 +43,7 @@ class TestDeleteApplication:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_delete_applications(self, setup):
         # pytest.skip("Skipping test...later I will implement...")
-        ApplicationName = "test-352"
+        ApplicationName = "test-358"
         self.logger.info("*************** Test Create Application With PHP Laravel*****************")
         self.driver = setup
         driver = self.driver
@@ -84,7 +84,7 @@ class TestDeleteApplication:
         # click on an application
         try:
             Application_name = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'" + ApplicationName + "')]")))
+                EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'"+ApplicationName+"')]")))
             if Application_name.is_displayed:
                 print(ApplicationName, "Application is present in the list")
                 Application_name.click()

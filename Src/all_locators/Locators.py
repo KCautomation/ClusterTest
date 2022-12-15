@@ -132,7 +132,6 @@ class Locator(object):
     Application_Deleted_Success_msg = "//p[normalize-space()='Application Deleted Successfully']"
     DeleteApp_byIcon = "/html[1]/body[1]/kc-root[1]/kc-layout[1]/div[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/kc-application-details[1]/div[1]/kc-application-init[1]/div[1]/button[1]"
 
-
     #  for failed app
     Application_Initialization_failed = "//h5[contains(text(),'*** Application Initialization Failed ***')]"
 

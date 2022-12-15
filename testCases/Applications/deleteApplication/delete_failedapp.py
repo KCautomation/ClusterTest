@@ -93,7 +93,7 @@ class TestDeleteApplication:
                 print("successfully clicked on :", ApplicationName)
                 time.sleep(10)
             else:
-                print("" + ApplicationName + " is not avalavle in the list")
+                print("" + ApplicationName + " application Not Found! ")
                 file_name = ss_path + "app_is_" + time.asctime().replace(":", "_") + ".png"
                 ss.driver.save_screenshot(file_name)
                 ss.ScreenShot(file_name)
@@ -106,24 +106,14 @@ class TestDeleteApplication:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        try:
-            failed_mas = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.XPATH, Locator.Application_Initialization_failed)))
-            if failed_mas.is_displayed:
-                highlight(failed_mas, 3, "yellow", 2)
-                print("application initialization msg :", failed_mas.text)
-        except NoSuchElementException as e:
-            print("NoSuchElementException error :\n", e, "\n")
-        except TimeoutException as e:
-            print("TimeoutException error", e)
-        except InvalidSessionIdException as e:
-            print("InvalidSessionIdException", e)
+        Application_Initialization = self.driver.find_element(By.XPATH, Locator.Application_Initialization_failed)
+        highlight(Application_Initialization, 3, "yellow", 2)
+        print("application initialization msg :", Application_Initialization.text)
 
         delete_icon = self.driver.find_element(By.XPATH, Locator.DeleteApp_byIcon)
         delete_icon.click()
         time.sleep(2)
 
-        okay_button = self.driver.find_element(By.XPATH, "//span[contains(text(),'Okay')]")
+        okay_button = self.driver.find_element(By.XPATH, Locator.Okay_button)
         okay_button.click()
         time.sleep(10)
-
