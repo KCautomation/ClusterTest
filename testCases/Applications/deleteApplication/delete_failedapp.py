@@ -119,10 +119,11 @@ class TestDeleteApplication:
         except InvalidSessionIdException as e:
             print("InvalidSessionIdException", e)
 
-        delete_icon = driver.find_element(By.XPATH, Locator.DeleteApp_byIcon)
-        delete_icon.click(2)
+        delete_icon = self.driver.find_element(By.XPATH, Locator.DeleteApp_byIcon)
+        delete_icon.click()
+        time.sleep(2)
 
-        okay_button = driver.find_element((By.XPATH, "//span[contains(text(),'Okay')]"))
+        okay_button = self.driver.find_element(By.XPATH, "//span[contains(text(),'Okay')]")
         okay_button.click()
-        delete_icon.click(10)
+        time.sleep(10)
 
