@@ -110,10 +110,11 @@ class DeleteApp:
                 print('Shown a message: ',
                       simple_colors.green(Application_Deleted_Success_msg.text, ['bold', 'underlined']))
                 print("\n")
+                time.sleep(10)
                 pass
             else:
                 pass
-            time.sleep(10)
+                time.sleep(10)
         except NoSuchElementException as e:
             print("NoSuchElementException error :\n", e, "\n")
         except TimeoutException as e:

@@ -5,6 +5,7 @@ import simple_colors
 from colorama import Fore
 
 import raf_practice.logs.customolog.custom_logger as cl
+from Src.highlight_Element.highlight_ele import highlight
 from Src.login_function.login import login
 from Src.screenShot.screenShot import SS
 from selenium.webdriver.common.by import By
@@ -19,7 +20,7 @@ from pageObjects.Cache.pomCache import CreateCache
 ss_path = "/DeleteCache/"
 
 
-class TestCreateCache:
+class TestDeleteCache:
     baseURL = ReadConfig.getApplicationURL()
     useremail = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
@@ -32,7 +33,7 @@ class TestCreateCache:
     path = "C:\\Users\\shabr\\PycharmProjects\\ClusterTest\\testCases\\Cache\\cache_data.xlsx"
 
     @pytest.mark.regression
-    def test_teamNone(self, setup):
+    def test_delete(self, setup):
 
         self.logger.info("*************** Try to Test Create Cache *****************")
         # self.logger.info("****Started Home page title test ****")
@@ -78,6 +79,8 @@ class TestCreateCache:
                 Cache_name = WebDriverWait(self.driver, 20).until(
                     EC.presence_of_element_located((By.XPATH, "//span[normalize-space()='" + self.ServerName + "']")))
                 if Cache_name.is_displayed:
+
+                    highlight(Cache_name, 3, "yellow", 3)
                     print(self.ServerName, "Application is present in the list")
                     Cache_name.click()
                     print("successfully clicked on :", self.ServerName)

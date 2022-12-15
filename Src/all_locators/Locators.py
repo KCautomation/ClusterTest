@@ -130,6 +130,11 @@ class Locator(object):
     Application_namebox_D = "//input[@placeholder='Type here...']"
     Delete_permanently_button = "//span[contains(text(),'I understand this, Delete permanently')]"
     Application_Deleted_Success_msg = "//p[normalize-space()='Application Deleted Successfully']"
+    DeleteApp_byIcon = "/html/body/kc-root/kc-layout/div/mat-sidenav-container/mat-sidenav-content/main/kc-application-details/div/kc-application-init/div/button[1]/span/ic-icon/svg/path[1]"
+
+
+    #  for failed app
+    Application_Initialization_failed = "//h5[contains(text(),'*** Application Initialization Failed ***')]"
 
     # *************************************** database ********************************
     # go to Database page
